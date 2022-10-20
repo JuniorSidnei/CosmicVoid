@@ -11,6 +11,7 @@ namespace ProjectA.Input {
 
         public InputAction MoveUp => m_inputsource.Player.Up;
         public InputAction MoveDown => m_inputsource.Player.Down;
+        public InputAction Attack => m_inputsource.Player.Attack;
 
         private void OnEnable() {
             m_inputsource = new InputSource();
