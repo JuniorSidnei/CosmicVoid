@@ -772,6 +772,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3135040947220154360, guid: f318eb642a82b6a42820cb80bd507569, type: 3}
   m_PrefabInstance: {fileID: 3135040947288490934}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1146139856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1146139857}
+  - component: {fileID: 1146139858}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1146139857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146139856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1813919981}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146139858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146139856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e3c2388a9170d46bde85fc0373b861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaveData: {fileID: 11400000, guid: a7bf2b68920bee641a4917dcf29beb7e, type: 2}
 --- !u!1 &1146939653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1054,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1967939598}
+  - {fileID: 1146139857}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1182,6 +1228,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4449539784730802214, guid: a53ab27fd05405e4b92fe1cc52222dd5, type: 3}
       propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449539784730802215, guid: a53ab27fd05405e4b92fe1cc52222dd5, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449539784730802215, guid: a53ab27fd05405e4b92fe1cc52222dd5, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
