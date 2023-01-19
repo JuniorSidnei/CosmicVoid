@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Animator;
 using ProjectA.Input;
 using ProjectA.Movement;
 using UnityEngine;
@@ -11,12 +12,16 @@ namespace ProjectA.Attack {
         
         public InputManager InputManager;
         public PlayerMovement PlayerMovement;
+        public PlayerAnimator PlayerAnimator;
         public float TimeToChargedAttack;
         
-        [SerializeField]
         private float m_elapsedtimeCharged;
         private bool m_isChargingAttack;
         private float m_chargedAttackTreshold = .5f;
+
+        public bool IsCharged() {
+            return m_elapsedtimeCharged >= TimeToChargedAttack;
+        }
         
         private void Start() {
             InputManager.Attack.performed += ctx => StartAttack();
@@ -42,6 +47,10 @@ namespace ProjectA.Attack {
             if (!m_isChargingAttack) return;
 
             m_elapsedtimeCharged += Time.deltaTime;
+
+            if (m_elapsedtimeCharged >= TimeToChargedAttack && !PlayerMovement.IsMoving) {
+                PlayerAnimator.Charged();
+            }
         }
     }
 }

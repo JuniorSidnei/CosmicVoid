@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using ProjectA.Attack;
 using ProjectA.Input;
 using UnityEngine;
 
@@ -12,15 +13,21 @@ namespace ProjectA.Movement {
         }
 
         public enum PlayerStates {
-            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE
+            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE, CHARGED, UP_CHARGED, DOWN_CHARGED
         }
         
         public InputManager InputManager;
         public PlayerPosition Position;
         public PlayerStates State;
 
-        private bool m_isMoving;
+        private PlayerAttack m_playerAttack;
         
+        public bool IsMoving { get; private set; }
+
+        private void Awake() {
+            m_playerAttack = GetComponent<PlayerAttack>();
+        }
+
         private void Start() {
             State = PlayerStates.IDLE;
             
@@ -29,7 +36,7 @@ namespace ProjectA.Movement {
         }
 
         private void MoveUp() {
-            if (m_isMoving) return;
+            if (IsMoving) return;
             
             var newPos = Vector2.zero;
             
@@ -37,37 +44,37 @@ namespace ProjectA.Movement {
                 case PlayerPosition.UP:
                     return;
                 case PlayerPosition.MID:
-                    State = PlayerStates.MOVEUP;
+                    State = m_playerAttack.IsCharged() ? PlayerStates.UP_CHARGED : PlayerStates.MOVEUP;
                     newPos = new Vector2(-6f, 2.5f);
                     Position = PlayerPosition.UP;
                     break;
                 case PlayerPosition.DOWN:
-                    State = PlayerStates.MOVEUP;
+                    State = m_playerAttack.IsCharged() ? PlayerStates.UP_CHARGED : PlayerStates.MOVEUP;
                     newPos = new Vector2(-6f, .5f);
                     Position = PlayerPosition.MID;
                     break;
             }
 
-            m_isMoving = true;
+            IsMoving = true;
             transform.DOMove(newPos, 0.15f).SetEase(Ease.InBounce).OnComplete(()=> {
                 State = PlayerStates.IDLE;
-                m_isMoving = false;
+                IsMoving = false;
             });
         }
         
         private void MoveDown() {
-            if (m_isMoving) return;
+            if (IsMoving) return;
             
             var newPos = Vector2.zero;
             
             switch (Position) {
                 case PlayerPosition.UP:
-                    State = PlayerStates.MOVEDOWN;
+                    State = m_playerAttack.IsCharged() ? PlayerStates.DOWN_CHARGED : PlayerStates.MOVEDOWN;
                     newPos = new Vector2(-6f, .5f);
                     Position = PlayerPosition.MID;
                     break;
                 case PlayerPosition.MID:
-                    State = PlayerStates.MOVEDOWN;
+                    State = m_playerAttack.IsCharged() ? PlayerStates.DOWN_CHARGED : PlayerStates.MOVEDOWN;;
                     newPos = new Vector2(-6f, -1.5f);
                     Position = PlayerPosition.DOWN;
                     break;
@@ -75,10 +82,10 @@ namespace ProjectA.Movement {
                     return;
             }
 
-            m_isMoving = true;
+            IsMoving = true;
             transform.DOMove(newPos, 0.15f).SetEase(Ease.InBounce).OnComplete(()=> {
-                State = PlayerStates.IDLE;
-                m_isMoving = false;
+                State = m_playerAttack.IsCharged() ? PlayerStates.CHARGED : PlayerStates.IDLE;
+                IsMoving = false;
             });
         }
     }
