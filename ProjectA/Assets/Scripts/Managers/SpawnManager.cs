@@ -1,5 +1,8 @@
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
+using ProjectA.Entity.ProcessDamage;
+using ProjectA.Interface;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Managers {

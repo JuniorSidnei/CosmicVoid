@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using ProjectA.Movement;
+using ProjectA.Utils;
+
 
 namespace ProjectA.Singletons.Managers {
     
-    public class GameManager : MonoBehaviour {
-        
+    public class GameManager : Singleton<GameManager> {
+
+        public PlayerMovement PlayerMovement;
     }
 }

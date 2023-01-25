@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3360172661290090853}
   - component: {fileID: -1755959738618288968}
   - component: {fileID: 2306214979318104248}
-  m_Layer: 0
+  - component: {fileID: 8338271827347731380}
+  m_Layer: 7
   m_Name: DestructibleProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +47,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -60,9 +61,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5171055327859440189}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -99,6 +100,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 12
   Drag: 0.5
+--- !u!114 &8338271827347731380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171055327859440189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3256ab66badf101449683702d53b884c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePower: 5
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &6712938906768101957
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +127,7 @@ GameObject:
   - component: {fileID: 6599117077595882490}
   - component: {fileID: 3305318149247040348}
   - component: {fileID: 6258944441485343548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
