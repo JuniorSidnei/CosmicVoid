@@ -7,7 +7,7 @@ namespace ProjectA.Interface {
 
     public interface IHealthable {
         
-        public void TakeDamage(float damage);
-        public void ReceiveLife(float lifeAmount);
+        public void TakeDamage(int damage);
+        public void ReceiveLife(int lifeAmount);
     }
 }

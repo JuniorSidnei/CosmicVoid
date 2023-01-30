@@ -1,41 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ProjectA.Data.Status;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Interface {
     
-    public class PlayerHealth : MonoBehaviour, IHealthable {
+    public class PlayerHealth : MonoBehaviour {
+
+        public int MaxHealth = 3;
+
+        private int m_currentHealth;
         
-        public EntityStatus EntityStatus;
+        private void Awake() {
+            m_currentHealth = MaxHealth;
+            GameManager.Instance.Dispatcher.Subscribe<OnDamagePlayer>(OnDamagePlayer);
+        }
 
-        private float m_currentHealth;
-        private float m_currentArmor;
-        private float m_currentPower;
+        private void OnDamagePlayer(OnDamagePlayer ev) {
+            m_currentHealth -= ev.Damage;
 
-        public void TakeDamage(float damage) {
-            var totalDamage = damage - m_currentArmor;
-
-            totalDamage = Mathf.Clamp(totalDamage, 1, Mathf.Infinity);
-            Debug.Log("tomei: " + totalDamage);
-            
-            m_currentHealth -= totalDamage;
-
+            GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
             if (m_currentHealth <= 0) {
                 Debug.Log("player morto");
             }
-        }
-
-        public void ReceiveLife(float lifeAmount) {
-            m_currentHealth += lifeAmount;
-        }
-        
-        
-        private void Awake() {
-            m_currentHealth = EntityStatus.MaxHealth;
-            m_currentPower = EntityStatus.DamagePower;
-            m_currentArmor = EntityStatus.ArmorPower;
+            
         }
     }
 }

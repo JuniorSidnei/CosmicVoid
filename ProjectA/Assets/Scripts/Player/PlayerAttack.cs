@@ -7,15 +7,14 @@ using ProjectA.Entity.ProcessDamage;
 using ProjectA.Input;
 using ProjectA.Interface;
 using ProjectA.Movement;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace ProjectA.Attack {
     
     public class PlayerAttack : MonoBehaviour {
         
         public InputManager InputManager;
-        public PlayerMovement PlayerMovement;
         public PlayerAnimator PlayerAnimator;
         public float TimeToChargedAttack;
         public LayerMask EntityLayer;
@@ -24,31 +23,44 @@ namespace ProjectA.Attack {
         private bool m_isChargingAttack;
         private float m_chargedAttackTreshold = .5f;
         private CircleCollider2D m_circleCollider2D;
+        private PlayerMovement.PlayerStates m_currentPlayerState;
+        private bool m_isPlayerMoving;
         
         public bool IsCharged() {
             return m_elapsedtimeCharged >= TimeToChargedAttack;
-        }
-
-        private bool IsIdle() {
-            return PlayerMovement.State == PlayerMovement.PlayerStates.IDLE;
         }
         
         private void Start() {
             InputManager.Attack.performed += ctx => StartAttack();
             InputManager.Attack.canceled += ctx => AnimateAttack();
             m_circleCollider2D = GetComponent<CircleCollider2D>();
+            GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
+            GameManager.Instance.Dispatcher.Subscribe<OnPlayerMoving>(OnPlayerMoving);
+        }
+
+        private void OnPlayerMoving(OnPlayerMoving ev) {
+            m_isPlayerMoving = ev.IsMoving;
+        }
+
+        private void OnPlayerStateChange(OnPlayerStateChange ev) {
+            m_currentPlayerState = ev.NewState;
+
+            if (m_currentPlayerState == PlayerMovement.PlayerStates.IDLE) m_elapsedtimeCharged = 0;
         }
 
         private void StartAttack() {
+            if (m_currentPlayerState == PlayerMovement.PlayerStates.STUNNED) return;
             m_isChargingAttack = true;
         }
 
         private void AnimateAttack() {
+            if (m_currentPlayerState == PlayerMovement.PlayerStates.STUNNED) return;
+            
             if (m_elapsedtimeCharged <= m_chargedAttackTreshold) {
-                PlayerMovement.State = PlayerMovement.PlayerStates.ATTACK;
+                GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.ATTACK));
                 Attack();
             } else if (m_elapsedtimeCharged > m_chargedAttackTreshold && m_elapsedtimeCharged > TimeToChargedAttack) {
-                PlayerMovement.State = PlayerMovement.PlayerStates.CHARGEDATTACK;
+                GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.CHARGEDATTACK));
                 Attack();
             }
 
@@ -57,11 +69,12 @@ namespace ProjectA.Attack {
         }
         
         private void Update() {
+            
             if (!m_isChargingAttack) return;
 
             m_elapsedtimeCharged += Time.deltaTime;
 
-            if (m_elapsedtimeCharged >= TimeToChargedAttack && !PlayerMovement.IsMoving) {
+            if (m_elapsedtimeCharged >= TimeToChargedAttack && !m_isPlayerMoving) {
                 PlayerAnimator.Charged();
             }
         }
@@ -76,7 +89,7 @@ namespace ProjectA.Attack {
 
             var o = hit.collider.gameObject;
             
-            o.GetComponent<IDamageable>().ProcessDamage(IsCharged(),gameObject.GetComponent<PlayerHealth>());
+            o.GetComponent<IDamageable>().ProcessDamage(IsCharged());
         }
 
         private void OnDrawGizmos() {

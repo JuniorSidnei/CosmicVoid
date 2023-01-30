@@ -7,7 +7,7 @@ using UnityEngine;
 namespace ProjectA.Interface {
     
     public interface IDamageable {
-        
-        void ProcessDamage(bool isCharged, PlayerHealth playerHealth);
+        abstract void ProcessDamage(bool isCharged);
+        abstract void ProcessPlayerDamage(bool isCharged);
     }
 }

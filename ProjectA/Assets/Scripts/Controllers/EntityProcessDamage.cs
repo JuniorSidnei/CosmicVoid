@@ -1,17 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ProjectA.Data.Wave;
-using ProjectA.Entity.Position;
 using ProjectA.Interface;
 using ProjectA.Movement;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Entity.ProcessDamage {
     
-    public abstract class EntityProcessDamage : MonoBehaviour {
+    public abstract class EntityProcessDamage : MonoBehaviour, IDamageable {
 
-        public float DamagePower;
+        public int DamagePower;
         public LayerMask PlayerLayer;
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -22,13 +18,16 @@ namespace ProjectA.Entity.ProcessDamage {
             var o = other.gameObject;
 
             var playerState = o.GetComponent<PlayerMovement>().State;
-
-            if (playerState == PlayerMovement.PlayerStates.ATTACK ||
-                playerState == PlayerMovement.PlayerStates.CHARGEDATTACK) return;
             
-            o.GetComponent<PlayerHealth>().TakeDamage(DamagePower);
-            Destroy(gameObject);    
+            
+            ProcessPlayerDamage(playerState == PlayerMovement.PlayerStates.ATTACK || playerState == PlayerMovement.PlayerStates.CHARGEDATTACK);
         }
-        
+
+        public virtual void ProcessDamage(bool isCharged) {
+        }
+
+        public virtual void ProcessPlayerDamage(bool isCharged) {
+            
+        }
     }
 }
