@@ -42,6 +42,7 @@ namespace ProjectA.Entity.ProcessDamage {
             }
 
             entity.GetComponent<IDamageable>().ProcessProjectileDamage(IsReflected, DamagePower);
+            Destroy(gameObject);
         }
     }
 }

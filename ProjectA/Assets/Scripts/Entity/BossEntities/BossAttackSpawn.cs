@@ -35,7 +35,7 @@ namespace ProjectA.Controllers {
         
         private void SpawnEntity() {
             var entity = m_entityQueue.Dequeue();
-            var entityObject = Instantiate(BossAttackWave.GetEntity(entity.Type), transform.parent);
+            var entityObject = Instantiate(BossAttackWave.GetEntity(entity.Type), transform);
             entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);
 
             m_timeToNextSpawn = entity.TimeToNextEntity;

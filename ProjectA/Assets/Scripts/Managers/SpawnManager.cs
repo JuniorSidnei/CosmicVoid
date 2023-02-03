@@ -34,7 +34,13 @@ namespace ProjectA.Managers {
         private void SpawnEntity() {
             var entity = WaveData.EntityInfos[m_currentEntityIndex];
             var entityObject = Instantiate(WaveData.GetEntity(entity.Type), transform);
-            entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);
+
+            if (entity.Type == WaveData.EntityType.Boss) {
+                GameManager.Instance.Dispatcher.Emit(new OnSpawnBoss());
+            }
+            else {
+                entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);    
+            }
 
             m_timeToNextSpawn = entity.TimeToNextEntity;
             m_currentEntityIndex += 1;
@@ -43,16 +49,6 @@ namespace ProjectA.Managers {
             
             m_waveFinishedSpawn = true;
 
-            SpawnBoss();
-        }
-
-        private void SpawnBoss() {
-            if (m_isBossSpawned) return;
-            
-            var entity = WaveData.EntityInfos[m_currentEntityIndex - 1];
-            var entityObject = Instantiate(WaveData.GetEntity(WaveData.EntityType.Boss), transform);
-            entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);
-            m_isBossSpawned = true;
         }
     }
 }

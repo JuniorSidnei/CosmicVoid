@@ -19,9 +19,6 @@ MonoBehaviour:
   Shooter: {fileID: 1207899949191035420, guid: 20dd69887dd168a47814b803007ad5d5, type: 3}
   Boss: {fileID: 1207899949191035420, guid: 7a063d0b8e1eda34c84e185c85411193, type: 3}
   EntityInfos:
-  - Type: 3
-    Position: 1
-    TimeToNextEntity: 0
   - Type: 4
     Position: 1
-    TimeToNextEntity: 1
+    TimeToNextEntity: 0

@@ -17,6 +17,8 @@ namespace ProjectA.Interface {
         private void OnDamagePlayer(OnDamagePlayer ev) {
             m_currentHealth -= ev.Damage;
 
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(.8f, .2f));
+            
             GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
             if (m_currentHealth <= 0) {
                 Debug.Log("player morto");

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,9 @@ namespace ProjectA.Managers {
         }
 
         private void OnPlayerLifeUpdate(OnPlayerLifeUpdate ev) {
-            PlayerLife[ev.CurrentLife].SetActive(false);
+            for (var i = ev.CurrentLife; i < PlayerLife.Count; i++) {
+                PlayerLife[i].SetActive(false);
+            }
         }
     }
 }

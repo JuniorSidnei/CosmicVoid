@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossAttackData
   m_EditorClassIdentifier: 
   InitialTimeSpawn: 5
-  Reflective: {fileID: 1207899949191035420, guid: 22504a59d1fe79441b7ef3ccf1230785, type: 3}
+  Reflective: {fileID: 1207899949191035420, guid: 42ff2f51539e4b04a9f0524ec53624f4, type: 3}
   Hard: {fileID: 1207899949191035420, guid: 318ec12f48ede86468d8294ea41cafb1, type: 3}
   EntityInfos:
   - Type: 0

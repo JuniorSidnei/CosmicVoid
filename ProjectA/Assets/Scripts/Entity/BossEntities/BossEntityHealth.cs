@@ -22,9 +22,10 @@ namespace ProjectA.Entity.Boss {
             if (ev.Entity != m_entityProcessDamage) return;
 
             HitsHealth -= ev.Damage;
-
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(1.2f, .5f));
+            
             if (HitsHealth <= 0) {
-                Debug.Log("Morri feiao");
+                Debug.Log("Boss morreu, feiao");
             }
         }
     }

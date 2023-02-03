@@ -1,5 +1,6 @@
 using System;
 using HaremCity.Utils;
+using ProjectA.Input;
 using ProjectA.Movement;
 using ProjectA.Utils;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ namespace ProjectA.Singletons.Managers {
 
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
 
+        public InputManager InputManager;
+        
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
         }

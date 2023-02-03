@@ -68,3 +68,15 @@ public class OnHitBoss {
     public bool IsReflected;
     public int Damage;
 }
+
+public class OnSpawnBoss { }
+
+public class OnCameraScreenShake {
+    public OnCameraScreenShake(float force, float duration) {
+        Force = force;
+        Duration = duration;
+    }
+
+    public float Force { get; set; }
+    public float Duration { get; set; }
+}

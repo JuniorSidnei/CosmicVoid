@@ -7,19 +7,20 @@ namespace ProjectA.Input {
     
     public class InputManager : MonoBehaviour {
 
-        private InputSource m_inputsource;
+        private InputSource m_inputSource;
 
-        public InputAction MoveUp => m_inputsource.Player.Up;
-        public InputAction MoveDown => m_inputsource.Player.Down;
-        public InputAction Attack => m_inputsource.Player.Attack;
-
+        public InputAction MoveUp => m_inputSource.Player.Up;
+        public InputAction MoveDown => m_inputSource.Player.Down;
+        public InputAction Attack => m_inputSource.Player.Attack;
+        public InputSource.PlayerActions PlayerActions => m_inputSource.Player;
+        
         private void OnEnable() {
-            m_inputsource = new InputSource();
-            m_inputsource.Enable();
+            m_inputSource = new InputSource();
+            m_inputSource.Enable();
         }
 
         private void OnDisable() {
-            m_inputsource.Disable();
+            m_inputSource.Disable();
         }
     }
 }

@@ -7,6 +7,17 @@ namespace ProjectA.Entity.Position {
     public class EntityPosition : MonoBehaviour {
 
         public void SetPosition(WaveData.EntityPosition position) {
+            var transformLocalPosition = GetPosition(position);
+
+            transformLocalPosition.x = transform.parent.localPosition.x;
+            transform.localPosition = transformLocalPosition;
+        }
+        
+        public void SetBossPosition(WaveData.EntityInfo entityInfo) {
+            
+        }
+
+        private Vector3 GetPosition(WaveData.EntityPosition position) {
             var transformLocalPosition = transform.localPosition;
 
             transformLocalPosition.y = position switch {
@@ -16,8 +27,7 @@ namespace ProjectA.Entity.Position {
                 _ => throw new ArgumentOutOfRangeException(nameof(position), position, null)
             };
 
-            transformLocalPosition.x = transform.parent.localPosition.x;
-            transform.localPosition = transformLocalPosition;
+            return transformLocalPosition;
         }
     }
 }
