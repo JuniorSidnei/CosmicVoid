@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 20
+  controlID: 51
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 51
+  controlID: 56
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 52
+  controlID: 57
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 1271
     height: 531
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -311,14 +311,14 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 7988659299598590216, guid: 2cb74140fe08db743bfe1358fbeee9d2, type: 2}
     m_ValueSerializationHelper:
-    - e00: 1.2124077
+    - e00: 1.1087912
       e01: 0
       e02: 0
-      e03: -106.41553
+      e03: -40.439575
       e10: 0
-      e11: 1.2124077
+      e11: 1.1087912
       e12: 0
-      e13: 36.372253
+      e13: 42.01593
       e20: 0
       e21: 0
       e22: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -34000
+  m_LastSelectedObjectID: -1348
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -560,22 +560,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/Interfaces/Damage
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/Interfaces/Damage
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Project-A\ProjectA
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 13}
-    m_SelectedIDs: 06720000
-    m_LastClickedID: 29190
-    m_ExpandedIDs: 0000000004720000067200000872000000ca9a3b
+    scrollPos: {x: 0, y: 125}
+    m_SelectedIDs: 387e0000
+    m_LastClickedID: 32312
+    m_ExpandedIDs: 0000000000720000027200000472000006720000ae730000c2730000c873000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -603,7 +603,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000047200000672000008720000
+    m_ExpandedIDs: 0000000000720000027200000472000006720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +647,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 3}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -731,9 +731,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: bca00000
       m_LastClickedID: 0
-      m_ExpandedIDs: fafaffffca700000f8700000
+      m_ExpandedIDs: 0ecefffffafaffffca700000e4700000f8700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1004,9 +1004,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.875991, y: 1.217917, z: -0.042590357}
+    m_Target: {x: 0.68526936, y: 0.08820879, z: -0.26518473}
     speed: 2
-    m_Value: {x: -4.875991, y: 1.217917, z: -0.042590357}
+    m_Value: {x: 0.68526936, y: 0.08820879, z: -0.26518473}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1057,9 +1057,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.5577145
+    m_Target: 7.223943
     speed: 2
-    m_Value: 4.5577145
+    m_Value: 7.223943
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1145,7 +1145,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1

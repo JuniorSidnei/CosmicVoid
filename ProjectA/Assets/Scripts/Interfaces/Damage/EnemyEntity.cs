@@ -17,5 +17,9 @@ namespace ProjectA.Interface {
                 Destroy(gameObject);
             }
         }
+
+        public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
+            Destroy(gameObject);
+        }
     }
 }

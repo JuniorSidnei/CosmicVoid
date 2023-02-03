@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Entity.ProcessDamage;
 using ProjectA.Movement;
 using UnityEngine;
 
@@ -46,3 +47,24 @@ public class OnDamagePlayer {
     public int Damage;
 }
 
+public class OnReflectEntity {
+    public OnReflectEntity(EntityProcessDamage entity, bool isCharged) {
+        Entity = entity;
+        IsCharged = isCharged;
+    }
+
+    public EntityProcessDamage Entity;
+    public bool IsCharged;
+}
+
+public class OnHitBoss {
+    public OnHitBoss(EntityProcessDamage entity, bool isReflected, int damagePower) {
+        Entity = entity;
+        IsReflected = isReflected;
+        Damage = damagePower;
+    }
+
+    public EntityProcessDamage Entity;
+    public bool IsReflected;
+    public int Damage;
+}

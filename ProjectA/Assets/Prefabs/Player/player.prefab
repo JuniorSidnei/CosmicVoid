@@ -89,6 +89,7 @@ MonoBehaviour:
   InputManager: {fileID: 0}
   Position: 1
   State: 0
+  TimeStunned: 0
 --- !u!114 &6716933972539869294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,12 +103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputManager: {fileID: 0}
-  PlayerMovement: {fileID: 6716933972539869293}
   PlayerAnimator: {fileID: 6716933972699327968}
   TimeToChargedAttack: 1
   EntityLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!114 &6716933972539869295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,4 +239,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e61a1dcc98a42b48bbf6ad809ab7390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMovement: {fileID: 6716933972539869293}

@@ -8,7 +8,7 @@ namespace ProjectA.Data.Wave {
     public class WaveData : ScriptableObject {
 
         public enum EntityType {
-            DestructibleProp, HardProp, Enemy, Boss
+            DestructibleProp, HardProp, Enemy, Shooter, Boss
         }
 
         public enum EntityPosition {
@@ -26,6 +26,7 @@ namespace ProjectA.Data.Wave {
         public GameObject DestructibleProp;
         public GameObject HardProp;
         public GameObject Enemy;
+        public GameObject Shooter;
         public GameObject Boss;
         
         public List<EntityInfo> EntityInfos = new List<EntityInfo>();
@@ -35,6 +36,7 @@ namespace ProjectA.Data.Wave {
                 EntityType.DestructibleProp => DestructibleProp,
                 EntityType.HardProp => HardProp,
                 EntityType.Enemy => Enemy,
+                EntityType.Shooter => Shooter,
                 EntityType.Boss => Boss,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };

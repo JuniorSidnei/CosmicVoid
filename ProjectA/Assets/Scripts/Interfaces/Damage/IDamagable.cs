@@ -7,7 +7,8 @@ using UnityEngine;
 namespace ProjectA.Interface {
     
     public interface IDamageable {
-        abstract void ProcessDamage(bool isCharged);
-        abstract void ProcessPlayerDamage(bool isCharged);
+        void ProcessDamage(bool isCharged);
+        void ProcessPlayerDamage(bool isCharged);
+        void ProcessProjectileDamage(bool isReflected, int damagePower);
     }
 }

@@ -14,6 +14,7 @@ namespace ProjectA.Managers {
         private float m_timeToNextSpawn;
         private int m_currentEntityIndex = 0;
         private bool m_waveFinishedSpawn;
+        private bool m_isBossSpawned;
         
         private void Start() {
             m_timeToNextSpawn = WaveData.InitialTimeSpawn;
@@ -40,8 +41,18 @@ namespace ProjectA.Managers {
 
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;
             
-            m_currentEntityIndex = WaveData.EntityInfos.Count;
             m_waveFinishedSpawn = true;
+
+            SpawnBoss();
+        }
+
+        private void SpawnBoss() {
+            if (m_isBossSpawned) return;
+            
+            var entity = WaveData.EntityInfos[m_currentEntityIndex - 1];
+            var entityObject = Instantiate(WaveData.GetEntity(WaveData.EntityType.Boss), transform);
+            entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);
+            m_isBossSpawned = true;
         }
     }
 }
