@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1531c11b13960543b43d705fecd55d0, type: 3}
+  m_Name: BossPatternData_two
+  m_EditorClassIdentifier: 
+  InitialTimeSpawn: 5
+  Reflective: {fileID: 1207899949191035420, guid: 42ff2f51539e4b04a9f0524ec53624f4, type: 3}
+  Hard: {fileID: 1207899949191035420, guid: 318ec12f48ede86468d8294ea41cafb1, type: 3}
+  EntityInfos:
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.5

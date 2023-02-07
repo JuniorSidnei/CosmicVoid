@@ -10,7 +10,8 @@ namespace ProjectA.Entity.Boss {
     public class BossEntityHealth : MonoBehaviour {
 
         public int HitsHealth;
-
+        public int RageHpActivation;
+        
         private EntityProcessDamage m_entityProcessDamage;
         
         private void Awake() {
@@ -22,8 +23,13 @@ namespace ProjectA.Entity.Boss {
             if (ev.Entity != m_entityProcessDamage) return;
 
             HitsHealth -= ev.Damage;
+            
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(1.2f, .5f));
             
+            if (HitsHealth <= RageHpActivation) {
+                GameManager.Instance.Dispatcher.Emit(new OnBossRageMode());
+            }
+
             if (HitsHealth <= 0) {
                 Debug.Log("Boss morreu, feiao");
             }

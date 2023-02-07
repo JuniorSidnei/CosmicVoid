@@ -80,3 +80,5 @@ public class OnCameraScreenShake {
     public float Force { get; set; }
     public float Duration { get; set; }
 }
+
+public class OnBossRageMode { }

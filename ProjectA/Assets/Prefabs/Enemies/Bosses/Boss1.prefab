@@ -201,7 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6c38b7273380e4ba1b177d0534ae91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitsHealth: 3
+  HitsHealth: 2
+  RageHpActivation: 1
 --- !u!114 &3875058530461329329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +215,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab162c8cc170304f81a8ecc6d749d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossAttackWave: {fileID: 11400000, guid: 02bd33d6bd554f34ab2bdd1673da8ffe, type: 2}
+  BossPatternsDatas:
+  - {fileID: 11400000, guid: 729df1ef54f4bb94ba9d6a24adc765bb, type: 2}
+  - {fileID: 11400000, guid: a3b57ffe37350cc419ad56c31e516e51, type: 2}
+  - {fileID: 11400000, guid: 9de158b2a3fbc4548b6c4f02b85db363, type: 2}
+  - {fileID: 11400000, guid: 02bd33d6bd554f34ab2bdd1673da8ffe, type: 2}
+  BossPatternRageData: {fileID: 11400000, guid: 65de797da9d0c9a4a96ab9e8bb82231b, type: 2}
 --- !u!114 &6978537540411540809
 MonoBehaviour:
   m_ObjectHideFlags: 0
