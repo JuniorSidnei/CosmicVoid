@@ -19,6 +19,63 @@ MonoBehaviour:
   Shooter: {fileID: 1207899949191035420, guid: 20dd69887dd168a47814b803007ad5d5, type: 3}
   Boss: {fileID: 1207899949191035420, guid: 7a063d0b8e1eda34c84e185c85411193, type: 3}
   EntityInfos:
-  - Type: 4
+  - Type: 0
     Position: 1
+    TimeToNextEntity: 4
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 4
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 8
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 20
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 2
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 4
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0.8
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 10
+  - Type: 3
+    Position: 1
+    TimeToNextEntity: 10
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.8
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
     TimeToNextEntity: 0
