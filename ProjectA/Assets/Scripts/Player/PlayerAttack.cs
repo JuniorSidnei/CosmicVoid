@@ -37,7 +37,7 @@ namespace ProjectA.Attack {
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerMoving>(OnPlayerMoving);
         }
-
+        
         private void OnPlayerMoving(OnPlayerMoving ev) {
             m_isPlayerMoving = ev.IsMoving;
         }
@@ -45,7 +45,10 @@ namespace ProjectA.Attack {
         private void OnPlayerStateChange(OnPlayerStateChange ev) {
             m_currentPlayerState = ev.NewState;
 
-            if (m_currentPlayerState == PlayerMovement.PlayerStates.IDLE) m_elapsedtimeCharged = 0;
+            if (m_currentPlayerState != PlayerMovement.PlayerStates.IDLE && m_currentPlayerState != PlayerMovement.PlayerStates.STUNNED) return;
+            
+            m_elapsedtimeCharged = 0;
+            m_isChargingAttack = false;
         }
 
         private void StartAttack() {

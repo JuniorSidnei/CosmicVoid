@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class OnPlayerLifeUpdate {
         
-        public OnPlayerLifeUpdate(int currentLife) {
-            CurrentLife = currentLife;
-        }
-
-        public int CurrentLife;
+    public OnPlayerLifeUpdate(int currentLife) {
+        CurrentLife = currentLife;
     }
+
+    public int CurrentLife;
+}
     
 public class OnPlayerStun { }
 
@@ -82,3 +82,12 @@ public class OnCameraScreenShake {
 }
 
 public class OnBossRageMode { }
+
+public class OnHitCountUpdate {
+    
+    public OnHitCountUpdate(int count) {
+        Count = count;
+    }
+
+    public int Count;
+}

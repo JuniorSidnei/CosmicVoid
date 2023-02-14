@@ -24,6 +24,7 @@ namespace ProjectA.Entity.Boss {
         }
 
         public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
+            GameManager.Instance.UpdateHitCount();
             GameManager.Instance.Dispatcher.Emit(new OnHitBoss(this, isReflected, damagePower));
         }
     }

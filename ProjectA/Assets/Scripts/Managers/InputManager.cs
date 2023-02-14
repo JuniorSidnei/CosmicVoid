@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Modals;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,17 @@ namespace ProjectA.Input {
         private void OnEnable() {
             m_inputSource = new InputSource();
             m_inputSource.Enable();
+            
+            m_inputSource.Player.Pause.performed += ctx => PauseGame();
+        }
+
+        private void PauseGame() {
+            if (PauseModal.Instance.IsGamePaused) {
+                PauseModal.Instance.ResumeGame();
+            }
+            else {
+                PauseModal.Instance.PauseGame();
+            }
         }
 
         private void OnDisable() {

@@ -624,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputManager: {fileID: 1967939599}
+  HitCount: 0
 --- !u!4 &1010025550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3135040947220154360, guid: f318eb642a82b6a42820cb80bd507569, type: 3}
@@ -830,8 +831,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1397946702}
   - component: {fileID: 1397946701}
-  - component: {fileID: 1397946700}
   - component: {fileID: 1397946703}
+  - component: {fileID: 1397946704}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -839,18 +840,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1397946700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397946699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1397946701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +904,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e8ef147bbbb48a4e98a454e8d5265f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1397946704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397946699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1429631905

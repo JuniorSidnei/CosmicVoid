@@ -15,6 +15,15 @@ namespace ProjectA.Singletons.Managers {
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
 
         public InputManager InputManager;
+
+        public int HitCount = 0;
+
+        public void UpdateHitCount(bool willReset = false) {
+            if (willReset) HitCount = 0;
+            else HitCount += 1;
+            
+            Dispatcher.Emit(new OnHitCountUpdate(HitCount));
+        }
         
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
