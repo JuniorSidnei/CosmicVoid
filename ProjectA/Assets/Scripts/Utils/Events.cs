@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Movement;
 using UnityEngine;
+
+public enum ShakeForce {
+    BASIC, STRONG
+}
 
 public class OnPlayerLifeUpdate {
         
@@ -40,11 +45,13 @@ public class OnPlayerMoving {
 }
 
 public class OnDamagePlayer {
-    public OnDamagePlayer(int damage) {
+    public OnDamagePlayer(int damage, ShakeForce shakeForce) {
         Damage = damage;
+        ShakeForce = shakeForce;
     }
 
     public int Damage;
+    public ShakeForce ShakeForce;
 }
 
 public class OnReflectEntity {

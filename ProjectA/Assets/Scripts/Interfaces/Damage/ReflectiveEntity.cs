@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace ProjectA.Entity {
     
-    public class ReflectableEntity : EntityProcessDamage {
+    public class ReflectiveEntity : EntityProcessDamage {
         
         public override void ProcessDamage(bool isCharged) {
             GameManager.Instance.Dispatcher.Emit(new OnReflectEntity(this, isCharged));
         }
 
         public override void ProcessPlayerDamage(bool isCharged) {
-            GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower));
+            GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.BASIC));
             Destroy(gameObject);
         }
     }

@@ -1,3 +1,4 @@
+using ProjectA.Modals;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
 
@@ -17,13 +18,14 @@ namespace ProjectA.Interface {
         private void OnDamagePlayer(OnDamagePlayer ev) {
             m_currentHealth -= ev.Damage;
 
-            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(.8f, .2f));
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ev.ShakeForce == ShakeForce.BASIC ? 0.8f : 1.2f, .2f));
             
-            GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
             if (m_currentHealth <= 0) {
-                Debug.Log("player morto");
+                m_currentHealth = 0;
+                PauseModal.Instance.PauseGame(true);
             }
             
+            GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LustyGod.Controllers;
+using ProjectA.Modals;
 using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using TMPro;
@@ -15,6 +17,8 @@ namespace ProjectA.Managers {
         public TextMeshProUGUI HitCount;
         
         private void Awake() {
+            TransitionModal.DoTransitionOut();
+            
             HitCount.text = "0";
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerLifeUpdate>(OnPlayerLifeUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnHitCountUpdate>(OnHitCountUpdate);

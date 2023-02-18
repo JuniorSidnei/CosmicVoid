@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using LustyGod.Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,17 +10,19 @@ using UnityEngine.UI;
 namespace ProjectA.Managers {
     
     public class MainMenuManager : MonoBehaviour {
-
-        public Image Transition;
         
         public void PlayGame() {
-            Transition.DOFade(1, .5f).OnComplete(() => {
-                SceneManager.LoadScene("SampleScene");
+            TransitionModal.DoTransitionIn(() => {
+                SceneManager.LoadScene("GameScene");
             });
         }
 
         public void QuitGame() {
             Application.Quit();
+        }
+
+        private void Start() {
+            TransitionModal.DoTransitionOut();
         }
     }
 }

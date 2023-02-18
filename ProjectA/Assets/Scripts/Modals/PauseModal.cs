@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using LustyGod.Controllers;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace ProjectA.Modals {
@@ -13,23 +16,48 @@ namespace ProjectA.Modals {
 
         public Image PanelBg;
         public RectTransform BgRect;
-
+        public TextMeshProUGUI ModalText;
+        public Button ActionBtn;
+        
         public bool IsGamePaused { get; set; }
         
-        public void PauseGame() {
-            PanelBg.DOFade(0.8f, 0.25f);
-            BgRect.DOLocalMoveY(0, .35f).OnComplete(() => {
+        private Action m_onActionBtn;
+        
+        public void PauseGame(bool isEndGame = false) {
+            ModalText.text = isEndGame ? "Retry" : "Resume";
+            PanelBg.DOFade(0.8f, 0.15f);
+            BgRect.DOLocalMoveY(0, .2f).OnComplete(() => {
                 Time.timeScale = 0;
                 IsGamePaused = true;
             });
+            
+            m_onActionBtn = isEndGame ? DoEnd : DoResume;
         }
 
         public void ResumeGame() {
+            DoResume();
+        }
+        
+        public void LoadMenu() {
+            Time.timeScale = 1;
+            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("Menu"));
+        }
+
+        private void DoResume() {
             Time.timeScale = 1;
             PanelBg.DOFade(0, 0.15f);
-            BgRect.DOLocalMoveY(-740f, .35f).OnComplete(() => {
+            BgRect.DOLocalMoveY(-740f, .2f).OnComplete(() => {
                 IsGamePaused = false;
             });
+        }
+
+        private void DoEnd() {
+            Time.timeScale = 1;
+            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("GameScene"));
+        }
+
+        private void Awake() {
+            ActionBtn.onClick.AddListener(()=> m_onActionBtn?.Invoke());
         }
     }
 }
