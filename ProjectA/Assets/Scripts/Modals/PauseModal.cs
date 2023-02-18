@@ -20,6 +20,7 @@ namespace ProjectA.Modals {
         public Button ActionBtn;
         
         public bool IsGamePaused { get; set; }
+        public bool IsGameEnded { get; set; }
         
         private Action m_onActionBtn;
         
@@ -35,6 +36,8 @@ namespace ProjectA.Modals {
         }
 
         public void ResumeGame() {
+            if (IsGameEnded) return;
+            
             DoResume();
         }
         
@@ -52,6 +55,7 @@ namespace ProjectA.Modals {
         }
 
         private void DoEnd() {
+            IsGameEnded = true;
             Time.timeScale = 1;
             TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("GameScene"));
         }
