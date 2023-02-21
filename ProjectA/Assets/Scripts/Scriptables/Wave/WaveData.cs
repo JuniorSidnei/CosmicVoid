@@ -22,6 +22,7 @@ namespace ProjectA.Data.Wave {
             public float TimeToNextEntity;
         }
 
+        public bool IsTutorialWave;
         public float InitialTimeSpawn;
         public GameObject DestructibleProp;
         public GameObject HardProp;

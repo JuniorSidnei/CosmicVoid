@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f6f142b1b627e540837daf9c94b7ade, type: 3}
-  m_Name: StageData
+  m_Name: TutorialWave
   m_EditorClassIdentifier: 
+  IsTutorialWave: 1
   InitialTimeSpawn: 1
   DestructibleProp: {fileID: 5171055327859440189, guid: 1c8e3ee341384154899256bfd1ea5a97, type: 3}
   HardProp: {fileID: 1217344721583776896, guid: 055ccd8b621fac04486e8a9e65f5b02d, type: 3}

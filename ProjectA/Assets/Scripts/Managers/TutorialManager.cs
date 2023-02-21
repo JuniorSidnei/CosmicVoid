@@ -20,6 +20,11 @@ namespace ProjectA.Managers {
         private int m_currentTextIndex;
 
         private void Awake() {
+            if (PlayerPrefs.GetInt("tutorial_finished") == 1) {
+                enabled = false;
+                return;
+            }
+            
             m_delayBetweenTexts = InitialDelay;
             StartCoroutine(nameof(ShowTextDelay));
         }

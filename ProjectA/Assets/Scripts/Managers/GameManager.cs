@@ -1,5 +1,6 @@
 using System;
 using HaremCity.Utils;
+using ProjectA.Controllers;
 using ProjectA.Input;
 using ProjectA.Movement;
 using ProjectA.Utils;
@@ -14,6 +15,8 @@ namespace ProjectA.Singletons.Managers {
 
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
 
+        public int NextSceneIndex;
+        
         public InputManager InputManager;
 
         public int HitCount = 0;
@@ -31,6 +34,13 @@ namespace ProjectA.Singletons.Managers {
 
         private void Update() {
             m_dispatcher.DispatchAll();
+        }
+
+        public void LoadNextScene() {
+            TransitionModal.DoTransitionIn(() => {
+                var nextScene = "GameScene_" + NextSceneIndex;
+                SceneManager.LoadScene(nextScene);
+            });
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ProjectA.Managers {
         private int m_currentEntityIndex = 0;
         private bool m_waveFinishedSpawn;
         private bool m_isBossSpawned;
-        
+
         private void Start() {
             m_timeToNextSpawn = WaveData.InitialTimeSpawn;
         }
@@ -48,7 +48,16 @@ namespace ProjectA.Managers {
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;
             
             m_waveFinishedSpawn = true;
+            
+            if (!WaveData.IsTutorialWave) {
+                GameManager.Instance.LoadNextScene();
+                return;
+            }
 
+            if (PlayerPrefs.GetInt("tutorial_finished") == 1) return;
+            
+            PlayerPrefs.SetInt("tutorial_finished", 1);
+            PlayerPrefs.Save();
         }
     }
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using LustyGod.Controllers;
+using ProjectA.Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,7 +9,16 @@ namespace ProjectA.Managers {
         
         public void PlayGame() {
             TransitionModal.DoTransitionIn(() => {
-                SceneManager.LoadScene("GameScene");
+                var isTutorialFinished = PlayerPrefs.GetInt("tutorial_finished");
+                
+                switch (isTutorialFinished) {
+                    case 0:
+                        SceneManager.LoadScene("TutorialGameScene");        
+                        break;
+                    case 1:
+                        SceneManager.LoadScene("GameScene_1");
+                        break;
+                }
             });
         }
 

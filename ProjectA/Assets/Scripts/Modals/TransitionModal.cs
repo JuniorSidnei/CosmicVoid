@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LustyGod.Controllers {
+namespace ProjectA.Controllers {
     
     public class TransitionModal : MonoBehaviour {
         

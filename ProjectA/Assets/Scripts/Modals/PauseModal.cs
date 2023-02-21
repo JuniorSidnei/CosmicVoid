@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using LustyGod.Controllers;
+using ProjectA.Controllers;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
 using TMPro;
