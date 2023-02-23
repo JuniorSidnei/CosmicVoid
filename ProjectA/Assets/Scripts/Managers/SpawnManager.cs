@@ -33,7 +33,7 @@ namespace ProjectA.Managers {
 
         private void SpawnEntity() {
             var entity = WaveData.EntityInfos[m_currentEntityIndex];
-            var entityObject = Instantiate(WaveData.GetEntity(entity.Type), transform);
+            var entityObject = Instantiate(WaveData.WavePrefabs.GetEntity(entity.Type), transform);
 
             if (entity.Type == WaveData.EntityType.Boss) {
                 GameManager.Instance.Dispatcher.Emit(new OnSpawnBoss());

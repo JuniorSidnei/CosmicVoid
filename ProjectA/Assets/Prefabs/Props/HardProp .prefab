@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57d249257849c34daeb113857f361e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  Drag: 1
+  Speed: 6
+  Drag: 0.5
   Acceleration: 0.5
 --- !u!114 &7853858691878852066
 MonoBehaviour:
@@ -117,6 +117,9 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  EntityLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3246177665706053802
 GameObject:
   m_ObjectHideFlags: 0

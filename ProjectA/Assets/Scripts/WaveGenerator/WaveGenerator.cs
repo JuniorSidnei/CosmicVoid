@@ -27,8 +27,8 @@ namespace ProjectA.Generator {
 
             m_entityInfos.Clear();
             
-            for (int x = 0; x < WaveDataInfo.width; x++) {
-                for (int y = 0; y < WaveDataInfo.height; y++) {
+            for (int x = 0; x <= WaveDataInfo.width - 1; x++) {
+                for (int y = WaveDataInfo.height - 1; y >= 0; y--) {
                     GenerateWave(x, y);
                 }
             }
@@ -46,7 +46,7 @@ namespace ProjectA.Generator {
             
             if(pixelColor.a == 0) return;
 
-            foreach (var colorToType in ColorToTypes) {
+            foreach (var colorToType in ColorToTypes)  {
                 if (colorToType.Color.Equals(pixelColor)) {
                     WaveData.EntityInfo newEntityInfo = CreateEntityInfo(y, colorToType.Type);
                     m_entityInfos.Add(newEntityInfo);
@@ -57,9 +57,9 @@ namespace ProjectA.Generator {
         private WaveData.EntityInfo CreateEntityInfo(int position, WaveData.EntityType type) {
             
             var entityPosition = position switch {
-                0 => Data.Wave.WaveData.EntityPosition.Up,
+                2 => Data.Wave.WaveData.EntityPosition.Up,
                 1 => Data.Wave.WaveData.EntityPosition.Middle,
-                2 => Data.Wave.WaveData.EntityPosition.Down,
+                0 => Data.Wave.WaveData.EntityPosition.Down,
                 _ => Data.Wave.WaveData.EntityPosition.Up
             };
             

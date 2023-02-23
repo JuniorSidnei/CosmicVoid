@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ProjectA.Scriptables;
 using UnityEngine;
 
 namespace ProjectA.Data.Wave {
@@ -8,7 +9,7 @@ namespace ProjectA.Data.Wave {
     public class WaveData : ScriptableObject {
 
         public enum EntityType {
-            DestructibleProp, HardProp, Enemy, Shooter, Boss
+            DestructibleProp, HardProp, Enemy, Shooter, Boss, Reflective, HardProjectile
         }
 
         public enum EntityPosition {
@@ -24,23 +25,8 @@ namespace ProjectA.Data.Wave {
 
         public bool IsTutorialWave;
         public float InitialTimeSpawn;
-        public GameObject DestructibleProp;
-        public GameObject HardProp;
-        public GameObject Enemy;
-        public GameObject Shooter;
-        public GameObject Boss;
+        public WavePrefabs WavePrefabs;
         
         public List<EntityInfo> EntityInfos = new List<EntityInfo>();
-
-        public GameObject GetEntity(EntityType type) {
-            return type switch {
-                EntityType.DestructibleProp => DestructibleProp,
-                EntityType.HardProp => HardProp,
-                EntityType.Enemy => Enemy,
-                EntityType.Shooter => Shooter,
-                EntityType.Boss => Boss,
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
-            };
-        }
     }
 }
