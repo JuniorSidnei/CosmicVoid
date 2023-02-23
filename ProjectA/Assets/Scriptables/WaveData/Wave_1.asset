@@ -27,19 +27,19 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 0
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 1
     Position: 1
     TimeToNextEntity: 0
   - Type: 1
     Position: 2
-    TimeToNextEntity: 1.2
+    TimeToNextEntity: 0.65
   - Type: 1
     Position: 0
     TimeToNextEntity: 0
   - Type: 1
     Position: 1
-    TimeToNextEntity: 1.2
+    TimeToNextEntity: 0.65
   - Type: 1
     Position: 1
     TimeToNextEntity: 0
