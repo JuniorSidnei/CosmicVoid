@@ -1,3 +1,4 @@
+using System.Collections;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
@@ -50,7 +51,7 @@ namespace ProjectA.Managers {
             m_waveFinishedSpawn = true;
             
             if (!WaveData.IsTutorialWave) {
-                GameManager.Instance.LoadNextScene();
+                StartCoroutine(nameof(LoadNextScene));
                 return;
             }
 
@@ -58,6 +59,11 @@ namespace ProjectA.Managers {
             
             PlayerPrefs.SetInt("tutorial_finished", 1);
             PlayerPrefs.Save();
+        }
+
+        private IEnumerator LoadNextScene() {
+            yield return new WaitForSeconds(6);
+            GameManager.Instance.LoadNextScene();
         }
     }
 }

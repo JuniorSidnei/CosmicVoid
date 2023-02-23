@@ -45,7 +45,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 1
     Position: 2
-    TimeToNextEntity: 10
+    TimeToNextEntity: 1.5
   - Type: 2
     Position: 0
     TimeToNextEntity: 0.2
@@ -75,7 +75,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 1
     Position: 1
-    TimeToNextEntity: 6
+    TimeToNextEntity: 2
   - Type: 0
     Position: 0
     TimeToNextEntity: 0
@@ -84,67 +84,61 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 1
     Position: 1
-    TimeToNextEntity: 3
+    TimeToNextEntity: 0.8
   - Type: 0
     Position: 0
     TimeToNextEntity: 0
   - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.8
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 2
     Position: 2
     TimeToNextEntity: 1.5
-  - Type: 1
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 2
-    TimeToNextEntity: 3
-  - Type: 0
-    Position: 0
-    TimeToNextEntity: 0.5
-  - Type: 1
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 1
-    TimeToNextEntity: 1
-  - Type: 0
-    Position: 2
-    TimeToNextEntity: 1
-  - Type: 1
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 2
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 0
-    TimeToNextEntity: 1
-  - Type: 0
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 2
-    TimeToNextEntity: 1
-  - Type: 1
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 1
-    Position: 2
-    TimeToNextEntity: 1
-  - Type: 0
-    Position: 0
-    TimeToNextEntity: 1
-  - Type: 2
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 2
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 2
-    Position: 2
-    TimeToNextEntity: 1
   - Type: 2
     Position: 0
     TimeToNextEntity: 0
@@ -162,7 +156,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 3
     Position: 1
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 0.8
   - Type: 0
     Position: 1
     TimeToNextEntity: 0.5
@@ -210,7 +204,7 @@ MonoBehaviour:
     TimeToNextEntity: 1
   - Type: 2
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 0.5
   - Type: 0
     Position: 0
     TimeToNextEntity: 0.2
@@ -228,7 +222,7 @@ MonoBehaviour:
     TimeToNextEntity: 1
   - Type: 3
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 1
     Position: 2
     TimeToNextEntity: 0.5
@@ -239,7 +233,7 @@ MonoBehaviour:
     Position: 1
     TimeToNextEntity: 0.2
   - Type: 1
-    Position: 2
+    Position: 1
     TimeToNextEntity: 1
   - Type: 3
     Position: 0
@@ -252,31 +246,31 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 0
     Position: 2
+    TimeToNextEntity: 2
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
     TimeToNextEntity: 1
-  - Type: 3
+  - Type: 2
     Position: 0
     TimeToNextEntity: 0
-  - Type: 3
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 3
+  - Type: 2
     Position: 2
+    TimeToNextEntity: 0
+  - Type: 2
+    Position: 1
     TimeToNextEntity: 0.5
-  - Type: 2
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 2
-    Position: 2
-    TimeToNextEntity: 0.2
-  - Type: 2
-    Position: 1
-    TimeToNextEntity: 0
   - Type: 0
     Position: 1
     TimeToNextEntity: 0.35
   - Type: 0
     Position: 1
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 0.5
   - Type: 2
     Position: 1
     TimeToNextEntity: 0
@@ -303,7 +297,7 @@ MonoBehaviour:
     TimeToNextEntity: 1
   - Type: 2
     Position: 1
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 0.35
   - Type: 2
     Position: 0
     TimeToNextEntity: 0
@@ -312,10 +306,10 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 2
     Position: 2
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 0.35
   - Type: 2
     Position: 1
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 0.35
   - Type: 2
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 5
