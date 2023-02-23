@@ -37,7 +37,7 @@ namespace ProjectA.Managers {
             var entityObject = Instantiate(WaveData.WavePrefabs.GetEntity(entity.Type), transform);
 
             if (entity.Type == WaveData.EntityType.Boss) {
-                GameManager.Instance.Dispatcher.Emit(new OnSpawnBoss());
+                StartCoroutine(nameof(SpawnBoss));
             }
             else {
                 entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);    
@@ -49,11 +49,6 @@ namespace ProjectA.Managers {
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;
             
             m_waveFinishedSpawn = true;
-            
-            if (!WaveData.IsTutorialWave) {
-                StartCoroutine(nameof(LoadNextScene));
-                return;
-            }
 
             if (PlayerPrefs.GetInt("tutorial_finished") == 1) return;
             
@@ -61,9 +56,9 @@ namespace ProjectA.Managers {
             PlayerPrefs.Save();
         }
 
-        private IEnumerator LoadNextScene() {
+        private IEnumerator SpawnBoss() {
             yield return new WaitForSeconds(6);
-            GameManager.Instance.LoadNextScene();
+            GameManager.Instance.Dispatcher.Emit(new OnSpawnBoss());
         }
     }
 }

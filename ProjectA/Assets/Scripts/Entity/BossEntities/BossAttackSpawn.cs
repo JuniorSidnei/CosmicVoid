@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using ProjectA.Entity.Position;
 using ProjectA.Scriptables.Boss;
@@ -20,10 +21,18 @@ namespace ProjectA.Controllers {
         
         private void Awake() {
             m_currentPatternData = BossPatternsDatas[Random.Range(0, 4)];
-            Debug.Log("current data: " + m_currentPatternData.name);
-            EnqueueWave(m_currentPatternData);
-            
+
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
+            GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
+        }
+
+        private void OnBossStartAttack(OnBossStartAttack ev) {
+            StartCoroutine(nameof(WaitToEnqueuePattern));
+        }
+
+        private IEnumerator WaitToEnqueuePattern() {
+            yield return new WaitForSeconds(5);
+            EnqueueWave(m_currentPatternData);
         }
 
         private void OnBossRageMode(OnBossRageMode ev) {
@@ -41,7 +50,7 @@ namespace ProjectA.Controllers {
             
             m_timeToNextSpawn -= Time.deltaTime;
 
-            if (m_timeToNextSpawn > 0) return;
+            if (m_timeToNextSpawn > 0 || m_entityQueue.Count <= 0) return;
 
             SpawnEntity();
         }

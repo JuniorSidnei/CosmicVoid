@@ -20,6 +20,7 @@ namespace ProjectA.Entity.Boss {
             //show cutscene animation
             transform.DOLocalMoveX(XPosition, 2f).OnComplete(() => {
                 GameManager.Instance.InputManager.PlayerActions.Enable();
+                GameManager.Instance.Dispatcher.Emit(new OnBossStartAttack());
             });
         }
 

@@ -88,6 +88,8 @@ public class OnCameraScreenShake {
     public float Duration { get; set; }
 }
 
+public class OnBossStartAttack { }
+
 public class OnBossRageMode { }
 
 public class OnHitCountUpdate {

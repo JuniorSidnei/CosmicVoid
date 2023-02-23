@@ -312,4 +312,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.35
   - Type: 2
     Position: 1
+    TimeToNextEntity: 0
+  - Type: 4
+    Position: 1
     TimeToNextEntity: 5
