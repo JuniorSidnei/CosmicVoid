@@ -9,12 +9,12 @@ namespace ProjectA.Interface {
         public override void ProcessPlayerDamage(bool isCharged) {
             GameManager.Instance.UpdateHitCount(true);
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.STUNNED));
-            Destroy(gameObject);
+            GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
         }
         
         public override void ProcessDamage(bool isCharged) {
             GameManager.Instance.UpdateHitCount();
-            Destroy(gameObject);
+            GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
         }
     }
 }

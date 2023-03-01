@@ -66,7 +66,7 @@ namespace ProjectA.Controllers {
         private void SpawnEntity() {
             var entity = m_entityQueue.Dequeue();
             var entityObject = Instantiate(m_currentPatternData.GetEntity(entity.Type), transform);
-            entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);
+            entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);
 
             m_timeToNextSpawn = entity.TimeToNextEntity;
 

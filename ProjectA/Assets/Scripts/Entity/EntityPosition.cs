@@ -1,14 +1,20 @@
 using System;
 using ProjectA.Data.Wave;
+using ProjectA.Scriptables.Boss;
 using UnityEngine;
 
 namespace ProjectA.Entity.Position {
     
     public class EntityPosition : MonoBehaviour {
 
-        public void SetPosition(WaveData.EntityPosition position) {
-            var transformLocalPosition = GetPosition(position);
+        public WaveData.EntityType Type;
+        
+        public void SetPosition(WaveData.EntityInfo info, Transform parent) {
+            Type = info.Type;
+            var transformLocalPosition = GetPosition(info.Position);
 
+            transform.parent = parent;
+            
             transformLocalPosition.x = transform.parent.localPosition.x;
             transform.localPosition = transformLocalPosition;
         }
@@ -28,6 +34,15 @@ namespace ProjectA.Entity.Position {
             };
 
             return transformLocalPosition;
+        }
+
+        public void SetPosition(BossAttackWave.EntityInfo info, Transform parent) {
+            var transformLocalPosition = GetPosition(info.Position);
+
+            transform.parent = parent;
+            
+            transformLocalPosition.x = transform.parent.localPosition.x;
+            transform.localPosition = transformLocalPosition;
         }
     }
 }

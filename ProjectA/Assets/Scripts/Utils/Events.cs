@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using ProjectA.Entity.ProcessDamage;
+using ProjectA.Interface;
 using ProjectA.Movement;
 using UnityEngine;
 
@@ -99,4 +100,36 @@ public class OnHitCountUpdate {
     }
 
     public int Count;
+}
+
+public class OnDestructibleEntityRelease {
+    public OnDestructibleEntityRelease(DestructibleEntity entity) {
+        Entity = entity;
+    }
+
+    public DestructibleEntity Entity;
+}
+
+public class OnHardPropEntityRelease {
+    public OnHardPropEntityRelease(HardEntity entity) {
+        Entity = entity;
+    }
+
+    public HardEntity Entity;
+}
+
+public class OnEnemyEntityRelease {
+    public OnEnemyEntityRelease(EnemyEntity entity) {
+        Entity = entity;
+    }
+
+    public EnemyEntity Entity;
+}
+
+public class OnEnemyShooterEntityRelease {
+    public OnEnemyShooterEntityRelease(EnemyEntity entity) {
+        Entity = entity;
+    }
+
+    public EnemyEntity Entity;
 }

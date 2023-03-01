@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3135040947220154365}
   - component: {fileID: 3135040947220154361}
   - component: {fileID: 7647684322726535473}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: mid_ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 8
   Drag: 0.5
+  Acceleration: 0
 --- !u!114 &7647684322726535473
 MonoBehaviour:
   m_ObjectHideFlags: 0

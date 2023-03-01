@@ -1,3 +1,5 @@
+using ProjectA.Data.Wave;
+using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
 
@@ -17,12 +19,24 @@ namespace ProjectA.Interface {
             }
             else {
                 GameManager.Instance.UpdateHitCount();
-                Destroy(gameObject);
+                ReleaseEntity();
             }
         }
 
         public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
-            Destroy(gameObject);
+            ReleaseEntity();
+        }
+
+        private void ReleaseEntity() {
+            var type = GetComponent<EntityPosition>().Type;
+            switch (type) {
+                case WaveData.EntityType.Enemy:
+                    GameManager.Instance.Dispatcher.Emit(new OnEnemyEntityRelease(GetComponent<EnemyEntity>()));        
+                    break;
+                case WaveData.EntityType.Shooter:
+                    GameManager.Instance.Dispatcher.Emit(new OnEnemyShooterEntityRelease(GetComponent<EnemyEntity>()));   
+                    break;
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Net;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Interface;
+using ProjectA.Pools;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
 
@@ -11,6 +13,11 @@ namespace ProjectA.Managers {
     public class SpawnManager : MonoBehaviour {
 
         public WaveData WaveData;
+
+        public DestructiblePropPool DestructiblePool;
+        public HardPropPool HardPropPool;
+        public EnemyPool EnemyPool;
+        public EnemyShooterPool EnemyShooterPool;
         
         private float m_timeToNextSpawn;
         private int m_currentEntityIndex = 0;
@@ -34,13 +41,30 @@ namespace ProjectA.Managers {
 
         private void SpawnEntity() {
             var entity = WaveData.EntityInfos[m_currentEntityIndex];
-            var entityObject = Instantiate(WaveData.WavePrefabs.GetEntity(entity.Type), transform);
-
+            GameObject entityObject = gameObject;
+            
+            switch (entity.Type) {
+                case WaveData.EntityType.DestructibleProp:
+                    entityObject = DestructiblePool.GetFromPool();
+                    break;
+                case WaveData.EntityType.HardProp:
+                    entityObject = HardPropPool.GetFromPool();
+                    break;
+                case WaveData.EntityType.Enemy:
+                    entityObject = EnemyPool.GetFromPool();
+                    break;
+                case WaveData.EntityType.Shooter:
+                    entityObject = EnemyShooterPool.GetFromPool();
+                    break;
+                default:
+                    return;
+            }
+            
             if (entity.Type == WaveData.EntityType.Boss) {
                 StartCoroutine(nameof(SpawnBoss));
             }
             else {
-                entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);    
+                entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);    
             }
 
             m_timeToNextSpawn = entity.TimeToNextEntity;

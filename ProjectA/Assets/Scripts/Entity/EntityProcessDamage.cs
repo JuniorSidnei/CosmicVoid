@@ -1,3 +1,5 @@
+using ProjectA.Data.Wave;
+using ProjectA.Entity.Position;
 using ProjectA.Interface;
 using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
@@ -18,6 +20,11 @@ namespace ProjectA.Entity.ProcessDamage {
         public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) { }
 
         private void OnTriggerEnter2D(Collider2D other) {
+            if(other.gameObject.CompareTag("Wall")) {
+                ReleaseEntity();
+                return;
+            }
+            
             if (IsReflected) {
                 ProcessEntityCollision(other.gameObject);
             }
@@ -26,6 +33,25 @@ namespace ProjectA.Entity.ProcessDamage {
             }
         }
 
+        private void ReleaseEntity() {
+            
+            var type = GetComponent<EntityPosition>().Type;
+            switch (type) {
+                case WaveData.EntityType.DestructibleProp:
+                    GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
+                    break;
+                case WaveData.EntityType.HardProp:
+                    GameManager.Instance.Dispatcher.Emit(new OnHardPropEntityRelease(GetComponent<HardEntity>()));
+                    break;
+                case WaveData.EntityType.Enemy:
+                    GameManager.Instance.Dispatcher.Emit(new OnEnemyEntityRelease(GetComponent<EnemyEntity>()));
+                    break;
+                case WaveData.EntityType.Shooter:
+                    GameManager.Instance.Dispatcher.Emit(new OnEnemyShooterEntityRelease(GetComponent<EnemyEntity>()));
+                    break;
+            }    
+        }
+        
         private void ProcessPlayerCollision(GameObject player) {
             if(((1 << player.layer) & PlayerLayer) == 0) {
                 return;
@@ -42,7 +68,9 @@ namespace ProjectA.Entity.ProcessDamage {
             }
 
             entity.GetComponent<IDamageable>().ProcessProjectileDamage(IsReflected, DamagePower);
-            Destroy(gameObject);
+            ReleaseEntity();
         }
+        
+        
     }
 }
