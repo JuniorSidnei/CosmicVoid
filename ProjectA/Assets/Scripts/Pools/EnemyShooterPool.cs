@@ -15,15 +15,15 @@ namespace ProjectA.Pools {
         }
 
         private void Awake() {
-            GameManager.Instance.Dispatcher.Subscribe<OnEnemyEntityRelease>(OnEnemyEntityRelease);
+            GameManager.Instance.Dispatcher.Subscribe<OnEnemyShooterEntityRelease>(OnEnemyShooterEntityRelease);
         }
 
-        private void OnEnemyEntityRelease(OnEnemyEntityRelease ev) {
+        private void OnEnemyShooterEntityRelease(OnEnemyShooterEntityRelease ev) {
             Release(ev.Entity);
         }
 
         private void Start() {
-            InitPool(Prefab, 5, 10);
+            InitPool(Prefab, 10, 20);
         }
         
     }

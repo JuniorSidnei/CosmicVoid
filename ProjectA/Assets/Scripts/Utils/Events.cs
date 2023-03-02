@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using ProjectA.Entity;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Interface;
 using ProjectA.Movement;
@@ -132,4 +133,12 @@ public class OnEnemyShooterEntityRelease {
     }
 
     public EnemyEntity Entity;
+}
+
+public class OnReflectiveEntityRelease {
+    public OnReflectiveEntityRelease(ReflectiveEntity entity) {
+        Entity = entity;
+    }
+
+    public ReflectiveEntity Entity;
 }

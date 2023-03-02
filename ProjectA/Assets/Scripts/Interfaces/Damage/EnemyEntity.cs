@@ -1,12 +1,18 @@
+using System;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
+using UnityEngine;
 
 namespace ProjectA.Interface {
     
     public class EnemyEntity : EntityProcessDamage {
-        
+        private void OnDestroy()
+        {
+            Debug.Log("fui destruido");
+        }
+
         public override void ProcessPlayerDamage(bool isCharged) {
              GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.BASIC));
              GameManager.Instance.UpdateHitCount(true);

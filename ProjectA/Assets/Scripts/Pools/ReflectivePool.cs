@@ -1,4 +1,5 @@
 ﻿using System;
+using ProjectA.Entity;
 using ProjectA.Interface;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
@@ -6,19 +7,19 @@ using UnityEngine;
 
 namespace ProjectA.Pools {
     
-    public class EnemyPool : PoolBase<EnemyEntity> {
+    public class ReflectivePool : PoolBase<ReflectiveEntity> {
 
-        public EnemyEntity Prefab;
+        public ReflectiveEntity Prefab;
 
         public GameObject GetFromPool() {
             return Get().gameObject;
         }
 
         private void Awake() {
-            GameManager.Instance.Dispatcher.Subscribe<OnEnemyEntityRelease>(OnEnemyEntityRelease);
+            GameManager.Instance.Dispatcher.Subscribe<OnReflectiveEntityRelease>(OnReflectiveEntityRelease);
         }
 
-        private void OnEnemyEntityRelease(OnEnemyEntityRelease ev) {
+        private void OnReflectiveEntityRelease(OnReflectiveEntityRelease ev) {
             Release(ev.Entity);
         }
 

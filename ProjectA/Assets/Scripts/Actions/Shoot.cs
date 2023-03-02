@@ -1,3 +1,4 @@
+using ProjectA.Managers;
 using UnityEngine;
 
 namespace ProjectA.Actions {
@@ -23,7 +24,9 @@ namespace ProjectA.Actions {
         }
 
         private void ShootProjectile() {
-            Instantiate(Projectile, Spawn.position, Quaternion.identity);
+            var projectile = SpawnManager.Instance.ReflectivePool.GetFromPool();
+            projectile.transform.position = Spawn.position;
+            projectile.transform.SetParent(SpawnManager.Instance.transform);
             m_shootInterval = ShootInterval;
         }
     }

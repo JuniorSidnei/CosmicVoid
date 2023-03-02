@@ -2,15 +2,14 @@ using System.Collections;
 using System.Net;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
-using ProjectA.Entity.ProcessDamage;
-using ProjectA.Interface;
 using ProjectA.Pools;
 using ProjectA.Singletons.Managers;
+using ProjectA.Utils;
 using UnityEngine;
 
 namespace ProjectA.Managers {
     
-    public class SpawnManager : MonoBehaviour {
+    public class SpawnManager : Singleton<SpawnManager> {
 
         public WaveData WaveData;
 
@@ -18,6 +17,7 @@ namespace ProjectA.Managers {
         public HardPropPool HardPropPool;
         public EnemyPool EnemyPool;
         public EnemyShooterPool EnemyShooterPool;
+        public ReflectivePool ReflectivePool;
         
         private float m_timeToNextSpawn;
         private int m_currentEntityIndex = 0;

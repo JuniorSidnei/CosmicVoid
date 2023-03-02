@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 1146139860}
   - component: {fileID: 1146139861}
   - component: {fileID: 1146139862}
+  - component: {fileID: 1146139863}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -774,6 +775,7 @@ MonoBehaviour:
   HardPropPool: {fileID: 1146139860}
   EnemyPool: {fileID: 1146139861}
   EnemyShooterPool: {fileID: 1146139862}
+  ReflectivePool: {fileID: 1146139863}
 --- !u!114 &1146139859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,6 +828,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6342204454209667943, guid: 20dd69887dd168a47814b803007ad5d5, type: 3}
+--- !u!114 &1146139863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146139856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23e5df00dafae840b05db2f5befcae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: -2165261993565216725, guid: 22504a59d1fe79441b7ef3ccf1230785, type: 3}
 --- !u!1 &1146939653
 GameObject:
   m_ObjectHideFlags: 0

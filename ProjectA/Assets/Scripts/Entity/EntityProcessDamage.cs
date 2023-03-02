@@ -49,6 +49,9 @@ namespace ProjectA.Entity.ProcessDamage {
                 case WaveData.EntityType.Shooter:
                     GameManager.Instance.Dispatcher.Emit(new OnEnemyShooterEntityRelease(GetComponent<EnemyEntity>()));
                     break;
+                case WaveData.EntityType.Reflective:
+                    GameManager.Instance.Dispatcher.Emit(new OnReflectiveEntityRelease(GetComponent<ReflectiveEntity>()));
+                    break;
             }    
         }
         
