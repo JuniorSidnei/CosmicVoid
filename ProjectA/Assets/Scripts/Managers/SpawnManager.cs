@@ -13,11 +13,13 @@ namespace ProjectA.Managers {
 
         public WaveData WaveData;
 
-        public DestructiblePropPool DestructiblePool;
-        public HardPropPool HardPropPool;
-        public EnemyPool EnemyPool;
-        public EnemyShooterPool EnemyShooterPool;
-        public ReflectivePool ReflectivePool;
+        // public DestructiblePropPool DestructiblePool;
+        // public HardPropPool HardPropPool;
+        // public EnemyPool EnemyPool;
+        // public EnemyShooterPool EnemyShooterPool;
+        // public ReflectivePool ReflectivePool;
+
+        public EntitiesPool EntitiesPool;
         
         private float m_timeToNextSpawn;
         private int m_currentEntityIndex = 0;
@@ -40,34 +42,35 @@ namespace ProjectA.Managers {
         }
 
         private void SpawnEntity() {
-            var entity = WaveData.EntityInfos[m_currentEntityIndex];
-            GameObject entityObject = gameObject;
+            var entityInfo = WaveData.EntityInfos[m_currentEntityIndex];
             
-            switch (entity.Type) {
+            EntityPosition entity = EntitiesPool.GetFromPool();
+            
+            switch (entityInfo.Type) {
                 case WaveData.EntityType.DestructibleProp:
-                    entityObject = DestructiblePool.GetFromPool();
+                    entity.DestructibleSetup(EntitiesPool.DestructibleEntity, EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.HardProp:
-                    entityObject = HardPropPool.GetFromPool();
+                    entity.HardPropSetup(EntitiesPool.HardPorpEntity, EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Enemy:
-                    entityObject = EnemyPool.GetFromPool();
+                    entity.EnemySetup(EntitiesPool.EnemyEntity, EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Shooter:
-                    entityObject = EnemyShooterPool.GetFromPool();
+                    entity.ShooterSetup(EntitiesPool.ShooterEntity, EntitiesPool.PlayerLayer);
                     break;
                 default:
                     return;
             }
             
-            if (entity.Type == WaveData.EntityType.Boss) {
+            if (entityInfo.Type == WaveData.EntityType.Boss) {
                 StartCoroutine(nameof(SpawnBoss));
             }
             else {
-                entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);    
+                entity.GetComponent<EntityPosition>().SetPosition(entityInfo, transform);    
             }
 
-            m_timeToNextSpawn = entity.TimeToNextEntity;
+            m_timeToNextSpawn = entityInfo.TimeToNextEntity;
             m_currentEntityIndex += 1;
 
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;

@@ -24,10 +24,10 @@ namespace ProjectA.Actions {
         }
 
         private void ShootProjectile() {
-            var projectile = SpawnManager.Instance.ReflectivePool.GetFromPool();
-            projectile.transform.position = Spawn.position;
-            projectile.transform.SetParent(SpawnManager.Instance.transform);
-            m_shootInterval = ShootInterval;
+            // var projectile = SpawnManager.Instance.ReflectivePool.GetFromPool();
+            // projectile.transform.position = Spawn.position;
+            // projectile.transform.SetParent(SpawnManager.Instance.transform);
+            // m_shootInterval = ShootInterval;
         }
     }
 }

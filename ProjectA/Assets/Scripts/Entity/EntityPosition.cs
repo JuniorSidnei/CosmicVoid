@@ -1,6 +1,9 @@
 using System;
 using ProjectA.Data.Wave;
+using ProjectA.Interface;
+using ProjectA.Scriptables;
 using ProjectA.Scriptables.Boss;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace ProjectA.Entity.Position {
@@ -8,7 +11,7 @@ namespace ProjectA.Entity.Position {
     public class EntityPosition : MonoBehaviour {
 
         public WaveData.EntityType Type;
-        
+
         public void SetPosition(WaveData.EntityInfo info, Transform parent) {
             Type = info.Type;
             var transformLocalPosition = GetPosition(info.Position);
@@ -43,6 +46,23 @@ namespace ProjectA.Entity.Position {
             
             transformLocalPosition.x = transform.parent.localPosition.x;
             transform.localPosition = transformLocalPosition;
+        }
+
+        public void DestructibleSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<DestructibleEntity>().Setup(entityInfo, playerLayer);
+        }
+
+        public void HardPropSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<HardEntity>().Setup(entityInfo, playerLayer);
+            
+        }
+
+        public void EnemySetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            
+        }
+
+        public void ShooterSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            
         }
     }
 }

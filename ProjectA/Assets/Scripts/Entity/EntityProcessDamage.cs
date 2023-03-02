@@ -2,7 +2,9 @@ using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Interface;
 using ProjectA.Movement;
+using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace ProjectA.Entity.ProcessDamage {
@@ -12,12 +14,18 @@ namespace ProjectA.Entity.ProcessDamage {
         public int DamagePower;
         public LayerMask PlayerLayer;
         public LayerMask EntityLayer;
-        
+
         public bool IsReflected { get; set; }
 
         public virtual void ProcessDamage(bool isCharged) { }
         public virtual void ProcessPlayerDamage(bool isCharged) { }
         public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) { }
+
+        public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
+            PlayerLayer = playerLayer;
+            DamagePower = info.DamagePower;
+            transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
+        }
 
         private void OnTriggerEnter2D(Collider2D other) {
             if(other.gameObject.CompareTag("Wall")) {
@@ -38,19 +46,20 @@ namespace ProjectA.Entity.ProcessDamage {
             var type = GetComponent<EntityPosition>().Type;
             switch (type) {
                 case WaveData.EntityType.DestructibleProp:
-                    GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
+                    Destroy(GetComponent<DestructibleEntity>());
+                    GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
                     break;
                 case WaveData.EntityType.HardProp:
-                    GameManager.Instance.Dispatcher.Emit(new OnHardPropEntityRelease(GetComponent<HardEntity>()));
+                    
                     break;
                 case WaveData.EntityType.Enemy:
-                    GameManager.Instance.Dispatcher.Emit(new OnEnemyEntityRelease(GetComponent<EnemyEntity>()));
+                    
                     break;
                 case WaveData.EntityType.Shooter:
-                    GameManager.Instance.Dispatcher.Emit(new OnEnemyShooterEntityRelease(GetComponent<EnemyEntity>()));
+                    
                     break;
                 case WaveData.EntityType.Reflective:
-                    GameManager.Instance.Dispatcher.Emit(new OnReflectiveEntityRelease(GetComponent<ReflectiveEntity>()));
+                    
                     break;
             }    
         }

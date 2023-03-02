@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using ProjectA.Entity;
+using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Interface;
 using ProjectA.Movement;
@@ -141,4 +142,12 @@ public class OnReflectiveEntityRelease {
     }
 
     public ReflectiveEntity Entity;
+}
+
+public class OnEntityRelease {
+    public OnEntityRelease(EntityPosition entity) {
+        Entity = entity;
+    }
+
+    public EntityPosition Entity;
 }

@@ -1,6 +1,8 @@
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Movement;
+using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
+using UnityEngine;
 
 namespace ProjectA.Interface {
     
