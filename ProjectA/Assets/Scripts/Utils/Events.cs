@@ -104,44 +104,12 @@ public class OnHitCountUpdate {
     public int Count;
 }
 
-public class OnDestructibleEntityRelease {
-    public OnDestructibleEntityRelease(DestructibleEntity entity) {
+public class OnProjectileEntityRelease {
+    public OnProjectileEntityRelease(EntityPosition entity) {
         Entity = entity;
     }
 
-    public DestructibleEntity Entity;
-}
-
-public class OnHardPropEntityRelease {
-    public OnHardPropEntityRelease(HardEntity entity) {
-        Entity = entity;
-    }
-
-    public HardEntity Entity;
-}
-
-public class OnEnemyEntityRelease {
-    public OnEnemyEntityRelease(EnemyEntity entity) {
-        Entity = entity;
-    }
-
-    public EnemyEntity Entity;
-}
-
-public class OnEnemyShooterEntityRelease {
-    public OnEnemyShooterEntityRelease(EnemyEntity entity) {
-        Entity = entity;
-    }
-
-    public EnemyEntity Entity;
-}
-
-public class OnReflectiveEntityRelease {
-    public OnReflectiveEntityRelease(ReflectiveEntity entity) {
-        Entity = entity;
-    }
-
-    public ReflectiveEntity Entity;
+    public EntityPosition Entity;
 }
 
 public class OnEntityRelease {

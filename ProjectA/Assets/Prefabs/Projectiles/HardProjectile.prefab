@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 906582462419469275}
   - component: {fileID: 8853738968689736573}
+  - component: {fileID: 1263171037128527268}
   m_Layer: 8
-  m_Name: vfx
+  m_Name: HardProjectile_vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1263171037128527268
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732173213244740196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c24b1af535f20c043a621068a132abfd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1207899949191035420
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +117,6 @@ GameObject:
   - component: {fileID: 3333814789547670579}
   - component: {fileID: 8764478547434750276}
   - component: {fileID: 7798180021485536949}
-  - component: {fileID: 8640616239231724346}
   - component: {fileID: 7345668269637061595}
   m_Layer: 8
   m_Name: HardProjectile
@@ -173,25 +193,6 @@ MonoBehaviour:
   Speed: 10
   Drag: 0.2
   Acceleration: 0.1
---- !u!114 &8640616239231724346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207899949191035420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d52c1dbbc2954d4c86fd4034988836b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamagePower: 2
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  EntityLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &7345668269637061595
 MonoBehaviour:
   m_ObjectHideFlags: 0

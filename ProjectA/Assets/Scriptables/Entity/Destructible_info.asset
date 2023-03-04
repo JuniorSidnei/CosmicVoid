@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 9100000, guid: 910ebad53a5ebf548a0fd5a5b1572c96, type: 2}
   DamagePower: 0
+  Speed: 6
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64

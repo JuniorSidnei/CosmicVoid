@@ -732,6 +732,7 @@ GameObject:
   - component: {fileID: 1146139857}
   - component: {fileID: 1146139858}
   - component: {fileID: 1146139864}
+  - component: {fileID: 1146139865}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -768,6 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveData: {fileID: 11400000, guid: ec5bf77bdc5268f478eec6a00c2d6d90, type: 2}
   EntitiesPool: {fileID: 1146139864}
+  ProjectilesPool: {fileID: 1146139865}
 --- !u!114 &1146139864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,11 +785,30 @@ MonoBehaviour:
   Prefab: {fileID: -1755959738618288968, guid: 1c8e3ee341384154899256bfd1ea5a97, type: 3}
   DestructibleEntity: {fileID: 11400000, guid: da4ed2731639c2e47adc3cd4a334bd6a, type: 2}
   HardPorpEntity: {fileID: 11400000, guid: 316531dd52bde7a42b8c5c0e33edc636, type: 2}
-  EnemyEntity: {fileID: 0}
-  ShooterEntity: {fileID: 0}
+  EnemyEntity: {fileID: 11400000, guid: b5f7fd3543f363b448df76f90d7fa960, type: 2}
+  ShooterEntity: {fileID: 11400000, guid: 557284e5c7ee20c44bed91a564a6624f, type: 2}
+  ReflectiveEntity: {fileID: 11400000, guid: 2076d288c9222ef4aa3955591b29c8ac, type: 2}
+  ReflectiveBossEntity: {fileID: 11400000, guid: 1f8ab5b87069a024e919aace0e94cfed, type: 2}
+  HardProjectileEntity: {fileID: 11400000, guid: dffbe63e2d0da464ca6aed01a8434c0f, type: 2}
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  EntitiesLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &1146139865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146139856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23e5df00dafae840b05db2f5befcae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 8339523939571363056, guid: 22504a59d1fe79441b7ef3ccf1230785, type: 3}
 --- !u!1 &1146939653
 GameObject:
   m_ObjectHideFlags: 0

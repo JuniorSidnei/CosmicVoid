@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
+using ProjectA.Managers;
+using ProjectA.Pools;
 using ProjectA.Scriptables.Boss;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -64,16 +67,28 @@ namespace ProjectA.Controllers {
         }
         
         private void SpawnEntity() {
-            var entity = m_entityQueue.Dequeue();
-            var entityObject = Instantiate(m_currentPatternData.GetEntity(entity.Type), transform);
-            entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);
+            var entityInfo = m_entityQueue.Dequeue();
+            //var entityObject = Instantiate(m_currentPatternData.GetEntity(entity.Type), transform);
+            //entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);
 
-            m_timeToNextSpawn = entity.TimeToNextEntity;
+            EntityPosition entity = SpawnManager.Instance.EntitiesPool.GetFromPool();
+
+            switch (entityInfo.Type) {
+                case BossAttackWave.ProjectileType.Reflective:
+                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.EntitiesPool.ReflectiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
+                case BossAttackWave.ProjectileType.Hard:
+                    entity.HardProjectileSetup(SpawnManager.Instance.EntitiesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
+                    break;
+            }
+
+            entity.SetPosition(entityInfo, transform);    
+            
+            m_timeToNextSpawn = entityInfo.TimeToNextEntity;
 
             switch (m_entityQueue.Count) {
                 case <= 0 when !m_isRageActivated: {
                     m_currentPatternData = BossPatternsDatas[Random.Range(0, 4)];
-                    Debug.Log("current data: " + m_currentPatternData.name);
                     EnqueueWave(m_currentPatternData);
                     break;
                 }

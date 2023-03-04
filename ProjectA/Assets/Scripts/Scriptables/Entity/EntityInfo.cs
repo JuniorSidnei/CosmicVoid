@@ -10,6 +10,7 @@ namespace ProjectA.Scriptables {
         
         public AnimatorController Controller;
         public int DamagePower;
+        public float Speed;
         public LayerMask PlayerLayer;
     }
 }

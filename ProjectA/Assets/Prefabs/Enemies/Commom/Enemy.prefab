@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 906582462419469275}
   - component: {fileID: 8853738968689736573}
+  - component: {fileID: 7531095770328342739}
   m_Layer: 7
-  m_Name: vfx
+  m_Name: Enemy_vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7531095770328342739
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732173213244740196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ab87d76a6a96f144b0fd9b076b54654, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1207899949191035420
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +118,6 @@ GameObject:
   - component: {fileID: 8764478547434750276}
   - component: {fileID: 8183593067326792490}
   - component: {fileID: 7798180021485536949}
-  - component: {fileID: 6342204454209667943}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -170,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640e842fe3379b44280e91ef9a62b836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
 --- !u!114 &7798180021485536949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,19 +206,3 @@ MonoBehaviour:
   Speed: 6
   Drag: 0.5
   Acceleration: 0.5
---- !u!114 &6342204454209667943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207899949191035420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0eb62d006d7424283372cea78cdf97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamagePower: 1
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 64

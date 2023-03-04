@@ -19,6 +19,12 @@ namespace ProjectA.Actions {
         private Vector2 m_targetVelocity;
         private EntityProcessDamage m_entityProcessDamage;
 
+        public void SetSpeed(float newSpeed) {
+            Speed = newSpeed;
+            m_targetVelocity = Vector2.zero;
+            m_targetVelocity = new Vector2(-1, 0) * Speed;
+        }
+        
         private void Awake() {
             m_entityProcessDamage = GetComponent<EntityProcessDamage>();
             

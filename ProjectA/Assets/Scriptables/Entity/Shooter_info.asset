@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c47287cd52b2742b1eeb105f781195, type: 3}
-  m_Name: Hard_info
+  m_Script: {fileID: 11500000, guid: cd9e397601ea45c4499f4e477aef2ead, type: 3}
+  m_Name: Shooter_info
   m_EditorClassIdentifier: 
-  Controller: {fileID: 9100000, guid: 15f16514b179fab4e9ac6ddeea7256ee, type: 2}
-  DamagePower: 2
+  Controller: {fileID: 9100000, guid: 70dbc92f7b0a00c48b324e9c930e5d2c, type: 2}
+  DamagePower: 1
   Speed: 6
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  SpawnPrefab: {fileID: 4086120910675811958, guid: 1b0fd4700dc462a4ea13bde7fd8a0d49, type: 3}
+  ShootInterval: 2

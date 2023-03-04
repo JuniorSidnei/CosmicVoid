@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using ProjectA.Actions;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Interface;
@@ -21,10 +23,19 @@ namespace ProjectA.Entity.ProcessDamage {
         public virtual void ProcessPlayerDamage(bool isCharged) { }
         public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) { }
 
+        public virtual void Setup(EntityInfo info, List<LayerMask> layers) {
+            PlayerLayer = layers[0];
+            EntityLayer = layers[1];
+            DamagePower = info.DamagePower;
+            transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
+            GetComponent<Actions.Movement>().SetSpeed(info.Speed);
+        }
+        
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
             PlayerLayer = playerLayer;
             DamagePower = info.DamagePower;
             transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
+            GetComponent<Actions.Movement>().SetSpeed(info.Speed);
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -47,21 +58,29 @@ namespace ProjectA.Entity.ProcessDamage {
             switch (type) {
                 case WaveData.EntityType.DestructibleProp:
                     Destroy(GetComponent<DestructibleEntity>());
-                    GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
                     break;
                 case WaveData.EntityType.HardProp:
-                    
+                    Destroy(GetComponent<HardEntity>());
                     break;
                 case WaveData.EntityType.Enemy:
-                    
+                    Destroy(GetComponent<EnemyEntity>());
                     break;
                 case WaveData.EntityType.Shooter:
-                    
+                    Destroy(GetComponent<EnemyEntity>());
+                    Destroy(GetComponent<Shoot>());
+                    Destroy(transform.GetChild(1).gameObject);
                     break;
                 case WaveData.EntityType.Reflective:
-                    
-                    break;
+                    Destroy(GetComponent<ReflectiveEntity>());
+                    GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
+                    return;
+                case WaveData.EntityType.HardProjectile:
+                    Destroy(GetComponent<HardEntity>());
+                    GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
+                    return;
             }    
+            
+            GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
         }
         
         private void ProcessPlayerCollision(GameObject player) {

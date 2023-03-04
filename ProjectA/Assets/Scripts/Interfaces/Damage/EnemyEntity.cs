@@ -1,4 +1,5 @@
 using System;
+using ProjectA.Actions;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
@@ -8,11 +9,6 @@ using UnityEngine;
 namespace ProjectA.Interface {
     
     public class EnemyEntity : EntityProcessDamage {
-        private void OnDestroy()
-        {
-            Debug.Log("fui destruido");
-        }
-
         public override void ProcessPlayerDamage(bool isCharged) {
              GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.BASIC));
              GameManager.Instance.UpdateHitCount(true);
@@ -37,10 +33,14 @@ namespace ProjectA.Interface {
             var type = GetComponent<EntityPosition>().Type;
             switch (type) {
                 case WaveData.EntityType.Enemy:
-                    GameManager.Instance.Dispatcher.Emit(new OnEnemyEntityRelease(GetComponent<EnemyEntity>()));        
+                    Destroy(GetComponent<EnemyEntity>());
+                    GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));        
                     break;
                 case WaveData.EntityType.Shooter:
-                    GameManager.Instance.Dispatcher.Emit(new OnEnemyShooterEntityRelease(GetComponent<EnemyEntity>()));   
+                    Destroy(GetComponent<EnemyEntity>());
+                    Destroy(GetComponent<Shoot>());
+                    Destroy(transform.GetChild(1).gameObject);
+                    GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));   
                     break;
             }
         }

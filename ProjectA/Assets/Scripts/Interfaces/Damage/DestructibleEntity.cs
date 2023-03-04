@@ -1,3 +1,4 @@
+using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Movement;
 using ProjectA.Scriptables;
@@ -11,12 +12,12 @@ namespace ProjectA.Interface {
         public override void ProcessPlayerDamage(bool isCharged) {
             GameManager.Instance.UpdateHitCount(true);
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.STUNNED));
-            GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
+            GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
         }
         
         public override void ProcessDamage(bool isCharged) {
             GameManager.Instance.UpdateHitCount();
-            GameManager.Instance.Dispatcher.Emit(new OnDestructibleEntityRelease(GetComponent<DestructibleEntity>()));
+            GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
         }
     }
 }
