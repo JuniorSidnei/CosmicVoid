@@ -85,7 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640e842fe3379b44280e91ef9a62b836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityAnimator: {fileID: 9100000, guid: 15f16514b179fab4e9ac6ddeea7256ee, type: 2}
   Type: 0
 --- !u!114 &3033135061479119894
 MonoBehaviour:
@@ -100,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 6
-  Drag: 0.5
-  Acceleration: 0.5
+  Drag: 0
+  Acceleration: 0
 --- !u!1 &3246177665706053802
 GameObject:
   m_ObjectHideFlags: 0

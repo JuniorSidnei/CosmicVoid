@@ -56,13 +56,14 @@ namespace ProjectA.Managers {
                 case WaveData.EntityType.Shooter:
                     entity.ShooterSetup((EntityShooterInfo)EntitiesPool.ShooterEntity, EntitiesPool.PlayerLayer);
                     break;
+                case WaveData.EntityType.Boss:
+                    Instantiate(WaveData.WavePrefabs.Boss, transform);
+                    StartCoroutine(nameof(SpawnBoss));
+                    break;
             }
             
-            if (entityInfo.Type == WaveData.EntityType.Boss) {
-                StartCoroutine(nameof(SpawnBoss));
-            }
-            else {
-                entity.SetPosition(entityInfo, transform);    
+            if (entityInfo.Type != WaveData.EntityType.Boss) {
+                entity.SetPosition(entityInfo, transform);
             }
 
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;

@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 12
-  Drag: 0.2
+  Drag: 0
   Acceleration: 0
 --- !u!114 &8339523939571363056
 MonoBehaviour:

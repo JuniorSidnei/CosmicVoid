@@ -102,7 +102,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 0
     Position: 2
-    TimeToNextEntity: 1
+    TimeToNextEntity: 1.5
   - Type: 1
     Position: 1
     TimeToNextEntity: 0

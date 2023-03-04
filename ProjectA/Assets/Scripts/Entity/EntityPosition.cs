@@ -57,6 +57,12 @@ namespace ProjectA.Entity.Position {
         }
         
         public void SetPosition(BossAttackWave.EntityInfo info, Transform parent) {
+            Type = info.Type switch {
+                BossAttackWave.ProjectileType.Reflective => WaveData.EntityType.Reflective,
+                BossAttackWave.ProjectileType.Hard => WaveData.EntityType.HardProjectile,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+
             var transformLocalPosition = GetPosition(info.Position);
 
             transform.parent = parent;
@@ -86,10 +92,6 @@ namespace ProjectA.Entity.Position {
         }
         
         public void ReflectiveProjectileSetup(EntityInfo entityInfo, List<LayerMask> playerLayer) {
-            gameObject.AddComponent<ReflectiveEntity>().Setup(entityInfo, playerLayer);
-        }
-        
-        public void ReflectiveProjectileBossSetup(EntityInfo entityInfo, LayerMask playerLayer) {
             gameObject.AddComponent<ReflectiveEntity>().Setup(entityInfo, playerLayer);
         }
         

@@ -1,17 +1,21 @@
 ﻿using System;
+using ProjectA.Data.Wave;
 using ProjectA.Entity;
 using ProjectA.Entity.Position;
 using ProjectA.Interface;
+using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
-using UnityEngine;
 
 namespace ProjectA.Pools {
     
     public class ProjectilesPool : PoolBase<EntityPosition> {
 
         public EntityPosition Prefab;
-
+        public EntityInfo ReflectiveEntity;
+        public EntityInfo ReflectiveBossEntity;
+        public EntityInfo HardProjectileEntity;
+        
         public EntityPosition GetFromPool() {
             return Get();
         }

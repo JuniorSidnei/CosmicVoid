@@ -28,14 +28,14 @@ namespace ProjectA.Entity.ProcessDamage {
             EntityLayer = layers[1];
             DamagePower = info.DamagePower;
             transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
-            GetComponent<Actions.Movement>().SetSpeed(info.Speed);
+            GetComponent<Actions.Movement>().ResetVelocity();
         }
         
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
             PlayerLayer = playerLayer;
             DamagePower = info.DamagePower;
             transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
-            GetComponent<Actions.Movement>().SetSpeed(info.Speed);
+            GetComponent<Actions.Movement>().ResetVelocity();
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -80,6 +80,7 @@ namespace ProjectA.Entity.ProcessDamage {
                     return;
             }    
             
+            gameObject.SetActive(false);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
         }
         

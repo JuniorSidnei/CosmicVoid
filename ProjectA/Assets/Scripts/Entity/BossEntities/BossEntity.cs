@@ -15,7 +15,7 @@ namespace ProjectA.Entity.Boss {
         }
 
         private void OnSpawnBoss(OnSpawnBoss ev) {
-            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(1.2f, 2.5f));
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShakeWithValues(1.2f, 2.5f));
             GameManager.Instance.InputManager.PlayerActions.Disable();
             //show cutscene animation
             transform.DOLocalMoveX(XPosition, 2f).OnComplete(() => {

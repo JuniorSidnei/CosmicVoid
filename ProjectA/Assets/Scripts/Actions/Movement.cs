@@ -26,11 +26,13 @@ namespace ProjectA.Actions {
         }
         
         private void Awake() {
-            m_entityProcessDamage = GetComponent<EntityProcessDamage>();
-            
             GameManager.Instance.Dispatcher.Subscribe<OnReflectEntity>(OnReflectEntity);
             
             m_targetVelocity = new Vector2(-1, 0) * Speed;
+        }
+
+        private void Start() {
+            m_entityProcessDamage = GetComponent<EntityProcessDamage>();
         }
 
         private void OnReflectEntity(OnReflectEntity ev) {
@@ -54,6 +56,11 @@ namespace ProjectA.Actions {
             m_velocity = Vector3.SmoothDamp(m_velocity, m_targetVelocity, ref m_velocitySmoothing, Acceleration);
             
             transform.Translate(m_velocity * Time.deltaTime);
+        }
+
+        public void ResetVelocity() {
+            m_targetVelocity = Vector2.zero;
+            m_targetVelocity = new Vector2(-1, 0) * Speed;
         }
     }
 }

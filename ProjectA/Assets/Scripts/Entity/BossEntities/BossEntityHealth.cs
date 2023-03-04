@@ -24,7 +24,7 @@ namespace ProjectA.Entity.Boss {
 
             HitsHealth -= ev.Damage;
             
-            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(1.2f, .5f));
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.MEDIUM));
             
             if (HitsHealth <= RageHpActivation) {
                 GameManager.Instance.Dispatcher.Emit(new OnBossRageMode());

@@ -68,17 +68,15 @@ namespace ProjectA.Controllers {
         
         private void SpawnEntity() {
             var entityInfo = m_entityQueue.Dequeue();
-            //var entityObject = Instantiate(m_currentPatternData.GetEntity(entity.Type), transform);
-            //entityObject.GetComponent<EntityPosition>().SetPosition(entity, transform);
 
-            EntityPosition entity = SpawnManager.Instance.EntitiesPool.GetFromPool();
+            EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
 
             switch (entityInfo.Type) {
                 case BossAttackWave.ProjectileType.Reflective:
-                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.EntitiesPool.ReflectiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ReflectiveBossEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
                 case BossAttackWave.ProjectileType.Hard:
-                    entity.HardProjectileSetup(SpawnManager.Instance.EntitiesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
+                    entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
                     break;
             }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ProjectA.Entity;
 using ProjectA.Entity.Position;
@@ -19,10 +20,7 @@ namespace ProjectA.Pools {
         public EntityInfo HardPorpEntity;
         public EntityInfo EnemyEntity;
         public EntityInfo ShooterEntity;
-        public EntityInfo ReflectiveEntity;
-        public EntityInfo ReflectiveBossEntity;
-        public EntityInfo HardProjectileEntity;
-        
+
         [Header("general settings")]
         public LayerMask PlayerLayer;
         public LayerMask EntitiesLayer;
@@ -40,7 +38,10 @@ namespace ProjectA.Pools {
         }
 
         private void OnEntityRelease(OnEntityRelease ev) {
+            ev.Entity.GetComponent<Actions.Movement>().ResetVelocity();
             Release(ev.Entity);
+            // var coroutine = ReleaseEntity(ev.Entity);
+            // StartCoroutine(coroutine);
         }
 
         private void Start() {
@@ -49,6 +50,11 @@ namespace ProjectA.Pools {
 
         public List<LayerMask> Layers() {
             return m_layers;
+        }
+
+        private IEnumerator ReleaseEntity(EntityPosition entityPosition) {
+            yield return new WaitForSeconds(0.5f);
+            
         }
     }
 }

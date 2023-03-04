@@ -9,7 +9,7 @@ using ProjectA.Movement;
 using UnityEngine;
 
 public enum ShakeForce {
-    BASIC, STRONG
+    BASIC, MEDIUM, STRONG
 }
 
 public class OnPlayerLifeUpdate {
@@ -82,15 +82,23 @@ public class OnHitBoss {
 public class OnSpawnBoss { }
 
 public class OnCameraScreenShake {
-    public OnCameraScreenShake(float force, float duration) {
+    public OnCameraScreenShake(ShakeForce force) {
         Force = force;
-        Duration = duration;
+    }
+
+    public ShakeForce Force { get; set; }
+}
+
+public class OnCameraScreenShakeWithValues {
+    public OnCameraScreenShakeWithValues(float force, float time) {
+        Force = force;
+        Time = time;
     }
 
     public float Force { get; set; }
-    public float Duration { get; set; }
+    public float Time { get; set; }
 }
-
+    
 public class OnBossStartAttack { }
 
 public class OnBossRageMode { }
