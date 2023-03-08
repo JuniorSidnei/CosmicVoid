@@ -57,7 +57,7 @@ namespace ProjectA.Modals {
         private void DoEnd() {
             IsGameEnded = true;
             Time.timeScale = 1;
-            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("GameScene"));
+            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("GameScene_1"));
         }
 
         private void Awake() {

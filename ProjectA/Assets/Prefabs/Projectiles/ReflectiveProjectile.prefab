@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 906582462419469275}
   - component: {fileID: 8853738968689736573}
+  - component: {fileID: 8954043778647513007}
   m_Layer: 8
-  m_Name: vfx
+  m_Name: ReflectiveProjectile_vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8954043778647513007
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732173213244740196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3485f35be7daad942ae6678c5769fffe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1207899949191035420
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,9 +116,7 @@ GameObject:
   - component: {fileID: 7698337638187288819}
   - component: {fileID: 3333814789547670579}
   - component: {fileID: 8764478547434750276}
-  - component: {fileID: 8183593067326792490}
   - component: {fileID: 7798180021485536949}
-  - component: {fileID: -2165261993565216725}
   - component: {fileID: 8339523939571363056}
   m_Layer: 8
   m_Name: ReflectiveProjectile
@@ -159,18 +178,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8183593067326792490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207899949191035420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640e842fe3379b44280e91ef9a62b836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7798180021485536949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,27 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  Drag: 0.2
-  Acceleration: 0.1
---- !u!114 &-2165261993565216725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207899949191035420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01d5a23afe4b0f40b30144a517123b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DamagePower: 1
-  PlayerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  EntityLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  Drag: 0
+  Acceleration: 0
 --- !u!114 &8339523939571363056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,3 +205,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640e842fe3379b44280e91ef9a62b836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 5

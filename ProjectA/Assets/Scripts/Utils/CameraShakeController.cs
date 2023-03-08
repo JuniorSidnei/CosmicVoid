@@ -1,4 +1,6 @@
+using System;
 using Cinemachine;
+using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
 
@@ -8,6 +10,10 @@ namespace ProjectA.Camera {
         
         private CinemachineVirtualCamera m_virtualCamera;
         private CinemachineBasicMultiChannelPerlin m_basicPerlin;
+
+        public ShakeForceInfo BasicShake;
+        public ShakeForceInfo MediumShake;
+        public ShakeForceInfo StrongShake;
         
         private float m_initialIntensity;
         private float m_shakeTimer;
@@ -17,10 +23,25 @@ namespace ProjectA.Camera {
             m_virtualCamera = GetComponent<CinemachineVirtualCamera>();
             m_basicPerlin = m_virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
             GameManager.Instance.Dispatcher.Subscribe<OnCameraScreenShake>(OnCameraScreenShake);
+            GameManager.Instance.Dispatcher.Subscribe<OnCameraScreenShakeWithValues>(OnCameraScreenShakeWithValues);
         }
-        
+
+        private void OnCameraScreenShakeWithValues(OnCameraScreenShakeWithValues ev) {
+            ShakeCamera(ev.Force, ev.Time);
+        }
+
         private void OnCameraScreenShake(OnCameraScreenShake ev) {
-            ShakeCamera(ev.Force, ev.Duration);
+            var force = GetForce(ev.Force);
+            ShakeCamera(force.ShakeForce, force.ShakeTime);
+        }
+
+        private ShakeForceInfo GetForce(ShakeForce force) {
+            return force switch {
+                ShakeForce.BASIC => BasicShake,
+                ShakeForce.MEDIUM => MediumShake,
+                ShakeForce.STRONG => StrongShake,
+                _ => throw new ArgumentOutOfRangeException(nameof(force), force, null)
+            };
         }
 
         private void ShakeCamera(float intensity, float shakeTimer) {

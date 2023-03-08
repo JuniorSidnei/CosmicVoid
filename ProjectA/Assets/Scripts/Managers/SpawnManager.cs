@@ -1,16 +1,21 @@
 using System.Collections;
+using System.Net;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
-using ProjectA.Entity.ProcessDamage;
-using ProjectA.Interface;
+using ProjectA.Pools;
+using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
+using ProjectA.Utils;
 using UnityEngine;
 
 namespace ProjectA.Managers {
     
-    public class SpawnManager : MonoBehaviour {
+    public class SpawnManager : Singleton<SpawnManager> {
 
         public WaveData WaveData;
+        
+        public EntitiesPool EntitiesPool;
+        public ProjectilesPool ProjectilesPool;
         
         private float m_timeToNextSpawn;
         private int m_currentEntityIndex = 0;
@@ -33,17 +38,35 @@ namespace ProjectA.Managers {
         }
 
         private void SpawnEntity() {
-            var entity = WaveData.EntityInfos[m_currentEntityIndex];
-            var entityObject = Instantiate(WaveData.WavePrefabs.GetEntity(entity.Type), transform);
-
-            if (entity.Type == WaveData.EntityType.Boss) {
-                StartCoroutine(nameof(SpawnBoss));
+            var entityInfo = WaveData.EntityInfos[m_currentEntityIndex];
+            
+            EntityPosition entity = EntitiesPool.GetFromPool();
+            entity.name = entityInfo.Type.ToString();
+            
+            switch (entityInfo.Type) {
+                case WaveData.EntityType.DestructibleProp:
+                    entity.DestructibleSetup(EntitiesPool.DestructibleEntity, EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.HardProp:
+                    entity.HardPropSetup(EntitiesPool.HardPorpEntity, EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.Enemy:
+                    entity.EnemySetup(EntitiesPool.EnemyEntity, EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.Shooter:
+                    entity.ShooterSetup((EntityShooterInfo)EntitiesPool.ShooterEntity, EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.Boss:
+                    Instantiate(WaveData.WavePrefabs.Boss, transform);
+                    StartCoroutine(nameof(SpawnBoss));
+                    break;
             }
-            else {
-                entityObject.GetComponent<EntityPosition>().SetPosition(entity.Position);    
+            
+            if (entityInfo.Type != WaveData.EntityType.Boss) {
+                entity.SetPosition(entityInfo, transform);
             }
 
-            m_timeToNextSpawn = entity.TimeToNextEntity;
+            m_timeToNextSpawn = entityInfo.TimeToNextEntity;
             m_currentEntityIndex += 1;
 
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;

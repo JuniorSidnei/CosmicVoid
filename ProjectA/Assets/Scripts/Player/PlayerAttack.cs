@@ -84,7 +84,7 @@ namespace ProjectA.Attack {
 
         private void Attack() {
 
-            var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.15f, transform.position.y);
+            var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             
             var hit = Physics2D.Raycast(rayPosition, Vector2.right, 1f, EntityLayer);
 
@@ -101,7 +101,7 @@ namespace ProjectA.Attack {
                 m_circleCollider2D = GetComponent<CircleCollider2D>();
             
             Gizmos.color = Color.red;
-            var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.15f, transform.position.y);
+            var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             Gizmos.DrawRay(rayPosition, Vector3.right);
         }
     }
