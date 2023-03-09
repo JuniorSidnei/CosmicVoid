@@ -10,7 +10,7 @@ namespace ProjectA.Controllers {
     public class TransitionModal : MonoBehaviour {
         
         private static Image m_transition;
-
+        
         private void Awake() {
             m_transition = GetComponent<Image>();
         }

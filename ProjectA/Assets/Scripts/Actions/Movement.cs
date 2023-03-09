@@ -27,12 +27,19 @@ namespace ProjectA.Actions {
         
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnReflectEntity>(OnReflectEntity);
-            
+            GameManager.Instance.Dispatcher.Subscribe<OnExplosionActivated>(OnExplosionActivated);
+        }
+
+        private void OnExplosionActivated(OnExplosionActivated arg0) {
             m_targetVelocity = new Vector2(-1, 0) * Speed;
         }
 
         private void Start() {
             m_entityProcessDamage = GetComponent<EntityProcessDamage>();
+            
+            if (GameManager.Instance.GameSettings.HasExplosionActivated || GameManager.Instance.GameSettings.HasTutorialFinished) {
+                m_targetVelocity = new Vector2(-1, 0) * Speed;    
+            }
         }
 
         private void OnReflectEntity(OnReflectEntity ev) {

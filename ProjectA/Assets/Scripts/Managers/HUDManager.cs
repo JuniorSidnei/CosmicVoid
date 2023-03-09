@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using ProjectA.Controllers;
 using ProjectA.Modals;
 using ProjectA.Movement;
@@ -15,6 +16,13 @@ namespace ProjectA.Managers {
         
         public List<GameObject> PlayerLife = new List<GameObject>();
         public TextMeshProUGUI HitCount;
+
+        [Header("player settings")]
+        public List<GameObject> PlayerSettings = new List<GameObject>();
+
+        [Header("cut scene layers")]
+        public Image UpLayer;
+        public Image DownLayer;
         
         private void Awake() {
             TransitionModal.DoTransitionOut();
@@ -22,6 +30,21 @@ namespace ProjectA.Managers {
             HitCount.text = "0";
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerLifeUpdate>(OnPlayerLifeUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnHitCountUpdate>(OnHitCountUpdate);
+            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutsceneStarted>(OnInitialCutsceneStarted);
+            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+        }
+
+        private void OnInitialCutsceneStarted(OnInitialCutsceneStarted arg0) {
+            UpLayer.rectTransform.DOAnchorPosY(261f, 1f);
+            DownLayer.rectTransform.DOAnchorPosY(-555f, 1f);
+        }
+
+        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished ev) {
+            UpLayer.rectTransform.DOAnchorPosY(541f, 1f);
+            DownLayer.rectTransform.DOAnchorPosY(-830f, 1f);
+            foreach (var settings in PlayerSettings) {
+                settings.SetActive(true);
+            }
         }
 
         private void OnHitCountUpdate(OnHitCountUpdate ev) {

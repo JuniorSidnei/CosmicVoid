@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Managers {
@@ -20,6 +21,10 @@ namespace ProjectA.Managers {
         private int m_currentTextIndex;
 
         private void Awake() {
+            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+        }
+
+        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished ev) {
             if (PlayerPrefs.GetInt("tutorial_finished") == 1) {
                 enabled = false;
                 return;

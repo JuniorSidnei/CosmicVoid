@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae05757a1dae71341bedd6970f487b7c, type: 3}
-  m_Name: ShaeForce_Strong
+  m_Script: {fileID: 11500000, guid: 1c2f86288b5b81f419f4d081d71d794f, type: 3}
+  m_Name: GameSettings
   m_EditorClassIdentifier: 
-  ShakeTime: 0.35
-  ShakeForce: 3
+  HasInitialCutSceneShow: 0
+  HasExplosionActivated: 0
+  HasTutorialFinished: 0

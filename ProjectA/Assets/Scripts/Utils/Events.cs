@@ -127,3 +127,7 @@ public class OnEntityRelease {
 
     public EntityPosition Entity;
 }
+
+public class OnExplosionActivated { }
+public class OnInitialCutsceneStarted { }
+public class OnInitialCutSceneFinished { }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using ProjectA.Modals;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,8 +15,24 @@ namespace ProjectA.Input {
         public InputAction MoveDown => m_inputSource.Player.Down;
         public InputAction Attack => m_inputSource.Player.Attack;
         public InputSource.PlayerActions PlayerActions => m_inputSource.Player;
+
+        public void DisablePlayerMovement() {
+            m_inputSource ??= new InputSource();
+            
+            m_inputSource.Player.Up.Disable();
+            m_inputSource.Player.Down.Disable();
+            m_inputSource.Player.Attack.Disable();
+        }
+        
+        public void EnablePlayerMovement() {
+            m_inputSource.Player.Up.Enable();
+            m_inputSource.Player.Down.Enable();
+            m_inputSource.Player.Attack.Enable();
+        }
         
         private void OnEnable() {
+            if(!GameManager.Instance.GameSettings.HasInitialCutSceneShow) return;
+            
             m_inputSource = new InputSource();
             m_inputSource.Enable();
             

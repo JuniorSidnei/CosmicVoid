@@ -15,10 +15,9 @@ namespace ProjectA.Singletons.Managers {
 
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
 
+        public GameSettings GameSettings;
         public int NextSceneIndex;
-        
         public InputManager InputManager;
-
         public int HitCount = 0;
 
         public void UpdateHitCount(bool willReset = false) {
@@ -30,6 +29,8 @@ namespace ProjectA.Singletons.Managers {
         
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
+            InputManager.DisablePlayerMovement();
+            GameSettings.SetStatus();
         }
 
         private void Update() {

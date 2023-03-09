@@ -91,6 +91,7 @@ namespace ProjectA.Attack {
             if (!hit) return;
 
             var o = hit.collider.gameObject;
+            if(o == null) return;
             
             o.GetComponent<IDamageable>().ProcessDamage(IsCharged());
         }

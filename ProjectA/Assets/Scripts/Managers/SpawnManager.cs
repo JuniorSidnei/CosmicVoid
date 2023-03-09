@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Net;
+using ProjectA.Controllers;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Pools;
@@ -7,6 +9,7 @@ using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ProjectA.Managers {
     
@@ -22,8 +25,17 @@ namespace ProjectA.Managers {
         private bool m_waveFinishedSpawn;
         private bool m_isBossSpawned;
 
+        private void Awake() {
+            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+        }
+        
         private void Start() {
-            m_timeToNextSpawn = WaveData.InitialTimeSpawn;
+            if (!WaveData.IsTutorialWave) {
+                m_timeToNextSpawn = WaveData.InitialTimeSpawn;
+                m_waveFinishedSpawn = false;
+            }
+
+            m_waveFinishedSpawn = true;
         }
 
         private void Update() {
@@ -75,13 +87,23 @@ namespace ProjectA.Managers {
 
             if (PlayerPrefs.GetInt("tutorial_finished") == 1) return;
             
-            PlayerPrefs.SetInt("tutorial_finished", 1);
-            PlayerPrefs.Save();
+            GameManager.Instance.GameSettings.SetTutorialStatus(1);
+            StartCoroutine(nameof(LoadGameScene));
         }
 
         private IEnumerator SpawnBoss() {
             yield return new WaitForSeconds(6);
             GameManager.Instance.Dispatcher.Emit(new OnSpawnBoss());
+        }
+
+        private IEnumerator LoadGameScene() {
+            yield return new WaitForSeconds(5);
+            TransitionModal.DoTransitionIn(() => { SceneManager.LoadScene("GameScene_1");});
+        }
+        
+        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished arg0) {
+            m_waveFinishedSpawn = false;
+            m_timeToNextSpawn = WaveData.InitialTimeSpawn;
         }
     }
 }
