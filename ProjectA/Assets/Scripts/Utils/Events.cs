@@ -129,5 +129,5 @@ public class OnEntityRelease {
 }
 
 public class OnExplosionActivated { }
-public class OnInitialCutsceneStarted { }
-public class OnInitialCutSceneFinished { }
+public class OnCutsceneStarted { }
+public class OnCutSceneFinished { }

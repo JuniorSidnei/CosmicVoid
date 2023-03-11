@@ -21,10 +21,10 @@ namespace ProjectA.Managers {
         private int m_currentTextIndex;
 
         private void Awake() {
-            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+            GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
 
-        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished ev) {
+        private void OnInitialCutSceneFinished(OnCutSceneFinished ev) {
             if (PlayerPrefs.GetInt("tutorial_finished") == 1) {
                 enabled = false;
                 return;

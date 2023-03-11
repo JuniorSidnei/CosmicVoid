@@ -6,7 +6,6 @@ using ProjectA.Interface;
 using ProjectA.Movement;
 using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace ProjectA.Entity.ProcessDamage {
@@ -78,6 +77,12 @@ namespace ProjectA.Entity.ProcessDamage {
                     Destroy(GetComponent<HardEntity>());
                     GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
                     return;
+                case WaveData.EntityType.Linker:
+                    GetComponent<LinkerEntity>().Clean();
+                    break;
+                case WaveData.EntityType.Linked:
+                    Destroy(GetComponent<LinkerEntity>());
+                    break;
             }    
             
             gameObject.SetActive(false);
@@ -102,7 +107,5 @@ namespace ProjectA.Entity.ProcessDamage {
             entity.GetComponent<IDamageable>().ProcessProjectileDamage(IsReflected, DamagePower);
             ReleaseEntity();
         }
-        
-        
     }
 }

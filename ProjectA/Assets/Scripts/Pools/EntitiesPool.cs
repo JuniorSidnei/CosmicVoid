@@ -20,6 +20,7 @@ namespace ProjectA.Pools {
         public EntityInfo HardPorpEntity;
         public EntityInfo EnemyEntity;
         public EntityInfo ShooterEntity;
+        public EntityInfo LinkerEntity;
 
         [Header("general settings")]
         public LayerMask PlayerLayer;

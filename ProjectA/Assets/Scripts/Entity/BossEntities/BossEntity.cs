@@ -15,12 +15,13 @@ namespace ProjectA.Entity.Boss {
         }
 
         private void OnSpawnBoss(OnSpawnBoss ev) {
+            GameManager.Instance.Dispatcher.Emit(new OnCutsceneStarted());
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShakeWithValues(1.2f, 2.5f));
             GameManager.Instance.InputManager.PlayerActions.Disable();
-            //show cutscene animation
             transform.DOLocalMoveX(XPosition, 2f).OnComplete(() => {
                 GameManager.Instance.InputManager.PlayerActions.Enable();
                 GameManager.Instance.Dispatcher.Emit(new OnBossStartAttack());
+                GameManager.Instance.Dispatcher.Emit(new OnCutSceneFinished());
             });
         }
 

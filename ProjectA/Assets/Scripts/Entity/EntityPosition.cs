@@ -28,6 +28,18 @@ namespace ProjectA.Entity.Position {
             transform.localPosition = transformLocalPosition;
         }
         
+        public void SetPosition(WaveData.EntityInfo info, Transform parent, float positionX) {
+            Type = info.Type;
+            m_position = info.Position;
+            
+            var transformLocalPosition = GetPosition(info.Position);
+
+            transform.parent = parent;
+            
+            transformLocalPosition.x = positionX;
+            transform.localPosition = transformLocalPosition;
+        }
+        
         public void SetBossPosition(WaveData.EntityInfo entityInfo) { }
 
         private Vector3 GetPosition(WaveData.EntityPosition position) {
@@ -97,6 +109,15 @@ namespace ProjectA.Entity.Position {
         
         public void HardProjectileSetup(EntityInfo entityInfo, LayerMask playerLayer) {
             gameObject.AddComponent<HardEntity>().Setup(entityInfo, playerLayer);
+        }
+
+        public void LinkerSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
+            GetComponent<LinkerEntity>().SetupLinker();
+        }
+        
+        public void LinkedSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
         }
     }
 }

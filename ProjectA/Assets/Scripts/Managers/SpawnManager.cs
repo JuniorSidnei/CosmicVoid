@@ -26,7 +26,7 @@ namespace ProjectA.Managers {
         private bool m_isBossSpawned;
 
         private void Awake() {
-            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+            GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
         
         private void Start() {
@@ -55,6 +55,10 @@ namespace ProjectA.Managers {
             EntityPosition entity = EntitiesPool.GetFromPool();
             entity.name = entityInfo.Type.ToString();
             
+            if (entityInfo.Type != WaveData.EntityType.Boss) {
+                entity.SetPosition(entityInfo, transform);
+            }
+            
             switch (entityInfo.Type) {
                 case WaveData.EntityType.DestructibleProp:
                     entity.DestructibleSetup(EntitiesPool.DestructibleEntity, EntitiesPool.PlayerLayer);
@@ -68,14 +72,13 @@ namespace ProjectA.Managers {
                 case WaveData.EntityType.Shooter:
                     entity.ShooterSetup((EntityShooterInfo)EntitiesPool.ShooterEntity, EntitiesPool.PlayerLayer);
                     break;
+                case WaveData.EntityType.Linker:
+                    entity.LinkerSetup(EntitiesPool.LinkerEntity, EntitiesPool.PlayerLayer);
+                    break;
                 case WaveData.EntityType.Boss:
                     Instantiate(WaveData.WavePrefabs.Boss, transform);
                     StartCoroutine(nameof(SpawnBoss));
                     break;
-            }
-            
-            if (entityInfo.Type != WaveData.EntityType.Boss) {
-                entity.SetPosition(entityInfo, transform);
             }
 
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
@@ -101,7 +104,7 @@ namespace ProjectA.Managers {
             TransitionModal.DoTransitionIn(() => { SceneManager.LoadScene("GameScene_1");});
         }
         
-        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished arg0) {
+        private void OnInitialCutSceneFinished(OnCutSceneFinished arg0) {
             m_waveFinishedSpawn = false;
             m_timeToNextSpawn = WaveData.InitialTimeSpawn;
         }

@@ -15,10 +15,7 @@ namespace ProjectA.Managers {
         public float PlayerWalkPositionFinish;
         
         private void Start() {
-            if (!GameManager.Instance.GameSettings.HasInitialCutSceneShow) {
-                GameManager.Instance.Dispatcher.Emit(new OnInitialCutsceneStarted());
-            }
-            
+            GameManager.Instance.Dispatcher.Emit(new OnCutsceneStarted());
             PlayerTransform.DOMoveX(PlayerWalkPositionStart, 2.5f).OnComplete(() => {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.IDLE));
                 GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.STRONG));
@@ -32,7 +29,7 @@ namespace ProjectA.Managers {
             GameManager.Instance.Dispatcher.Emit(new OnExplosionActivated());
             GameManager.Instance.GameSettings.SaveExplosionStatus();
             PlayerTransform.DOMoveX(PlayerWalkPositionFinish, 2f).OnComplete(() => {
-                GameManager.Instance.Dispatcher.Emit(new OnInitialCutSceneFinished());
+                GameManager.Instance.Dispatcher.Emit(new OnCutSceneFinished());
                 GameManager.Instance.GameSettings.SaveInitialCutsceneStatus();
                 GameManager.Instance.InputManager.EnablePlayerMovement();
             });

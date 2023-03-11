@@ -36,10 +36,6 @@ namespace ProjectA.Actions {
 
         private void Start() {
             m_entityProcessDamage = GetComponent<EntityProcessDamage>();
-            
-            if (GameManager.Instance.GameSettings.HasExplosionActivated || GameManager.Instance.GameSettings.HasTutorialFinished) {
-                m_targetVelocity = new Vector2(-1, 0) * Speed;    
-            }
         }
 
         private void OnReflectEntity(OnReflectEntity ev) {

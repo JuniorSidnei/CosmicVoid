@@ -54,7 +54,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 1
     Position: 2
-    TimeToNextEntity: 8
+    TimeToNextEntity: 12
   - Type: 3
     Position: 1
     TimeToNextEntity: 5

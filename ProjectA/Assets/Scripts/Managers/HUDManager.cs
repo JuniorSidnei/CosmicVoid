@@ -30,16 +30,16 @@ namespace ProjectA.Managers {
             HitCount.text = "0";
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerLifeUpdate>(OnPlayerLifeUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnHitCountUpdate>(OnHitCountUpdate);
-            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutsceneStarted>(OnInitialCutsceneStarted);
-            GameManager.Instance.Dispatcher.Subscribe<OnInitialCutSceneFinished>(OnInitialCutSceneFinished);
+            GameManager.Instance.Dispatcher.Subscribe<OnCutsceneStarted>(OnInitialCutsceneStarted);
+            GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
 
-        private void OnInitialCutsceneStarted(OnInitialCutsceneStarted arg0) {
+        private void OnInitialCutsceneStarted(OnCutsceneStarted arg0) {
             UpLayer.rectTransform.DOAnchorPosY(261f, 1f);
             DownLayer.rectTransform.DOAnchorPosY(-555f, 1f);
         }
 
-        private void OnInitialCutSceneFinished(OnInitialCutSceneFinished ev) {
+        private void OnInitialCutSceneFinished(OnCutSceneFinished ev) {
             UpLayer.rectTransform.DOAnchorPosY(541f, 1f);
             DownLayer.rectTransform.DOAnchorPosY(-830f, 1f);
             foreach (var settings in PlayerSettings) {
