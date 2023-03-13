@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
-using ProjectA.Entity.ProcessDamage;
+using ProjectA.Interface;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Entity {
 
-    public class LinePropEntity : MonoBehaviour {
+    public class LinePropEntity : MonoBehaviour, IDamageable {
 
         public LayerMask PlayerLayer;
         private LineRenderer m_lineRenderer;
@@ -13,7 +13,10 @@ namespace ProjectA.Entity {
 
         private bool m_isPositionSetted;
         
-        public void SetPositions(Vector3 parent, Vector3 child) {
+        public int Damage { get; set; }
+        
+        
+        public void SetPositions(Vector3 parent, Vector3 child, int randomPositionSetter) {
             m_lineRenderer.SetPosition(0, parent);    
             m_lineRenderer.SetPosition(1, child);
 
@@ -24,9 +27,18 @@ namespace ProjectA.Entity {
             //set index based on that random in linker, to set the offset parameter of the edge collider
             SetEdgePositions();
             m_isPositionSetted = true;
-            //atrás = -12
-            //igual = -10 
-            //frente = -6
+
+            switch (randomPositionSetter) {
+                case 0:
+                    m_edgeCollider2D.offset = new Vector2(-12f, 0f);
+                    break;
+                case 1:
+                    m_edgeCollider2D.offset = new Vector2(-10f, 0f);
+                    break;
+                case 2:
+                    m_edgeCollider2D.offset = new Vector2(-6f, 0f);
+                    break;
+            }
         }
 
         private void SetEdgePositions() {
@@ -54,7 +66,20 @@ namespace ProjectA.Entity {
                 return;
             }
             
-            Debug.Log("bati no player");
+            Destroy(gameObject);
+            GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(Damage, ShakeForce.MEDIUM));
+        }
+
+        public void ProcessDamage(bool isCharged) {
+            Destroy(gameObject);
+        }
+        
+        public void ProcessPlayerDamage(bool isCharged) { throw new System.NotImplementedException(); }
+
+        public void ProcessProjectileDamage(bool isReflected, int damagePower) {
+            if (isReflected) {
+                Destroy(gameObject);
+            }
         }
     }
 }

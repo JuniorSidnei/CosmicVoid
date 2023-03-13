@@ -17,7 +17,8 @@ namespace ProjectA.Entity {
         private LinePropEntity m_linePropEntity;
         
         private GameObject m_linkedObject;
-
+        private int m_randomPositionSetter;
+        
         public override void ProcessPlayerDamage(bool isCharged) {
             GameManager.Instance.UpdateHitCount(true);
             GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.STRONG));
@@ -26,11 +27,11 @@ namespace ProjectA.Entity {
         public void SetupLinker() {
             m_linePropPrefab = Resources.Load<GameObject>("Prefabs/LineProp");
             
-            var randomPositionSetter = Random.Range(0, 3);
+            m_randomPositionSetter = Random.Range(0, 3);
             var spawnPosition = Vector3.zero;
             var localPos = transform.localPosition;
             
-            spawnPosition.x = randomPositionSetter switch {
+            spawnPosition.x = m_randomPositionSetter switch {
                 0 => localPos.x + m_positionDistance,
                 1 => localPos.x,
                 2 => localPos.x - m_positionDistance,
@@ -53,10 +54,14 @@ namespace ProjectA.Entity {
             var centerPosition = (transform.localPosition + linkedProp.transform.localPosition) / 2;
             m_lineProp = Instantiate(m_linePropPrefab, centerPosition, Quaternion.identity, transform);
             m_linePropEntity = m_lineProp.GetComponent<LinePropEntity>();
+            m_linePropEntity.Damage = DamagePower;
         }
 
         public void Clean() {
-            Destroy(m_lineProp);
+            if (m_lineProp) {
+                Destroy(m_lineProp);
+            }
+            
             Destroy(this);
         }
 
@@ -64,7 +69,7 @@ namespace ProjectA.Entity {
             if(!m_linePropEntity) return;
 
             
-            m_linePropEntity.SetPositions(transform.position, m_linkedObject.transform.position);
+            m_linePropEntity.SetPositions(transform.position, m_linkedObject.transform.position, m_randomPositionSetter);
         }
     }
 }
