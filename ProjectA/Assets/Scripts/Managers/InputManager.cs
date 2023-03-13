@@ -16,6 +16,14 @@ namespace ProjectA.Input {
         public InputAction Attack => m_inputSource.Player.Attack;
         public InputSource.PlayerActions PlayerActions => m_inputSource.Player;
 
+        public void Disable() {
+            m_inputSource.Disable();    
+        }
+
+        public void Enable() {
+            m_inputSource.Enable();
+        }
+        
         public void DisablePlayerMovement() {
             m_inputSource ??= new InputSource();
             

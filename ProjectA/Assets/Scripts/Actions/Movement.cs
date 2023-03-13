@@ -64,6 +64,7 @@ namespace ProjectA.Actions {
         public void ResetVelocity() {
             m_targetVelocity = Vector2.zero;
             m_targetVelocity = new Vector2(-1, 0) * Speed;
+            m_entityProcessDamage = GetComponent<EntityProcessDamage>();
         }
     }
 }

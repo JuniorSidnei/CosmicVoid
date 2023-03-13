@@ -27,6 +27,11 @@ namespace ProjectA.Controllers {
 
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
+            GameManager.Instance.Dispatcher.Subscribe<OnBossDeath>(OnBossDeath);
+        }
+
+        private void OnBossDeath(OnBossDeath arg0) {
+            m_waveFinishedSpawn = true;
         }
 
         private void OnBossStartAttack(OnBossStartAttack ev) {

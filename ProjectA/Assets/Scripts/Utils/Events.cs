@@ -80,6 +80,7 @@ public class OnHitBoss {
 }
 
 public class OnSpawnBoss { }
+public class OnBossDeath { }
 
 public class OnCameraScreenShake {
     public OnCameraScreenShake(ShakeForce force) {

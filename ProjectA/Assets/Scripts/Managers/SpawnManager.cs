@@ -78,6 +78,7 @@ namespace ProjectA.Managers {
                 case WaveData.EntityType.Boss:
                     Instantiate(WaveData.WavePrefabs.Boss, transform);
                     StartCoroutine(nameof(SpawnBoss));
+                    m_waveFinishedSpawn = true;
                     break;
             }
 
@@ -107,6 +108,7 @@ namespace ProjectA.Managers {
         private void OnInitialCutSceneFinished(OnCutSceneFinished arg0) {
             m_waveFinishedSpawn = false;
             m_timeToNextSpawn = WaveData.InitialTimeSpawn;
+            GameManager.Instance.Dispatcher.Unsubscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
     }
 }

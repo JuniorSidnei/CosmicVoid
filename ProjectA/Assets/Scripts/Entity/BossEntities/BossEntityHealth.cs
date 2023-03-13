@@ -31,7 +31,8 @@ namespace ProjectA.Entity.Boss {
             }
 
             if (HitsHealth <= 0) {
-                Debug.Log("Boss morreu, feiao");
+                //play boss death animation
+                GameManager.Instance.OnBossDeath();
             }
         }
     }

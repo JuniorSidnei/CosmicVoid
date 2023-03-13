@@ -27,6 +27,13 @@ namespace ProjectA.Singletons.Managers {
             Dispatcher.Emit(new OnHitCountUpdate(HitCount));
         }
         
+        public void OnBossDeath() {
+            InputManager.Disable();
+            m_dispatcher.Emit(new OnCutsceneStarted());
+            m_dispatcher.Emit(new OnBossDeath());
+            Invoke(nameof(LoadNextScene), 10f);
+        }
+        
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
             InputManager.DisablePlayerMovement();
@@ -38,10 +45,8 @@ namespace ProjectA.Singletons.Managers {
         }
 
         public void LoadNextScene() {
-            TransitionModal.DoTransitionIn(() => {
-                var nextScene = "GameScene_" + NextSceneIndex;
-                SceneManager.LoadScene(nextScene);
-            });
+            var nextScene = "GameScene_" + NextSceneIndex;
+            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene(nextScene));
         }
     }
 }
