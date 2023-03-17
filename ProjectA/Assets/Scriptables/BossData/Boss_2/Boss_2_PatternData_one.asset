@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1531c11b13960543b43d705fecd55d0, type: 3}
   m_Name: Boss_2_PatternData_one
   m_EditorClassIdentifier: 
-  InitialTimeSpawn: 3
+  InitialTimeSpawn: 4
   Reflective: {fileID: 1207899949191035420, guid: 42ff2f51539e4b04a9f0524ec53624f4, type: 3}
   Hard: {fileID: 1207899949191035420, guid: 318ec12f48ede86468d8294ea41cafb1, type: 3}
   EntityInfos:

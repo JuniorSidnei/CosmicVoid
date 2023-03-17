@@ -27,7 +27,13 @@ namespace ProjectA.Controllers {
 
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
+            GameManager.Instance.Dispatcher.Subscribe<OnBossStopAttack>(OnBossStopAttack);
             GameManager.Instance.Dispatcher.Subscribe<OnBossDeath>(OnBossDeath);
+        }
+
+        private void OnBossStopAttack(OnBossStopAttack arg0) {
+            m_waveFinishedSpawn = true;
+            m_timeToNextSpawn = 0;
         }
 
         private void OnBossDeath(OnBossDeath arg0) {
@@ -35,6 +41,7 @@ namespace ProjectA.Controllers {
         }
 
         private void OnBossStartAttack(OnBossStartAttack ev) {
+            m_waveFinishedSpawn = false;
             StartCoroutine(nameof(WaitToEnqueuePattern));
         }
 

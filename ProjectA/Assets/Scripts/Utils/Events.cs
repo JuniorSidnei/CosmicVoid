@@ -68,19 +68,29 @@ public class OnReflectEntity {
 }
 
 public class OnHitBoss {
-    public OnHitBoss(EntityProcessDamage entity, bool isReflected, int damagePower) {
+    public OnHitBoss(EntityProcessDamage entity, bool isReflected, int damagePower, bool willOverride = false) {
         Entity = entity;
         IsReflected = isReflected;
         Damage = damagePower;
+        WillOverride = willOverride;
     }
 
     public EntityProcessDamage Entity;
     public bool IsReflected;
     public int Damage;
+    public bool WillOverride;
 }
 
 public class OnSpawnBoss { }
 public class OnBossDeath { }
+
+public class OnWeakSpotDeath {
+    public OnWeakSpotDeath(BossWeakSpot weakSpot) {
+        WeakSpot = weakSpot;
+    }
+
+    public BossWeakSpot WeakSpot;
+}
 
 public class OnCameraScreenShake {
     public OnCameraScreenShake(ShakeForce force) {
@@ -101,9 +111,8 @@ public class OnCameraScreenShakeWithValues {
 }
     
 public class OnBossStartAttack { }
-
+public class OnBossStopAttack { }
 public class OnBossRageMode { }
-
 public class OnHitCountUpdate {
     
     public OnHitCountUpdate(int count) {

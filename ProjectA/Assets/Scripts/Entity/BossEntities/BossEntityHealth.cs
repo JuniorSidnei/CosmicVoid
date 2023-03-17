@@ -19,8 +19,8 @@ namespace ProjectA.Entity.Boss {
             m_entityProcessDamage = GetComponent<EntityProcessDamage>();
         }
 
-        private void OnHitBoss(OnHitBoss ev) {
-            if (ev.Entity != m_entityProcessDamage) return;
+        protected virtual void OnHitBoss(OnHitBoss ev) {
+            if (ev.Entity != m_entityProcessDamage || ev.WillOverride) return;
 
             HitsHealth -= ev.Damage;
             

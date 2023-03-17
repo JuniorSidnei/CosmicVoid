@@ -8,6 +8,7 @@ namespace ProjectA.Entity.Boss {
     public class BossEntity : EntityProcessDamage {
 
         public float XPosition;
+        public bool WillOverride;
         
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnSpawnBoss>(OnSpawnBoss);
@@ -27,7 +28,7 @@ namespace ProjectA.Entity.Boss {
 
         public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
             GameManager.Instance.UpdateHitCount();
-            GameManager.Instance.Dispatcher.Emit(new OnHitBoss(this, isReflected, damagePower));
+            GameManager.Instance.Dispatcher.Emit(new OnHitBoss(this, isReflected, damagePower, WillOverride));
         }
     }
 }
