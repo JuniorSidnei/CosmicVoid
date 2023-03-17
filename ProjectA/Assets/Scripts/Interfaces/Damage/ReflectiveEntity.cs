@@ -10,6 +10,7 @@ namespace ProjectA.Entity {
         private bool m_isReflected;
         
         public override void ProcessDamage(bool isCharged) {
+            GameManager.Instance.Dispatcher.Emit(new  OnReflectFeedback());
             GameManager.Instance.Dispatcher.Emit(new OnReflectEntity(this, isCharged));
         }
 

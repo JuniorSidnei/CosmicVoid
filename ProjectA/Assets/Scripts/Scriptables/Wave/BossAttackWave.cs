@@ -11,7 +11,8 @@ namespace ProjectA.Scriptables.Boss {
 
         public enum ProjectileType {
             Reflective,
-            Hard
+            Hard,
+            Explosive
         }
         
         [Serializable]

@@ -13,12 +13,9 @@ namespace ProjectA.Entity.Position {
     public class EntityPosition : MonoBehaviour {
 
         public WaveData.EntityType Type;
-        
-        private WaveData.EntityPosition m_position;
-        
+
         public void SetPosition(WaveData.EntityInfo info, Transform parent) {
             Type = info.Type;
-            m_position = info.Position;
             
             var transformLocalPosition = GetPosition(info.Position);
 
@@ -30,7 +27,6 @@ namespace ProjectA.Entity.Position {
         
         public void SetPosition(WaveData.EntityInfo info, Transform parent, float positionX) {
             Type = info.Type;
-            m_position = info.Position;
             
             var transformLocalPosition = GetPosition(info.Position);
 
@@ -39,8 +35,6 @@ namespace ProjectA.Entity.Position {
             transformLocalPosition.x = positionX;
             transform.localPosition = transformLocalPosition;
         }
-        
-        public void SetBossPosition(WaveData.EntityInfo entityInfo) { }
 
         private Vector3 GetPosition(WaveData.EntityPosition position) {
             var transformLocalPosition = transform.localPosition;
@@ -55,23 +49,12 @@ namespace ProjectA.Entity.Position {
             return transformLocalPosition;
         }
 
-        public Vector3 GetPositionWithData() {
-            var transformLocalPosition = transform.localPosition;
 
-            transformLocalPosition.y = m_position switch {
-                WaveData.EntityPosition.Up => 2.5f,
-                WaveData.EntityPosition.Middle => .5f,
-                WaveData.EntityPosition.Down => -1.5f,
-                _ => throw new ArgumentOutOfRangeException(nameof(m_position), m_position, null)
-            };
-
-            return transformLocalPosition;  
-        }
-        
         public void SetPosition(BossAttackWave.EntityInfo info, Transform parent) {
             Type = info.Type switch {
                 BossAttackWave.ProjectileType.Reflective => WaveData.EntityType.Reflective,
                 BossAttackWave.ProjectileType.Hard => WaveData.EntityType.HardProjectile,
+                BossAttackWave.ProjectileType.Explosive => WaveData.EntityType.Explosive,
                 _ => throw new ArgumentOutOfRangeException()
             };
 
@@ -103,6 +86,15 @@ namespace ProjectA.Entity.Position {
             shoot.Spawn = new Vector3(-0.809f, 0f, 0f);
         }
         
+        public void LinkerSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
+            GetComponent<LinkerEntity>().SetupLinker();
+        }
+        
+        public void LinkedSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
+        }
+        
         public void ReflectiveProjectileSetup(EntityInfo entityInfo, List<LayerMask> playerLayer) {
             gameObject.AddComponent<ReflectiveEntity>().Setup(entityInfo, playerLayer);
         }
@@ -111,13 +103,8 @@ namespace ProjectA.Entity.Position {
             gameObject.AddComponent<HardEntity>().Setup(entityInfo, playerLayer);
         }
 
-        public void LinkerSetup(EntityInfo entityInfo, LayerMask playerLayer) {
-            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
-            GetComponent<LinkerEntity>().SetupLinker();
-        }
-        
-        public void LinkedSetup(EntityInfo entityInfo, LayerMask playerLayer) {
-            gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
+        public void ExplosiveProjectileSetup(EntityInfo entityInfo, List<LayerMask> playerLayer) {
+            gameObject.AddComponent<ExplosiveReflectiveProjectile>().Setup(entityInfo, playerLayer);
         }
     }
 }

@@ -69,6 +69,12 @@ namespace ProjectA.Entity.ProcessDamage {
                     Destroy(GetComponent<Shoot>());
                     Destroy(transform.GetChild(1).gameObject);
                     break;
+                case WaveData.EntityType.Linker:
+                    GetComponent<LinkerEntity>().Clean();
+                    break;
+                case WaveData.EntityType.Linked:
+                    Destroy(GetComponent<LinkerEntity>());
+                    break;
                 case WaveData.EntityType.Reflective:
                     Destroy(GetComponent<ReflectiveEntity>());
                     GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
@@ -77,12 +83,10 @@ namespace ProjectA.Entity.ProcessDamage {
                     Destroy(GetComponent<HardEntity>());
                     GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
                     return;
-                case WaveData.EntityType.Linker:
-                    GetComponent<LinkerEntity>().Clean();
-                    break;
-                case WaveData.EntityType.Linked:
-                    Destroy(GetComponent<LinkerEntity>());
-                    break;
+                case WaveData.EntityType.Explosive:
+                    Destroy(GetComponent<ExplosiveReflectiveProjectile>());
+                    GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
+                    return;
             }    
             
             gameObject.SetActive(false);

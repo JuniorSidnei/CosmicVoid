@@ -132,3 +132,4 @@ public class OnEntityRelease {
 public class OnExplosionActivated { }
 public class OnCutsceneStarted { }
 public class OnCutSceneFinished { }
+public class OnReflectFeedback { }

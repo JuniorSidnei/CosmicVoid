@@ -17,6 +17,7 @@ namespace ProjectA.Generator {
         }
 
         public string WaveName;
+        public string PathToSave;
         public Texture2D WaveDataInfo;
         public List<ColorToType> ColorToTypes = new List<ColorToType>();
         
@@ -36,7 +37,7 @@ namespace ProjectA.Generator {
             var newDataWave = ScriptableObject.CreateInstance<WaveData>();
             newDataWave.EntityInfos = m_entityInfos;
             
-            AssetDatabase.CreateAsset(newDataWave, "Assets/Scriptables/WaveData/" + WaveName + ".asset");
+            AssetDatabase.CreateAsset(newDataWave, PathToSave + WaveName + ".asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }

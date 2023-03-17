@@ -23,7 +23,7 @@ namespace ProjectA.Controllers {
         private BossAttackWave m_currentPatternData;
         
         private void Awake() {
-            m_currentPatternData = BossPatternsDatas[Random.Range(0, 4)];
+            m_currentPatternData = BossPatternsDatas[Random.Range(0, BossPatternsDatas.Count)];
 
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
@@ -83,6 +83,9 @@ namespace ProjectA.Controllers {
                 case BossAttackWave.ProjectileType.Hard:
                     entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
                     break;
+                case BossAttackWave.ProjectileType.Explosive:
+                    entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
             }
 
             entity.SetPosition(entityInfo, transform);    
@@ -91,7 +94,7 @@ namespace ProjectA.Controllers {
 
             switch (m_entityQueue.Count) {
                 case <= 0 when !m_isRageActivated: {
-                    m_currentPatternData = BossPatternsDatas[Random.Range(0, 4)];
+                    m_currentPatternData = BossPatternsDatas[Random.Range(0, BossPatternsDatas.Count)];
                     EnqueueWave(m_currentPatternData);
                     break;
                 }

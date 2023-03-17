@@ -79,6 +79,7 @@ namespace ProjectA.Managers {
                     Instantiate(WaveData.WavePrefabs.Boss, transform);
                     StartCoroutine(nameof(SpawnBoss));
                     m_waveFinishedSpawn = true;
+                    EntitiesPool.Release(entity);
                     break;
             }
 

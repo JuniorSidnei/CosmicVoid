@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using HaremCity.Utils;
 using ProjectA.Controllers;
 using ProjectA.Input;
 using ProjectA.Movement;
 using ProjectA.Utils;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -34,19 +37,32 @@ namespace ProjectA.Singletons.Managers {
             Invoke(nameof(LoadNextScene), 10f);
         }
         
+        public void LoadNextScene() {
+            var nextScene = "GameScene_" + NextSceneIndex;
+            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene(nextScene));
+        }
+        
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
             InputManager.DisablePlayerMovement();
             GameSettings.SetStatus();
+            
+            Dispatcher.Subscribe<OnReflectFeedback>(OnReflectFeedback);
         }
 
         private void Update() {
             m_dispatcher.DispatchAll();
         }
 
-        public void LoadNextScene() {
-            var nextScene = "GameScene_" + NextSceneIndex;
-            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene(nextScene));
+        private void OnReflectFeedback(OnReflectFeedback ev) {
+            Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.BASIC));
+            Time.timeScale = 0.01f;
+            StartCoroutine(nameof(ReturnTimeScale));
+        }
+        
+        private IEnumerator ReturnTimeScale() {
+            yield return new WaitForSeconds(.001f);
+            Time.timeScale = 1f;
         }
     }
 }

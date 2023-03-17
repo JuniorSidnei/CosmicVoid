@@ -618,8 +618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b55cfc0112b3ad4098dad12518ce348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveName: Wave_1
-  WaveDataInfo: {fileID: 2800000, guid: dcd028899072aac48a40e58557459c02, type: 3}
+  WaveName: Wave_2
+  PathToSave: Assets/Scriptables/WaveData/
+  WaveDataInfo: {fileID: 2800000, guid: 54aa5392979e58f418d2df23b12ac296, type: 3}
   ColorToTypes:
   - Color: {r: 1, g: 1, b: 0, a: 1}
     Type: 0
@@ -633,6 +634,10 @@ MonoBehaviour:
     Type: 5
   - Color: {r: 0, g: 0.5882353, b: 1, a: 1}
     Type: 6
+  - Color: {r: 0, g: 0, b: 0, a: 1}
+    Type: 7
+  - Color: {r: 1, g: 0, b: 1, a: 1}
+    Type: 9
 --- !u!1 &868136996
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e3c2388a9170d46bde85fc0373b861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveData: {fileID: 11400000, guid: ec5bf77bdc5268f478eec6a00c2d6d90, type: 2}
+  WaveData: {fileID: 11400000, guid: fc81736174f78814f856d45fb966543e, type: 2}
   EntitiesPool: {fileID: 1146139864}
   ProjectilesPool: {fileID: 1146139865}
 --- !u!114 &1146139864
@@ -758,6 +763,7 @@ MonoBehaviour:
   ReflectiveEntity: {fileID: 11400000, guid: 2076d288c9222ef4aa3955591b29c8ac, type: 2}
   ReflectiveBossEntity: {fileID: 11400000, guid: 1f8ab5b87069a024e919aace0e94cfed, type: 2}
   HardProjectileEntity: {fileID: 11400000, guid: dffbe63e2d0da464ca6aed01a8434c0f, type: 2}
+  ExplosiveEntity: {fileID: 11400000, guid: 06d83a353b92fb349961b82eafc6acdc, type: 2}
 --- !u!1001 &1152850399
 PrefabInstance:
   m_ObjectHideFlags: 0
