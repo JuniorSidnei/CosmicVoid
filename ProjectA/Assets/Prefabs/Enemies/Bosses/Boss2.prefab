@@ -221,8 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossPatternsDatas:
-  - {fileID: 11400000, guid: 767cfe4eed54b8743a6f13b6d46a73b7, type: 2}
-  BossPatternRageData: {fileID: 11400000, guid: 767cfe4eed54b8743a6f13b6d46a73b7, type: 2}
+  - {fileID: 11400000, guid: 77a333fb8e9dfa74b88e3f3bd3e16cca, type: 2}
+  BossPatternRageData: {fileID: 0}
 --- !u!114 &6978537540411540809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   - {fileID: 8638343166318188237}
   - {fileID: 8973049448595078591}
   - {fileID: 6748126369730758980}
-  HitsToWeakSpot: 2
+  HitsToWeakSpot: 5
   XPosition: -13
 --- !u!1001 &6801590265132508260
 PrefabInstance:

@@ -17,6 +17,7 @@ namespace ProjectA.Attack {
         public InputManager InputManager;
         public PlayerAnimator PlayerAnimator;
         public float TimeToChargedAttack;
+        public float AttackCooldown;
         public LayerMask EntityLayer;
 
         private float m_elapsedtimeCharged;
@@ -25,6 +26,7 @@ namespace ProjectA.Attack {
         private CircleCollider2D m_circleCollider2D;
         private PlayerMovement.PlayerStates m_currentPlayerState;
         private bool m_isPlayerMoving;
+        private float m_elapsedAttackCooldown;
         
         public bool IsCharged() {
             return m_elapsedtimeCharged >= TimeToChargedAttack;
@@ -36,6 +38,8 @@ namespace ProjectA.Attack {
             m_circleCollider2D = GetComponent<CircleCollider2D>();
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerMoving>(OnPlayerMoving);
+
+            m_elapsedAttackCooldown = AttackCooldown;
         }
         
         private void OnPlayerMoving(OnPlayerMoving ev) {
@@ -59,6 +63,8 @@ namespace ProjectA.Attack {
         private void AnimateAttack() {
             if (m_currentPlayerState == PlayerMovement.PlayerStates.STUNNED) return;
             
+            if(m_elapsedAttackCooldown > 0) return;
+            
             if (m_elapsedtimeCharged <= m_chargedAttackTreshold) {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.ATTACK));
                 Attack();
@@ -73,6 +79,12 @@ namespace ProjectA.Attack {
         
         private void Update() {
             
+            m_elapsedAttackCooldown -= Time.deltaTime;
+            
+            if(m_elapsedAttackCooldown > 0) return;
+
+            if (m_elapsedAttackCooldown <= 0) m_elapsedAttackCooldown = 0;
+            
             if (!m_isChargingAttack) return;
 
             m_elapsedtimeCharged += Time.deltaTime;
@@ -84,6 +96,8 @@ namespace ProjectA.Attack {
 
         private void Attack() {
 
+            m_elapsedAttackCooldown = AttackCooldown;
+            
             var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             
             var hit = Physics2D.Raycast(rayPosition, Vector2.right, 1f, EntityLayer);

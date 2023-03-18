@@ -18,13 +18,15 @@ namespace ProjectA.Actions {
         
         private int m_currentHitsToWeakSpot;
         private float m_timeStaggered = 4f;
-        private bool m_willTriggerRageMode;
-        
+        private bool m_triggerRageMode;
+
         protected override void OnHitBoss(OnHitBoss ev) {
             HitsHealth -= ev.Damage;
 
-            m_currentHitsToWeakSpot -= 1;
-            
+            if (!m_triggerRageMode) {
+                m_currentHitsToWeakSpot -= 1;    
+            }
+
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.MEDIUM));
 
             if (m_currentHitsToWeakSpot <= 0) {
@@ -59,31 +61,29 @@ namespace ProjectA.Actions {
         private void OnWeakSpotDeath(OnWeakSpotDeath ev) {
             WeakSpots.Remove(ev.WeakSpot);
 
+            m_timeStaggered += 4f;
             var timeStaggeredCoroutine = WaitDelayStaggered(0);
             StartCoroutine(timeStaggeredCoroutine);
             
             if (WeakSpots.Count <= 0) {
-                m_willTriggerRageMode = true;
+                m_triggerRageMode = true;
             }
         }
         
         private IEnumerator WaitDelayStaggered(float delay) {
             yield return new WaitForSeconds(delay);
 
-            m_timeStaggered += 4f;
-            
             foreach (var weakSpot in WeakSpots) {
                 weakSpot.SetIdle();    
             }
 
-            if (m_willTriggerRageMode) {
+            if (m_triggerRageMode) {
                 GameManager.Instance.Dispatcher.Emit(new OnBossRageMode());    
             } else {
                 GameManager.Instance.Dispatcher.Emit(new OnBossStartAttack());    
             }
             
-            transform.DOLocalMoveX(-2f, 3f).OnComplete(() => {
-            });
+            transform.DOLocalMoveX(-2f, 3f);
         }
     }
 }

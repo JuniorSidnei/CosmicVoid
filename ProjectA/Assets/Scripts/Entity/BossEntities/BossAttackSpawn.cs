@@ -12,15 +12,15 @@ namespace ProjectA.Controllers {
     
     public class BossAttackSpawn : MonoBehaviour {
 
-        public List<BossAttackWave> BossPatternsDatas;
-        public BossAttackWave BossPatternRageData;
+        public List<WaveData> BossPatternsDatas;
+        public WaveData BossPatternRageData;
         
-        private Queue<BossAttackWave.EntityInfo> m_entityQueue = new Queue<BossAttackWave.EntityInfo>();
+        private Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
         
         private float m_timeToNextSpawn;
         private bool m_waveFinishedSpawn;
         private bool m_isRageActivated;
-        private BossAttackWave m_currentPatternData;
+        private WaveData m_currentPatternData;
         
         private void Awake() {
             m_currentPatternData = BossPatternsDatas[Random.Range(0, BossPatternsDatas.Count)];
@@ -33,7 +33,8 @@ namespace ProjectA.Controllers {
 
         private void OnBossStopAttack(OnBossStopAttack arg0) {
             m_waveFinishedSpawn = true;
-            m_timeToNextSpawn = 0;
+            m_timeToNextSpawn = Mathf.Infinity;
+            m_entityQueue.Clear();
         }
 
         private void OnBossDeath(OnBossDeath arg0) {
@@ -47,7 +48,7 @@ namespace ProjectA.Controllers {
 
         private IEnumerator WaitToEnqueuePattern() {
             yield return new WaitForSeconds(5);
-            EnqueueWave(m_currentPatternData);
+             EnqueueWave(m_currentPatternData);
         }
 
         private void OnBossRageMode(OnBossRageMode ev) {
@@ -56,6 +57,7 @@ namespace ProjectA.Controllers {
             m_isRageActivated = true;
             m_entityQueue.Clear();
             m_currentPatternData = BossPatternRageData;
+            m_waveFinishedSpawn = false;
             EnqueueWave(BossPatternRageData);
         }
 
@@ -70,7 +72,9 @@ namespace ProjectA.Controllers {
             SpawnEntity();
         }
 
-        private void EnqueueWave(BossAttackWave wave) {
+        private void EnqueueWave(WaveData wave) {
+            m_entityQueue.Clear();
+            
             foreach (var entity in wave.EntityInfos) {
                 m_entityQueue.Enqueue(entity);
             }
@@ -84,13 +88,13 @@ namespace ProjectA.Controllers {
             EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
 
             switch (entityInfo.Type) {
-                case BossAttackWave.ProjectileType.Reflective:
+                case WaveData.EntityType.Reflective:
                     entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ReflectiveBossEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
-                case BossAttackWave.ProjectileType.Hard:
+                case WaveData.EntityType.HardProjectile:
                     entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
                     break;
-                case BossAttackWave.ProjectileType.Explosive:
+                case WaveData.EntityType.Explosive:
                     entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
             }
