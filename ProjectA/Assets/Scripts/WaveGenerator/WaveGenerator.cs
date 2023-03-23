@@ -11,39 +11,41 @@ namespace ProjectA.Generator {
     public class WaveGenerator : MonoBehaviour {
 
         [Serializable]
-        public struct ColorToType {
+        public class ColorToType {
+            public string name;
             public Color Color;
             public WaveData.EntityType Type;
         }
 
-        public string WaveName;
-        public string PathToSave;
-        public Texture2D WaveDataInfo;
+        // public string WaveName;
+        // public string PathToSave;
+        // public Texture2D WaveDataInfo;
         public List<ColorToType> ColorToTypes = new List<ColorToType>();
         
         private List<WaveData.EntityInfo> m_entityInfos = new List<WaveData.EntityInfo>();
         
         [ContextMenu("Generate wave by texture")]
-        public void GenerateWaveData() {
+        public void GenerateWaveData(string waveName, string pathToSave, Texture2D waveDataInfo, float initialTimeSpawn) {
 
             m_entityInfos.Clear();
             
-            for (int x = 0; x <= WaveDataInfo.width - 1; x++) {
-                for (int y = WaveDataInfo.height - 1; y >= 0; y--) {
-                    GenerateWave(x, y);
+            for (int x = 0; x <= waveDataInfo.width - 1; x++) {
+                for (int y = waveDataInfo.height - 1; y >= 0; y--) {
+                    GenerateWave(x, y, waveDataInfo);
                 }
             }
 
             var newDataWave = ScriptableObject.CreateInstance<WaveData>();
             newDataWave.EntityInfos = m_entityInfos;
+            newDataWave.InitialTimeSpawn = initialTimeSpawn;
             
-            AssetDatabase.CreateAsset(newDataWave, PathToSave + WaveName + ".asset");
+            AssetDatabase.CreateAsset(newDataWave, pathToSave + waveName + ".asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
 
-        private void GenerateWave(int x, int y) {
-            var pixelColor = WaveDataInfo.GetPixel(x, y);
+        private void GenerateWave(int x, int y, Texture2D waveDataInfo) {
+            var pixelColor = waveDataInfo.GetPixel(x, y);
             
             if(pixelColor.a == 0) return;
 
@@ -58,10 +60,10 @@ namespace ProjectA.Generator {
         private WaveData.EntityInfo CreateEntityInfo(int position, WaveData.EntityType type) {
             
             var entityPosition = position switch {
-                2 => Data.Wave.WaveData.EntityPosition.Up,
-                1 => Data.Wave.WaveData.EntityPosition.Middle,
-                0 => Data.Wave.WaveData.EntityPosition.Down,
-                _ => Data.Wave.WaveData.EntityPosition.Up
+                2 => WaveData.EntityPosition.Up,
+                1 => WaveData.EntityPosition.Middle,
+                0 => WaveData.EntityPosition.Down,
+                _ => WaveData.EntityPosition.Up
             };
             
             return new WaveData.EntityInfo() {

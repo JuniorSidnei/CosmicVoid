@@ -622,21 +622,29 @@ MonoBehaviour:
   PathToSave: Assets/Scriptables/BossData/Boss_2/
   WaveDataInfo: {fileID: 2800000, guid: 95efe27b514f4e949bee8413e7176bd1, type: 3}
   ColorToTypes:
-  - Color: {r: 1, g: 1, b: 0, a: 1}
+  - name: Destructible
+    Color: {r: 1, g: 1, b: 0, a: 1}
     Type: 0
-  - Color: {r: 0, g: 1, b: 0.98039216, a: 1}
+  - name: Shooter
+    Color: {r: 0, g: 1, b: 0.98039216, a: 1}
     Type: 3
-  - Color: {r: 0, g: 1, b: 0, a: 1}
+  - name: Hard prop
+    Color: {r: 0, g: 1, b: 0, a: 1}
     Type: 1
-  - Color: {r: 1, g: 0, b: 0, a: 1}
+  - name: Enemy
+    Color: {r: 1, g: 0, b: 0, a: 1}
     Type: 2
-  - Color: {r: 0, g: 0, b: 1, a: 1}
+  - name: Reflective
+    Color: {r: 0, g: 0, b: 1, a: 1}
     Type: 5
-  - Color: {r: 0, g: 0.5882353, b: 1, a: 1}
+  - name: Hard projectile
+    Color: {r: 0, g: 0.5882353, b: 1, a: 1}
     Type: 6
-  - Color: {r: 0, g: 0, b: 0, a: 1}
+  - name: Linker
+    Color: {r: 0, g: 0, b: 0, a: 1}
     Type: 7
-  - Color: {r: 1, g: 0, b: 1, a: 1}
+  - name: Explosive
+    Color: {r: 1, g: 0, b: 1, a: 1}
     Type: 9
 --- !u!1 &868136996
 GameObject:

@@ -16,9 +16,9 @@ namespace ProjectA.Editor {
 
             EditorGUILayout.Space(10);
             EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Generate wave with texture")) {
-                waveGenerator.GenerateWaveData();
-            }
+            // if (GUILayout.Button("Generate wave with texture")) {
+            //     waveGenerator.GenerateWaveData();
+            // }
             EditorGUILayout.EndHorizontal();
         }
     }
