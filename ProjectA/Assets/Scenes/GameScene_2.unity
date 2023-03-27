@@ -618,9 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b55cfc0112b3ad4098dad12518ce348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveName: Boss_2_PatternData_rage
-  PathToSave: Assets/Scriptables/BossData/Boss_2/
-  WaveDataInfo: {fileID: 2800000, guid: 95efe27b514f4e949bee8413e7176bd1, type: 3}
   ColorToTypes:
   - name: Destructible
     Color: {r: 1, g: 1, b: 0, a: 1}
@@ -646,6 +643,12 @@ MonoBehaviour:
   - name: Explosive
     Color: {r: 1, g: 0, b: 1, a: 1}
     Type: 9
+  - name: ShieldBreaker
+    Color: {r: 0.5882353, g: 1, b: 0, a: 1}
+    Type: 11
+  - name: Cloaking
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Type: 10
 --- !u!1 &868136996
 GameObject:
   m_ObjectHideFlags: 0
