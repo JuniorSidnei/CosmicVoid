@@ -13,27 +13,18 @@ MonoBehaviour:
   m_Name: teste1
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
-  InitialTimeSpawn: 2
+  InitialTimeSpawn: 0
   WavePrefabs: {fileID: 0}
   EntityInfos:
-  - Type: 10
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 10
-    Position: 2
-    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 2
   - Type: 10
     Position: 0
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 10
-    Position: 2
-    TimeToNextEntity: 0
-  - Type: 11
     Position: 0
-    TimeToNextEntity: 0
-  - Type: 11
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 11
-    Position: 2
     TimeToNextEntity: 0

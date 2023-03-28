@@ -77,7 +77,6 @@ namespace ProjectA.Entity.ProcessDamage {
                     break;
                 case WaveData.EntityType.Reflective:
                     Destroy(GetComponent<ReflectiveEntity>());
-                    GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
                     return;
                 case WaveData.EntityType.HardProjectile:
                     Destroy(GetComponent<HardEntity>());
@@ -86,6 +85,12 @@ namespace ProjectA.Entity.ProcessDamage {
                 case WaveData.EntityType.Explosive:
                     Destroy(GetComponent<ExplosiveReflectiveProjectile>());
                     GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));                    
+                    return;
+                case WaveData.EntityType.FakeCloaking:
+                    Destroy(GetComponent<HardEntity>());
+                    return;
+                case WaveData.EntityType.Cloaking:
+                    Destroy(GetComponent<DestructibleEntity>());
                     return;
             }    
             

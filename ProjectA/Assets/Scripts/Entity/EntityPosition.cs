@@ -13,8 +13,12 @@ namespace ProjectA.Entity.Position {
     public class EntityPosition : MonoBehaviour {
 
         public WaveData.EntityType Type;
-
-        public void SetPosition(WaveData.EntityInfo info, Transform parent) {
+        
+        public void SetType(WaveData.EntityInfo cloakingEntity) {
+            Type = cloakingEntity.Type;
+        }
+        
+        public void SetPositionAndType(WaveData.EntityInfo info, Transform parent) {
             Type = info.Type;
             
             var transformLocalPosition = GetPosition(info.Position);
@@ -25,7 +29,7 @@ namespace ProjectA.Entity.Position {
             transform.localPosition = transformLocalPosition;
         }
         
-        public void SetPosition(WaveData.EntityInfo info, Transform parent, float positionX) {
+        public void SetPositionAndTypeWithX(WaveData.EntityInfo info, Transform parent, float positionX) {
             Type = info.Type;
             
             var transformLocalPosition = GetPosition(info.Position);
@@ -93,6 +97,10 @@ namespace ProjectA.Entity.Position {
         
         public void LinkedSetup(EntityInfo entityInfo, LayerMask playerLayer) {
             gameObject.AddComponent<LinkerEntity>().Setup(entityInfo, playerLayer);
+        }
+
+        public void CloakingSetup(EntityInfo entityInfo, LayerMask playerLayer) {
+            gameObject.AddComponent<CloakingEntity>().Setup(entityInfo, playerLayer);
         }
         
         public void ReflectiveProjectileSetup(EntityInfo entityInfo, List<LayerMask> playerLayer) {

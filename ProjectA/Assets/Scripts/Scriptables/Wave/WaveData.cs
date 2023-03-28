@@ -9,7 +9,7 @@ namespace ProjectA.Data.Wave {
     public class WaveData : ScriptableObject {
 
         public enum EntityType {
-            DestructibleProp, HardProp, Enemy, Shooter, Boss, Reflective, HardProjectile, Linker, Linked, Explosive, Cloaking, ShieldBreaker
+            DestructibleProp, HardProp, Enemy, Shooter, Boss, Reflective, HardProjectile, Linker, Linked, Explosive, Cloaking, FakeCloaking, ShieldBreaker
         }
 
         public enum EntityPosition {

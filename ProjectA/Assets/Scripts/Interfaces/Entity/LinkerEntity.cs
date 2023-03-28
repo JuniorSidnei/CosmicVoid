@@ -49,7 +49,7 @@ namespace ProjectA.Entity {
                 Position = WaveData.EntityPosition.Down
             };
 
-            linkedProp.SetPosition(entityInfo, SpawnManager.Instance.transform, spawnPosition.x);
+            linkedProp.SetPositionAndTypeWithX(entityInfo, SpawnManager.Instance.transform, spawnPosition.x);
 
             var centerPosition = (transform.localPosition + linkedProp.transform.localPosition) / 2;
             m_lineProp = Instantiate(m_linePropPrefab, centerPosition, Quaternion.identity, transform);

@@ -99,7 +99,7 @@ namespace ProjectA.Controllers {
                     break;
             }
 
-            entity.SetPosition(entityInfo, transform);    
+            entity.SetPositionAndType(entityInfo, transform);    
             
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
 

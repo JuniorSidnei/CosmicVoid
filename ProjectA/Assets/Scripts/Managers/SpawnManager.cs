@@ -56,7 +56,7 @@ namespace ProjectA.Managers {
             entity.name = entityInfo.Type.ToString();
             
             if (entityInfo.Type != WaveData.EntityType.Boss) {
-                entity.SetPosition(entityInfo, transform);
+                entity.SetPositionAndType(entityInfo, transform);
             }
             
             switch (entityInfo.Type) {
@@ -74,6 +74,9 @@ namespace ProjectA.Managers {
                     break;
                 case WaveData.EntityType.Linker:
                     entity.LinkerSetup(EntitiesPool.LinkerEntity, EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.Cloaking:
+                    entity.CloakingSetup(EntitiesPool.FakeCloakingEntity, EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Boss:
                     Instantiate(WaveData.WavePrefabs.Boss, transform);

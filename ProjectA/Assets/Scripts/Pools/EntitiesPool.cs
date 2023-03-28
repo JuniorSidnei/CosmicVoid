@@ -21,6 +21,8 @@ namespace ProjectA.Pools {
         public EntityInfo EnemyEntity;
         public EntityInfo ShooterEntity;
         public EntityInfo LinkerEntity;
+        public EntityInfo FakeCloakingEntity;
+        public EntityInfo CloakingEntity;
 
         [Header("general settings")]
         public LayerMask PlayerLayer;
