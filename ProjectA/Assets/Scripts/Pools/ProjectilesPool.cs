@@ -16,6 +16,7 @@ namespace ProjectA.Pools {
         public EntityInfo ReflectiveBossEntity;
         public EntityInfo HardProjectileEntity;
         public EntityInfo ExplosiveEntity;
+        public EntityInfo ShieldBreakerEntity;
         
         public EntityPosition GetFromPool() {
             return Get();

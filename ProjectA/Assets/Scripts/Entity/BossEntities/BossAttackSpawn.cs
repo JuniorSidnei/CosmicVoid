@@ -97,9 +97,12 @@ namespace ProjectA.Controllers {
                 case WaveData.EntityType.Explosive:
                     entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
+                case WaveData.EntityType.ShieldBreaker:
+                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ShieldBreakerEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
             }
 
-            entity.SetPositionAndType(entityInfo, transform);    
+            entity.SetPositionAndTypeWithX(entityInfo, transform, transform.localPosition.x - 3f);    
             
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
 

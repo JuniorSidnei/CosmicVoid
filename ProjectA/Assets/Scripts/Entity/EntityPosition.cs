@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using ProjectA.Actions;
 using ProjectA.Data.Wave;
+using ProjectA.Entity.ProcessDamage;
 using ProjectA.Interface;
 using ProjectA.Scriptables;
 using ProjectA.Scriptables.Boss;
@@ -52,8 +53,7 @@ namespace ProjectA.Entity.Position {
 
             return transformLocalPosition;
         }
-
-
+        
         public void SetPosition(BossAttackWave.EntityInfo info, Transform parent) {
             Type = info.Type switch {
                 BossAttackWave.ProjectileType.Reflective => WaveData.EntityType.Reflective,

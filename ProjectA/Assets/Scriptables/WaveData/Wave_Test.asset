@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
   InitialTimeSpawn: 0
-  WavePrefabs: {fileID: 11400000, guid: 784e27912694dbf4d91d8478f1ba8f18, type: 2}
+  WavePrefabs: {fileID: 11400000, guid: 37f91dda9d077604a808485e79cd1e05, type: 2}
   EntityInfos:
   - Type: 4
     Position: 1

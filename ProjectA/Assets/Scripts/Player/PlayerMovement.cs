@@ -14,7 +14,7 @@ namespace ProjectA.Movement {
         }
 
         public enum PlayerStates {
-            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE, CHARGED, UP_CHARGED, DOWN_CHARGED, STUNNED
+            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE, CHARGED, UP_CHARGED, DOWN_CHARGED, STUNNED, RUNNING
         }
         
         public InputManager InputManager;
@@ -32,7 +32,7 @@ namespace ProjectA.Movement {
         }
 
         private void Start() {
-            State = PlayerStates.IDLE;
+            State = PlayerStates.RUNNING;
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(State));
             m_timeStunned = TimeStunned;
             InputManager.MoveDown.performed += ctx => MoveDown();
@@ -81,7 +81,7 @@ namespace ProjectA.Movement {
 
             m_isMoving = true;
             GameManager.Instance.Dispatcher.Emit(new OnPlayerMoving(true));
-            transform.DOMove(newPos, 0.15f).SetEase(Ease.InBounce).OnComplete(SetStateAfterMoving);
+            transform.DOMove(newPos, 0.35f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
         }
         
         private void MoveDown() {
@@ -108,14 +108,14 @@ namespace ProjectA.Movement {
 
             m_isMoving = true;
             GameManager.Instance.Dispatcher.Emit(new OnPlayerMoving(true));
-            transform.DOMove(newPos, 0.15f).SetEase(Ease.InBounce).OnComplete(SetStateAfterMoving);
+            transform.DOMove(newPos, 0.35f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
         }
 
         private void SetStateAfterMoving() {
             if(m_playerAttack.IsCharged() && State != PlayerStates.STUNNED) {
                 State = PlayerStates.CHARGED;
             } else if (!m_playerAttack.IsCharged() && State != PlayerStates.STUNNED) {
-                State = PlayerStates.IDLE;
+                State = PlayerStates.RUNNING;
             } else if (State == PlayerStates.STUNNED) {
                 State = PlayerStates.STUNNED;
             }

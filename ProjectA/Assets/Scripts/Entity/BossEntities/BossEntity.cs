@@ -1,4 +1,5 @@
 using DG.Tweening;
+using ProjectA.Data.Wave;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
 using UnityEngine;

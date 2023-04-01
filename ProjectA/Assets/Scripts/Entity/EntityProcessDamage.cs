@@ -17,10 +17,12 @@ namespace ProjectA.Entity.ProcessDamage {
         public LayerMask EntityLayer;
 
         public bool IsReflected { get; set; }
-
+        public WaveData.EntityType Type { get; set; }
+        
         public virtual void ProcessDamage(bool isCharged) { }
         public virtual void ProcessPlayerDamage(bool isCharged) { }
         public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) { }
+        public virtual void ProcessProjectileDamage(ReflectiveEntity reflectiveEntity) { }
 
         public virtual void Setup(EntityInfo info, List<LayerMask> layers) {
             PlayerLayer = layers[0];
@@ -41,6 +43,10 @@ namespace ProjectA.Entity.ProcessDamage {
             if(other.gameObject.CompareTag("Wall")) {
                 ReleaseEntity();
                 return;
+            } 
+            
+            if(other.gameObject.CompareTag("BossShield")) {
+                other.GetComponent<ShieldEntity>().ProcessProjectileDamage(GetComponent<ReflectiveEntity>());
             }
             
             if (IsReflected) {

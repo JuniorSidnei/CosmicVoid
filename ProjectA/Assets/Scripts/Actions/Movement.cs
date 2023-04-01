@@ -45,6 +45,14 @@ namespace ProjectA.Actions {
         }
 
         private void ApplyReflect(bool isCharged) {
+            if (m_entityProcessDamage.IsReflected) {
+                Acceleration = 0f;
+                var speedReflected = Speed * 6;
+                m_targetVelocity = new Vector2(-1, 0) * speedReflected;
+                m_entityProcessDamage.IsReflected = false;
+                return;
+            }
+            
             m_entityProcessDamage.DamagePower *= 2;
             m_entityProcessDamage.IsReflected = true;
             Acceleration = 0f;

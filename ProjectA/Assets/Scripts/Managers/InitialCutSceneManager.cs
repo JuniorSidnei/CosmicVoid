@@ -16,19 +16,24 @@ namespace ProjectA.Managers {
         
         private void Start() {
             GameManager.Instance.Dispatcher.Emit(new OnCutsceneStarted());
-            PlayerTransform.DOMoveX(PlayerWalkPositionStart, 2.5f).OnComplete(() => {
+            PlayerTransform.DOMoveX(PlayerWalkPositionStart, 2.5f).SetEase(Ease.Linear).OnComplete(() => {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.IDLE));
-                GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.STRONG));
-                Destroy(Instantiate(ExplosionPrefab, ExplosionPosition.position, Quaternion.identity, transform), 1f);
-                StartCoroutine(nameof(WaitToMovePlayer));
-            });;
+                Invoke(nameof(WaitToExplosion), 2f);
+            });
         }
 
+        private void WaitToExplosion() {
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.STRONG));
+            Destroy(Instantiate(ExplosionPrefab, ExplosionPosition.position, Quaternion.identity, transform), .5f);
+            StartCoroutine(nameof(WaitToMovePlayer));    
+        }
+        
         private IEnumerator WaitToMovePlayer() {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(.25f);
             GameManager.Instance.Dispatcher.Emit(new OnExplosionActivated());
             GameManager.Instance.GameSettings.SaveExplosionStatus();
-            PlayerTransform.DOMoveX(PlayerWalkPositionFinish, 2f).OnComplete(() => {
+            GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.RUNNING));
+            PlayerTransform.DOMoveX(PlayerWalkPositionFinish, 2f).SetEase(Ease.Linear).OnComplete(() => {
                 GameManager.Instance.Dispatcher.Emit(new OnCutSceneFinished());
                 GameManager.Instance.GameSettings.SaveInitialCutsceneStatus();
                 GameManager.Instance.InputManager.EnablePlayerMovement();

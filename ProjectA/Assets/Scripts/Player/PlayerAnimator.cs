@@ -18,6 +18,7 @@ namespace ProjectA.Animator {
         private static readonly int m_moveUpCharged = UnityEngine.Animator.StringToHash("move_up_charged");
         private static readonly int m_moveDownCharged = UnityEngine.Animator.StringToHash("move_down_charged");
         private static readonly int m_stunned = UnityEngine.Animator.StringToHash("stunned");
+        private static readonly int m_running = UnityEngine.Animator.StringToHash("running");
 
         private PlayerMovement.PlayerStates m_playerCurrentState;
         
@@ -67,6 +68,8 @@ namespace ProjectA.Animator {
                     return m_moveDownCharged;
                 case PlayerMovement.PlayerStates.STUNNED:
                     return m_stunned;
+                case PlayerMovement.PlayerStates.RUNNING:
+                    return m_running;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }

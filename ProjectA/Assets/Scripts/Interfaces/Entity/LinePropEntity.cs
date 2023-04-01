@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ProjectA.Data.Wave;
 using ProjectA.Interface;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -81,5 +82,7 @@ namespace ProjectA.Entity {
                 Destroy(gameObject);
             }
         }
+
+        public void ProcessProjectileDamage(ReflectiveEntity reflectiveEntity) {  }
     }
 }
