@@ -16,6 +16,12 @@ MonoBehaviour:
   InitialTimeSpawn: 0
   WavePrefabs: {fileID: 11400000, guid: 37f91dda9d077604a808485e79cd1e05, type: 2}
   EntityInfos:
-  - Type: 4
+  - Type: 0
     Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 7
+    Position: 0
     TimeToNextEntity: 0.5

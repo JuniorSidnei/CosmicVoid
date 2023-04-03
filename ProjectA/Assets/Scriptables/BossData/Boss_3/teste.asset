@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f6f142b1b627e540837daf9c94b7ade, type: 3}
-  m_Name: teste1
+  m_Name: teste
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
-  InitialTimeSpawn: 3
+  InitialTimeSpawn: 2
   WavePrefabs: {fileID: 0}
   EntityInfos:
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0.5
   - Type: 12
     Position: 1
-    TimeToNextEntity: 2
+    TimeToNextEntity: 0.5
+  - Type: 5
+    Position: 2
+    TimeToNextEntity: 0

@@ -25,11 +25,11 @@ namespace ProjectA.Attack {
         private float m_chargedAttackTreshold = .5f;
         private CircleCollider2D m_circleCollider2D;
         private PlayerMovement.PlayerStates m_currentPlayerState;
-        private bool m_isPlayerMoving;
         private float m_elapsedAttackCooldown;
+        private bool m_isCharged;
         
         public bool IsCharged() {
-            return m_elapsedtimeCharged >= TimeToChargedAttack;
+            return m_isCharged;
         }
         
         private void Start() {
@@ -37,15 +37,10 @@ namespace ProjectA.Attack {
             InputManager.Attack.canceled += ctx => AnimateAttack();
             m_circleCollider2D = GetComponent<CircleCollider2D>();
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
-            GameManager.Instance.Dispatcher.Subscribe<OnPlayerMoving>(OnPlayerMoving);
 
             m_elapsedAttackCooldown = AttackCooldown;
         }
         
-        private void OnPlayerMoving(OnPlayerMoving ev) {
-            m_isPlayerMoving = ev.IsMoving;
-        }
-
         private void OnPlayerStateChange(OnPlayerStateChange ev) {
             m_currentPlayerState = ev.NewState;
 
@@ -79,6 +74,8 @@ namespace ProjectA.Attack {
         
         private void Update() {
             
+            if(m_isCharged) return;
+            
             m_elapsedAttackCooldown -= Time.deltaTime;
             
             if(m_elapsedAttackCooldown > 0) return;
@@ -89,15 +86,16 @@ namespace ProjectA.Attack {
 
             m_elapsedtimeCharged += Time.deltaTime;
 
-            if (m_elapsedtimeCharged >= TimeToChargedAttack && !m_isPlayerMoving) {
+            if (m_elapsedtimeCharged >= TimeToChargedAttack) {
                 PlayerAnimator.Charged();
+                m_isCharged = true;
             }
         }
 
         private void Attack() {
 
             m_elapsedAttackCooldown = AttackCooldown;
-            
+            m_isCharged = false;
             var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             
             var hit = Physics2D.Raycast(rayPosition, Vector2.right, 1f, EntityLayer);

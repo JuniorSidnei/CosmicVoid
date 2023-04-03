@@ -11,7 +11,8 @@ namespace ProjectA.Entity {
         public LayerMask PlayerLayer;
         private LineRenderer m_lineRenderer;
         private EdgeCollider2D m_edgeCollider2D;
-
+        private Material m_lineMaterial;
+        
         private bool m_isPositionSetted;
         
         public int Damage { get; set; }
@@ -57,9 +58,9 @@ namespace ProjectA.Entity {
         private void Start() {
             m_lineRenderer = GetComponent<LineRenderer>();
             m_edgeCollider2D = GetComponent<EdgeCollider2D>();
-            
-            m_lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-            m_lineRenderer.widthMultiplier = 0.2f;
+
+            m_lineRenderer.material = Resources.Load<Material>("Material/LineMaterial");
+            m_lineRenderer.widthMultiplier = 0.5f;
         }
         
         private void OnCollisionEnter2D(Collision2D other) {

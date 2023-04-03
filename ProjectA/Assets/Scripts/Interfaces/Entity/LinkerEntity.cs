@@ -26,7 +26,7 @@ namespace ProjectA.Entity {
 
         public void SetupLinker() {
             m_linePropPrefab = Resources.Load<GameObject>("Prefabs/LineProp");
-            
+
             m_randomPositionSetter = Random.Range(0, 3);
             var spawnPosition = Vector3.zero;
             var localPos = transform.localPosition;

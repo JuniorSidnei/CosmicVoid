@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3706793279188195681}
   - component: {fileID: 3033135061479119894}
   m_Layer: 7
-  m_Name: 'HardProp '
+  m_Name: HardProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,8 @@ SpriteRenderer:
   m_SortingLayerID: 362255353
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.31287822, g: 0.31735763, b: 0.8396226, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b8b1941d7b1830f4282154ff13fcaf0a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

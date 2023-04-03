@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossPatternsDatas:
-  - {fileID: 11400000, guid: fa395471a9963b349b9e2dd0fd587058, type: 2}
+  - {fileID: 11400000, guid: 6a0743f2aa626424d95b99fea91176a3, type: 2}
   BossPatternRageData: {fileID: 0}
 --- !u!114 &6978537540411540809
 MonoBehaviour:

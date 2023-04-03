@@ -52,7 +52,7 @@ namespace ProjectA.Movement {
 
             if (m_timeStunned > 0) return;
             
-            State = PlayerStates.IDLE;
+            State = PlayerStates.RUNNING;
             OnPlayerStateSet(new OnPlayerStateSet(State));
             m_timeStunned = TimeStunned;
         }
@@ -80,7 +80,6 @@ namespace ProjectA.Movement {
             }
 
             m_isMoving = true;
-            GameManager.Instance.Dispatcher.Emit(new OnPlayerMoving(true));
             transform.DOMove(newPos, 0.35f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
         }
         
