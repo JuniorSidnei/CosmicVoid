@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Managers;
-using ProjectA.Pools;
-using ProjectA.Scriptables.Boss;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ProjectA.Controllers {
     
@@ -15,22 +14,25 @@ namespace ProjectA.Controllers {
         public List<WaveData> BossPatternsDatas;
         public WaveData BossPatternRageData;
         
-        private Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
+        protected Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
         
         private float m_timeToNextSpawn;
-        private bool m_waveFinishedSpawn;
-        private bool m_isRageActivated;
-        private WaveData m_currentPatternData;
+        protected bool m_waveFinishedSpawn;
+        protected bool m_isRageActivated;
+        protected WaveData m_currentPatternData;
+        
+        public int CurrentPatternIndex { get; set; }
         
         private void Awake() {
-            m_currentPatternData = BossPatternsDatas[Random.Range(0, BossPatternsDatas.Count)];
+            CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
+            m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
 
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStopAttack>(OnBossStopAttack);
             GameManager.Instance.Dispatcher.Subscribe<OnBossDeath>(OnBossDeath);
         }
-
+        
         private void OnBossStopAttack(OnBossStopAttack arg0) {
             m_waveFinishedSpawn = true;
             m_timeToNextSpawn = Mathf.Infinity;
@@ -41,14 +43,14 @@ namespace ProjectA.Controllers {
             m_waveFinishedSpawn = true;
         }
 
-        private void OnBossStartAttack(OnBossStartAttack ev) {
+        protected virtual void OnBossStartAttack(OnBossStartAttack ev) {
             m_waveFinishedSpawn = false;
             StartCoroutine(nameof(WaitToEnqueuePattern));
         }
 
-        private IEnumerator WaitToEnqueuePattern() {
-            yield return new WaitForSeconds(5);
-             EnqueueWave(m_currentPatternData);
+        protected virtual IEnumerator WaitToEnqueuePattern() {
+            yield return new WaitForSeconds(3);
+            EnqueueWave(m_currentPatternData);
         }
 
         private void OnBossRageMode(OnBossRageMode ev) {
@@ -72,7 +74,7 @@ namespace ProjectA.Controllers {
             SpawnEntity();
         }
 
-        private void EnqueueWave(WaveData wave) {
+        protected void EnqueueWave(WaveData wave) {
             m_entityQueue.Clear();
             
             foreach (var entity in wave.EntityInfos) {
@@ -83,8 +85,26 @@ namespace ProjectA.Controllers {
         }
         
         private void SpawnEntity() {
-            var entityInfo = m_entityQueue.Dequeue();
+            var entityInfo = m_entityQueue.Dequeue(); 
 
+            switch (entityInfo.Type) {
+                case WaveData.EntityType.LaserUp:
+                    GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
+                    m_timeToNextSpawn = entityInfo.TimeToNextEntity;
+                    SelectRandomPattern();
+                    return;
+                case WaveData.EntityType.LaserMid:
+                    GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.MID));
+                    m_timeToNextSpawn = entityInfo.TimeToNextEntity;
+                    SelectRandomPattern();
+                    return;
+                case WaveData.EntityType.LaserDown:
+                    GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.BOTTOM));
+                    m_timeToNextSpawn = entityInfo.TimeToNextEntity;
+                    SelectRandomPattern();
+                    return;
+            }
+            
             EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
 
             switch (entityInfo.Type) {
@@ -98,6 +118,7 @@ namespace ProjectA.Controllers {
                     entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
                 case WaveData.EntityType.ShieldBreaker:
+                    GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
                     entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ShieldBreakerEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
             }
@@ -105,14 +126,19 @@ namespace ProjectA.Controllers {
             entity.SetPositionAndTypeWithX(entityInfo, transform, transform.localPosition.x - 3f);    
             
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
+            SelectRandomPattern();
+        }
 
+        protected virtual void SelectRandomPattern() {
             switch (m_entityQueue.Count) {
                 case <= 0 when !m_isRageActivated: {
-                    m_currentPatternData = BossPatternsDatas[Random.Range(0, BossPatternsDatas.Count)];
+                    CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
+                    m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
                     EnqueueWave(m_currentPatternData);
                     break;
                 }
                 case <= 0 when m_isRageActivated:
+                    CurrentPatternIndex = BossPatternsDatas.Count + 1;
                     m_currentPatternData = BossPatternRageData;
                     EnqueueWave(BossPatternRageData);
                     break;

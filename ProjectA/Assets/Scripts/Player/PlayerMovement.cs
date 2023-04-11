@@ -80,7 +80,7 @@ namespace ProjectA.Movement {
             }
 
             m_isMoving = true;
-            transform.DOMove(newPos, 0.35f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
+            transform.DOMove(newPos, 0.25f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
         }
         
         private void MoveDown() {
@@ -107,7 +107,7 @@ namespace ProjectA.Movement {
 
             m_isMoving = true;
             GameManager.Instance.Dispatcher.Emit(new OnPlayerMoving(true));
-            transform.DOMove(newPos, 0.35f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
+            transform.DOMove(newPos, 0.25f).SetEase(Ease.Linear).OnComplete(SetStateAfterMoving);
         }
 
         private void SetStateAfterMoving() {

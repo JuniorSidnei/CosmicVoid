@@ -18,5 +18,6 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  EntityColor: {r: 1, g: 0.5921569, b: 0.003921569, a: 1}
   SpawnPrefab: {fileID: 4086120910675811958, guid: 1b0fd4700dc462a4ea13bde7fd8a0d49, type: 3}
   ShootInterval: 2

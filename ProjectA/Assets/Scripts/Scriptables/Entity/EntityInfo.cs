@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -12,5 +10,6 @@ namespace ProjectA.Scriptables {
         public int DamagePower;
         public float Speed;
         public LayerMask PlayerLayer;
+        public Color EntityColor;
     }
 }

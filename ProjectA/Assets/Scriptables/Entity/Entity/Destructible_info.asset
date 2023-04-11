@@ -18,3 +18,4 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  EntityColor: {r: 1, g: 0.6901961, b: 0.4, a: 1}

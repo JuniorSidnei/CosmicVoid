@@ -7,6 +7,7 @@ using ProjectA.Movement;
 using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace ProjectA.Entity.ProcessDamage {
     
@@ -30,6 +31,7 @@ namespace ProjectA.Entity.ProcessDamage {
             DamagePower = info.DamagePower;
             transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
+            GetComponent<Light2D>().color = info.EntityColor;
         }
         
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
@@ -37,6 +39,7 @@ namespace ProjectA.Entity.ProcessDamage {
             DamagePower = info.DamagePower;
             transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
+            GetComponent<Light2D>().color = info.EntityColor;
         }
 
         private void OnTriggerEnter2D(Collider2D other) {

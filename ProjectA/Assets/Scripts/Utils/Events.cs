@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using ProjectA.Data.Wave;
 using ProjectA.Entity;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
@@ -10,6 +11,10 @@ using UnityEngine;
 
 public enum ShakeForce {
     BASIC, MEDIUM, STRONG
+}
+
+public enum LaserPosition {
+    UP, MID, BOTTOM
 }
 
 public class OnPlayerLifeUpdate {
@@ -113,6 +118,15 @@ public class OnCameraScreenShakeWithValues {
 public class OnBossStartAttack { }
 public class OnBossStopAttack { }
 public class OnBossRageMode { }
+
+public class OnShootLaser {
+    public OnShootLaser(LaserPosition type) {
+        Type = type;
+    }
+
+    public LaserPosition Type;
+}
+
 public class OnHitCountUpdate {
     
     public OnHitCountUpdate(int count) {

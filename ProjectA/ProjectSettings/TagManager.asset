@@ -43,11 +43,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 362255353
+  - name: BG
+    uniqueID: 3549055419
     locked: 0
   - name: Ground
     uniqueID: 573857695
+    locked: 0
+  - name: Player
+    uniqueID: 362255353
     locked: 0
   - name: Entity
     uniqueID: 1007172439
