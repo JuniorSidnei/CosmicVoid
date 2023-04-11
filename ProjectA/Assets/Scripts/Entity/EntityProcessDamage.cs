@@ -18,7 +18,6 @@ namespace ProjectA.Entity.ProcessDamage {
         public LayerMask EntityLayer;
 
         public bool IsReflected { get; set; }
-        public WaveData.EntityType Type { get; set; }
         
         public virtual void ProcessDamage(bool isCharged) { }
         public virtual void ProcessPlayerDamage(bool isCharged) { }
@@ -48,6 +47,7 @@ namespace ProjectA.Entity.ProcessDamage {
                 return;
             } 
             
+            
             if(other.gameObject.CompareTag("BossShield")) {
                 other.GetComponent<ShieldEntity>().ProcessProjectileDamage(GetComponent<ReflectiveEntity>());
             }
@@ -74,7 +74,7 @@ namespace ProjectA.Entity.ProcessDamage {
                     Destroy(GetComponent<EnemyEntity>());
                     break;
                 case WaveData.EntityType.Shooter:
-                    Destroy(GetComponent<EnemyEntity>());
+                    Destroy(GetComponent<DestructibleEntity>());
                     Destroy(GetComponent<Shoot>());
                     Destroy(transform.GetChild(1).gameObject);
                     break;
@@ -86,6 +86,8 @@ namespace ProjectA.Entity.ProcessDamage {
                     break;
                 case WaveData.EntityType.Reflective:
                     Destroy(GetComponent<ReflectiveEntity>());
+                    transform.localScale = new Vector3(1, 1, 1);
+                    GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));    
                     return;
                 case WaveData.EntityType.HardProjectile:
                     Destroy(GetComponent<HardEntity>());
@@ -122,7 +124,7 @@ namespace ProjectA.Entity.ProcessDamage {
                 return;
             }
 
-            entity.GetComponent<IDamageable>().ProcessProjectileDamage(IsReflected, DamagePower);
+            entity.GetComponent<IDamageable>()?.ProcessProjectileDamage(IsReflected, DamagePower);
             ReleaseEntity();
         }
     }

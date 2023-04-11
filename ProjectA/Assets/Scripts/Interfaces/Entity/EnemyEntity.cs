@@ -31,14 +31,6 @@ namespace ProjectA.Interface {
         }
 
         private void ReleaseEntity() {
-            var type = GetComponent<EntityPosition>().Type;
-            switch (type) {
-                case WaveData.EntityType.Shooter:
-                    Destroy(GetComponent<Shoot>());
-                    Destroy(transform.GetChild(1).gameObject);
-                    break;
-            }
-            
             Destroy(this);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
         }

@@ -95,7 +95,6 @@ namespace ProjectA.Attack {
         private void Attack() {
 
             m_elapsedAttackCooldown = AttackCooldown;
-            m_isCharged = false;
             var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             
             var hit = Physics2D.Raycast(rayPosition, Vector2.right, 1f, EntityLayer);
@@ -105,7 +104,8 @@ namespace ProjectA.Attack {
             var o = hit.collider.gameObject;
             if(o == null) return;
             
-            o.GetComponent<IDamageable>().ProcessDamage(IsCharged());
+            o.GetComponent<IDamageable>()?.ProcessDamage(IsCharged());
+            m_isCharged = false;
         }
 
         private void OnDrawGizmos() {

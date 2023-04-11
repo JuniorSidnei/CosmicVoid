@@ -50,6 +50,7 @@ namespace ProjectA.Actions {
                 var speedReflected = Speed * 6;
                 m_targetVelocity = new Vector2(-1, 0) * speedReflected;
                 m_entityProcessDamage.IsReflected = false;
+                transform.localScale = new Vector3(1, 1, 1);
                 return;
             }
             
@@ -58,6 +59,7 @@ namespace ProjectA.Actions {
             Acceleration = 0f;
             var speed = isCharged ? Speed * 4 : Speed * 2;
             m_targetVelocity = new Vector2(1, 0) * speed;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         private void FixedUpdate() {

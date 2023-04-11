@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6716933972539869292, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.625
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6716933972539869292, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1608,4 +1608,4 @@ MonoBehaviour:
   ExplosionPosition: {fileID: 868136997}
   ExplosionPrefab: {fileID: 3079403843230058911, guid: 5e9a186caf18e46458204ad7a0b333d4, type: 3}
   PlayerWalkPositionStart: -3.79
-  PlayerWalkPositionFinish: -5.62
+  PlayerWalkPositionFinish: -6

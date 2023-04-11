@@ -83,7 +83,7 @@ namespace ProjectA.Entity.Position {
         }
         
         public void ShooterSetup(EntityShooterInfo entityInfo, LayerMask playerLayer) {
-            gameObject.AddComponent<EnemyEntity>().Setup(entityInfo, playerLayer);
+            gameObject.AddComponent<DestructibleEntity>().Setup(entityInfo, playerLayer);
             var shoot = gameObject.AddComponent<Shoot>();
             shoot.SpawnPrefab = entityInfo.SpawnPrefab;
             shoot.ShootInterval = entityInfo.ShootInterval;

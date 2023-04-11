@@ -8,7 +8,5 @@ namespace ProjectA.Data.Status {
     public class EntityStatus : ScriptableObject {
 
         public float MaxHealth;
-        public float DamagePower;
-        public float ArmorPower;
     }
 }

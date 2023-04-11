@@ -14,6 +14,8 @@ namespace ProjectA.Managers {
     
     public class HUDManager : MonoBehaviour {
         
+        public GameObject LifePrefab;
+        public Transform LifeContainer;
         public List<GameObject> PlayerLife = new List<GameObject>();
         public TextMeshProUGUI HitCount;
 
@@ -23,6 +25,8 @@ namespace ProjectA.Managers {
         [Header("cut scene layers")]
         public Image UpLayer;
         public Image DownLayer;
+
+        private int m_playerMaxHealth;
         
         private void Awake() {
             TransitionModal.DoTransitionOut();
@@ -32,9 +36,31 @@ namespace ProjectA.Managers {
             GameManager.Instance.Dispatcher.Subscribe<OnHitCountUpdate>(OnHitCountUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnCutsceneStarted>(OnInitialCutsceneStarted);
             GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
+
+            m_playerMaxHealth = PlayerPrefs.GetInt("player_max_life", 3);
+
+            for (var i = 0; i < m_playerMaxHealth; i++) {
+                var life = Instantiate(LifePrefab, LifeContainer);
+                PlayerLife.Add(life.transform.GetChild(0).gameObject);
+            }
+        }
+
+        private void OnDisable() {
+            if (!GameManager.Instance) {
+                return;
+            }
+            
+            GameManager.Instance.Dispatcher.Unsubscribe<OnPlayerLifeUpdate>(OnPlayerLifeUpdate);
+            GameManager.Instance.Dispatcher.Unsubscribe<OnHitCountUpdate>(OnHitCountUpdate);
+            GameManager.Instance.Dispatcher.Unsubscribe<OnCutsceneStarted>(OnInitialCutsceneStarted);
+            GameManager.Instance.Dispatcher.Unsubscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
 
         private void OnInitialCutsceneStarted(OnCutsceneStarted arg0) {
+            foreach (var life in PlayerLife)  {
+                life.transform.parent.gameObject.SetActive(false);
+            }
+            
             UpLayer.rectTransform.DOAnchorPosY(261f, 1f);
             DownLayer.rectTransform.DOAnchorPosY(-555f, 1f);
         }
@@ -44,6 +70,10 @@ namespace ProjectA.Managers {
             DownLayer.rectTransform.DOAnchorPosY(-830f, 1f);
             foreach (var settings in PlayerSettings) {
                 settings.SetActive(true);
+            }
+            
+            foreach (var life in PlayerLife) {
+                life.transform.parent.gameObject.SetActive(true);
             }
         }
 

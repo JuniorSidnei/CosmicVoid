@@ -12,11 +12,10 @@ namespace ProjectA.Entity {
             GameManager.Instance.Dispatcher.Emit(new OnReflectEntity(this, isCharged));
         }
 
-        public override void ProcessPlayerDamage(bool isCharged) { 
-
+        public override void ProcessPlayerDamage(bool isCharged) {
             GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.MEDIUM));
             Destroy(this);
-            GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
+            GameManager.Instance.Dispatcher.Emit(new OnProjectileEntityRelease(GetComponent<EntityPosition>()));
         }
     }
 }
