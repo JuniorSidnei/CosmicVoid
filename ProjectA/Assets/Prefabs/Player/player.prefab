@@ -319,3 +319,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e61a1dcc98a42b48bbf6ad809ab7390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginalLightColor: {r: 0, g: 0.99607843, b: 0.99607843, a: 1}
+  StunnedLightcolor: {r: 0.31764707, g: 0.29411766, b: 0.011764706, a: 1}

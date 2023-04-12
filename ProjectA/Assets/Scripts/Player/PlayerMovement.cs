@@ -14,7 +14,7 @@ namespace ProjectA.Movement {
         }
 
         public enum PlayerStates {
-            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE, CHARGED, UP_CHARGED, DOWN_CHARGED, STUNNED, RUNNING
+            MOVEUP, MOVEDOWN, ATTACK, CHARGEDATTACK, IDLE, CHARGED, UP_CHARGED, DOWN_CHARGED, STUNNED, RUNNING, HIT
         }
         
         public InputManager InputManager;

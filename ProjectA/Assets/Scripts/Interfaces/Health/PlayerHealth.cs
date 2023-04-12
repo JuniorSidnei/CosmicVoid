@@ -1,4 +1,5 @@
 using ProjectA.Modals;
+using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace ProjectA.Interface {
                 PauseModal.Instance.PauseGame(true);
             }
             
+            GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.HIT));
             GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
         }
     }

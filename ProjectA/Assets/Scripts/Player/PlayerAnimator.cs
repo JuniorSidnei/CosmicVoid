@@ -2,23 +2,25 @@ using System;
 using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-namespace ProjectA.Animator {
+namespace ProjectA.Animators {
 
     public class PlayerAnimator : MonoBehaviour {
-
-        private UnityEngine.Animator m_animator;
-
-        private static readonly int m_idle = UnityEngine.Animator.StringToHash("idle");
-        private static readonly int m_moveUp = UnityEngine.Animator.StringToHash("move_up");
-        private static readonly int m_moveDown = UnityEngine.Animator.StringToHash("move_down");
-        private static readonly int m_attack = UnityEngine.Animator.StringToHash("attack");
-        private static readonly int m_chargedAttack = UnityEngine.Animator.StringToHash("charged_attack");
-        private static readonly int m_charged = UnityEngine.Animator.StringToHash("charged");
-        private static readonly int m_moveUpCharged = UnityEngine.Animator.StringToHash("move_up_charged");
-        private static readonly int m_moveDownCharged = UnityEngine.Animator.StringToHash("move_down_charged");
-        private static readonly int m_stunned = UnityEngine.Animator.StringToHash("stunned");
-        private static readonly int m_running = UnityEngine.Animator.StringToHash("running");
+        
+        private Animator m_animator;
+        
+        private static readonly int m_idle = Animator.StringToHash("idle");
+        private static readonly int m_moveUp = Animator.StringToHash("move_up");
+        private static readonly int m_moveDown = Animator.StringToHash("move_down");
+        private static readonly int m_attack = Animator.StringToHash("attack");
+        private static readonly int m_chargedAttack = Animator.StringToHash("charged_attack");
+        private static readonly int m_charged = Animator.StringToHash("charged");
+        private static readonly int m_moveUpCharged = Animator.StringToHash("move_up_charged");
+        private static readonly int m_moveDownCharged = Animator.StringToHash("move_down_charged");
+        private static readonly int m_stunned = Animator.StringToHash("stunned");
+        private static readonly int m_running = Animator.StringToHash("running");
+        private static readonly int m_hit = Animator.StringToHash("hit");
 
         private PlayerMovement.PlayerStates m_playerCurrentState;
         
@@ -35,7 +37,7 @@ namespace ProjectA.Animator {
         }
         
         private void Awake() {
-            m_animator = GetComponent<UnityEngine.Animator>();
+            m_animator = GetComponent<Animator>();
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
         }
 
@@ -70,6 +72,8 @@ namespace ProjectA.Animator {
                     return m_stunned;
                 case PlayerMovement.PlayerStates.RUNNING:
                     return m_running;
+                case PlayerMovement.PlayerStates.HIT:
+                    return m_hit;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }

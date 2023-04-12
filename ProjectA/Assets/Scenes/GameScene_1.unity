@@ -590,7 +590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868136996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -7.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1606,6 +1606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 1082760180}
   ExplosionPosition: {fileID: 868136997}
-  ExplosionPrefab: {fileID: 3079403843230058911, guid: 5e9a186caf18e46458204ad7a0b333d4, type: 3}
+  ExplosionPrefab: {fileID: 131799764172864181, guid: d4eb52042f60bb348982695b49d1b6ac, type: 3}
   PlayerWalkPositionStart: -3.79
   PlayerWalkPositionFinish: -6
+  ExclamationPrefab: {fileID: 355915859418663681, guid: 624f5d3b2a7ab9b4f8641270af4f46e1, type: 3}

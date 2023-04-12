@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using ProjectA.Animator;
-using ProjectA.Data.Wave;
-using ProjectA.Entity.ProcessDamage;
+using ProjectA.Animators;
 using ProjectA.Input;
 using ProjectA.Interface;
 using ProjectA.Movement;
