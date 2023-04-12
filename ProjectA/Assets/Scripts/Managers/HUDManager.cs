@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using ProjectA.Controllers;
-using ProjectA.Modals;
-using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using TMPro;
 using UnityEngine;
@@ -14,9 +10,11 @@ namespace ProjectA.Managers {
     
     public class HUDManager : MonoBehaviour {
         
+        [Header("life settings")]
         public GameObject LifePrefab;
         public Transform LifeContainer;
         public List<GameObject> PlayerLife = new List<GameObject>();
+
         public TextMeshProUGUI HitCount;
 
         [Header("player settings")]
@@ -55,7 +53,7 @@ namespace ProjectA.Managers {
             GameManager.Instance.Dispatcher.Unsubscribe<OnCutsceneStarted>(OnInitialCutsceneStarted);
             GameManager.Instance.Dispatcher.Unsubscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
-
+  
         private void OnInitialCutsceneStarted(OnCutsceneStarted arg0) {
             foreach (var life in PlayerLife)  {
                 life.transform.parent.gameObject.SetActive(false);

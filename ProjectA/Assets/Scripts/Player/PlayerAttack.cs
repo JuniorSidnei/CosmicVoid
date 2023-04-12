@@ -48,6 +48,7 @@ namespace ProjectA.Attack {
             
             m_elapsedtimeCharged = 0;
             m_isChargingAttack = false;
+            m_isCharged = false;
         }
 
         private void StartAttack() {
@@ -63,7 +64,7 @@ namespace ProjectA.Attack {
             if (m_elapsedtimeCharged <= m_chargedAttackTreshold) {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.ATTACK));
                 Attack();
-            } else if (m_elapsedtimeCharged > m_chargedAttackTreshold && m_elapsedtimeCharged > TimeToChargedAttack) {
+            } else if (m_elapsedtimeCharged > m_chargedAttackTreshold && m_isCharged) {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.CHARGEDATTACK));
                 Attack();
             }
@@ -81,8 +82,13 @@ namespace ProjectA.Attack {
             if(m_elapsedAttackCooldown > 0) return;
 
             if (m_elapsedAttackCooldown <= 0) m_elapsedAttackCooldown = 0;
-            
-            if (!m_isChargingAttack) return;
+
+            if (!m_isChargingAttack) {
+                m_elapsedtimeCharged -= Time.deltaTime;
+
+                if (m_elapsedtimeCharged <= 0) m_elapsedtimeCharged = 0;
+                return;
+            }
 
             m_elapsedtimeCharged += Time.deltaTime;
 

@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
-using ProjectA.Data.Wave;
 using ProjectA.Entity;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
-using ProjectA.Interface;
 using ProjectA.Movement;
-using UnityEngine;
 
 public enum ShakeForce {
     BASIC, MEDIUM, STRONG
@@ -25,7 +19,15 @@ public class OnPlayerLifeUpdate {
 
     public int CurrentLife;
 }
-    
+
+public class OnUpdateChargeFill {
+    public OnUpdateChargeFill(float currentFill) {
+        CurrentFill = currentFill;
+    }
+
+    public float CurrentFill;
+}
+
 public class OnPlayerStun { }
 
 public class OnPlayerStateChange {
