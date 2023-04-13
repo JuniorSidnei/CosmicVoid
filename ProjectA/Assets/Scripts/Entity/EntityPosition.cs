@@ -45,9 +45,9 @@ namespace ProjectA.Entity.Position {
             var transformLocalPosition = transform.localPosition;
 
             transformLocalPosition.y = position switch {
-                WaveData.EntityPosition.Up => 2.5f,
-                WaveData.EntityPosition.Middle => .5f,
-                WaveData.EntityPosition.Down => -1.5f,
+                WaveData.EntityPosition.Up => 2.3f,
+                WaveData.EntityPosition.Middle => .2f,
+                WaveData.EntityPosition.Down => -2f,
                 _ => throw new ArgumentOutOfRangeException(nameof(position), position, null)
             };
 
@@ -83,11 +83,11 @@ namespace ProjectA.Entity.Position {
         }
         
         public void ShooterSetup(EntityShooterInfo entityInfo, LayerMask playerLayer) {
-            gameObject.AddComponent<DestructibleEntity>().Setup(entityInfo, playerLayer);
+            gameObject.AddComponent<ShooterEntity>().Setup(entityInfo, playerLayer);
             var shoot = gameObject.AddComponent<Shoot>();
             shoot.SpawnPrefab = entityInfo.SpawnPrefab;
             shoot.ShootInterval = entityInfo.ShootInterval;
-            shoot.Spawn = new Vector3(-0.809f, 0f, 0f);
+            shoot.Spawn = new Vector3(-0.809f, 0.5f, 0f);
         }
         
         public void LinkerSetup(EntityInfo entityInfo, LayerMask playerLayer) {

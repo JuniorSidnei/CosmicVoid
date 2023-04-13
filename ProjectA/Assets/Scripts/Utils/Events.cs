@@ -1,3 +1,4 @@
+using ProjectA.Data.Wave;
 using ProjectA.Entity;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
@@ -120,6 +121,14 @@ public class OnCameraScreenShakeWithValues {
 public class OnBossStartAttack { }
 public class OnBossStopAttack { }
 public class OnBossRageMode { }
+
+public class OnAnimateShootPosition {
+    public OnAnimateShootPosition(WaveData.EntityInfo entityInfo) {
+        EntityInfo = entityInfo;
+    }
+
+    public WaveData.EntityInfo EntityInfo;
+}
 
 public class OnShootLaser {
     public OnShootLaser(LaserPosition type) {

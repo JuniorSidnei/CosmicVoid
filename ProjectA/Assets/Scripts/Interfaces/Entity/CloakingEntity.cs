@@ -5,7 +5,9 @@ using ProjectA.Entity.ProcessDamage;
 using ProjectA.Generator;
 using ProjectA.Interface;
 using ProjectA.Managers;
+using ProjectA.Movement;
 using ProjectA.Scriptables;
+using ProjectA.Singletons.Managers;
 using UnityEngine;
 
 namespace ProjectA.Entity {
@@ -15,17 +17,16 @@ namespace ProjectA.Entity {
         private List<EntityPosition> m_cloakingEntities = new List<EntityPosition>();
         
         public override void ProcessDamage(bool isCharged) {
-            Debug.Log("eu morri");
+            GameManager.Instance.UpdateHitCount();
+            base.ProcessDamage(isCharged);
         }
 
         public override void ProcessPlayerDamage(bool isCharged) {
-            Debug.Log("player se fudeu");
+            GameManager.Instance.UpdateHitCount(true);
+            GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.STUNNED));
+            base.ProcessPlayerDamage(isCharged);
         }
-
-        public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
-            Debug.Log("eu morri 2");
-        }
-
+        
         public override void Setup(EntityInfo info, LayerMask playerLayer) {
             base.Setup(info, playerLayer);
             name = WaveData.EntityType.FakeCloaking.ToString();

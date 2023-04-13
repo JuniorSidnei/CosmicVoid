@@ -18,17 +18,26 @@ namespace ProjectA.Entity.ProcessDamage {
         public LayerMask EntityLayer;
 
         public bool IsReflected { get; set; }
+
+        public virtual void ProcessDamage(bool isCharged) {
+            Clean();
+        }
+
+        public virtual void ProcessPlayerDamage(bool isCharged) {
+           Clean();
+        }
+
+        public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) {
+           Clean();
+        }
         
-        public virtual void ProcessDamage(bool isCharged) { }
-        public virtual void ProcessPlayerDamage(bool isCharged) { }
-        public virtual void ProcessProjectileDamage(bool isReflected, int damagePower) { }
         public virtual void ProcessProjectileDamage(ReflectiveEntity reflectiveEntity) { }
 
         public virtual void Setup(EntityInfo info, List<LayerMask> layers) {
             PlayerLayer = layers[0];
             EntityLayer = layers[1];
             DamagePower = info.DamagePower;
-            transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
+            transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
         }
@@ -36,7 +45,7 @@ namespace ProjectA.Entity.ProcessDamage {
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
             PlayerLayer = playerLayer;
             DamagePower = info.DamagePower;
-            transform.GetChild(0).GetComponent<UnityEngine.Animator>().runtimeAnimatorController = info.Controller;
+            transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
         }
@@ -60,6 +69,12 @@ namespace ProjectA.Entity.ProcessDamage {
             }
         }
 
+        private void Clean() {
+            GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
+            Destroy(this);
+            gameObject.SetActive(false);     
+        }
+        
         private void ReleaseEntity() {
             
             var type = GetComponent<EntityPosition>().Type;
@@ -74,7 +89,7 @@ namespace ProjectA.Entity.ProcessDamage {
                     Destroy(GetComponent<EnemyEntity>());
                     break;
                 case WaveData.EntityType.Shooter:
-                    Destroy(GetComponent<DestructibleEntity>());
+                    Destroy(GetComponent<ShooterEntity>());
                     Destroy(GetComponent<Shoot>());
                     Destroy(transform.GetChild(1).gameObject);
                     break;

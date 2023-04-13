@@ -1,5 +1,4 @@
 using ProjectA.Data.Wave;
-using ProjectA.Entity;
 using ProjectA.Managers;
 using UnityEngine;
 
@@ -15,12 +14,14 @@ namespace ProjectA.Actions {
         private GameObject m_spawnGameObject;
         private float m_minimumDistanceToShoot = 5f;
         private Transform m_playerTransform;
+        private Animator m_animator;
         
         private void Start() {
             m_shootInterval = ShootInterval;
             m_spawnGameObject = Instantiate(SpawnPrefab, transform);
             m_spawnGameObject.transform.localPosition = Spawn;
             m_playerTransform = GameObject.FindWithTag("Player").transform;
+            m_animator = GetComponentInChildren<Animator>();
         }
 
         private void Update() {
@@ -34,6 +35,12 @@ namespace ProjectA.Actions {
         }
 
         private void ShootProjectile() {
+            m_animator.CrossFade("shoot", 0.0f);
+            Invoke(nameof(SpawnProjectile), 0.2f);
+            m_shootInterval = ShootInterval;
+        }
+
+        private void SpawnProjectile() {
             var projectile = SpawnManager.Instance.ProjectilesPool.GetFromPool();
             projectile.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ReflectiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
             projectile.Type = WaveData.EntityType.Reflective;
@@ -42,7 +49,6 @@ namespace ProjectA.Actions {
             var localPositionX = transform.localPosition.x + m_spawnGameObject.transform.localPosition.x;
             var localPositionY = transform.localPosition.y;
             projectile.transform.localPosition = new Vector3(localPositionX, localPositionY, 1f);
-            m_shootInterval = ShootInterval;
         }
     }
 }

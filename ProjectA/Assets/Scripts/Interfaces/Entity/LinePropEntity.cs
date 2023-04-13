@@ -17,7 +17,6 @@ namespace ProjectA.Entity {
         
         public int Damage { get; set; }
         
-        
         public void SetPositions(Vector3 parent, Vector3 child, int randomPositionSetter) {
             m_lineRenderer.SetPosition(0, parent);    
             m_lineRenderer.SetPosition(1, child);

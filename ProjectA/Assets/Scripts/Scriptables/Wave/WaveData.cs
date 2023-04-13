@@ -28,7 +28,7 @@ namespace ProjectA.Data.Wave {
 
         public bool IsTutorialWave;
         public float InitialTimeSpawn;
-        public WavePrefabs WavePrefabs;
+        public GameObject Boss;
         
         public List<EntityInfo> EntityInfos = new List<EntityInfo>();
     }

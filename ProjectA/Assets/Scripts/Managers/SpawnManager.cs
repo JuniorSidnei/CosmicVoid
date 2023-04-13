@@ -79,7 +79,7 @@ namespace ProjectA.Managers {
                     entity.CloakingSetup(EntitiesPool.FakeCloakingEntity, EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Boss:
-                    Instantiate(WaveData.WavePrefabs.Boss, transform);
+                    Instantiate(WaveData.Boss, transform);
                     StartCoroutine(nameof(SpawnBoss));
                     m_waveFinishedSpawn = true;
                     EntitiesPool.Release(entity);

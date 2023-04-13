@@ -1,8 +1,4 @@
-﻿using System;
-using ProjectA.Data.Wave;
-using ProjectA.Entity;
-using ProjectA.Entity.Position;
-using ProjectA.Interface;
+﻿using ProjectA.Entity.Position;
 using ProjectA.Scriptables;
 using ProjectA.Singletons.Managers;
 using ProjectA.Utils;

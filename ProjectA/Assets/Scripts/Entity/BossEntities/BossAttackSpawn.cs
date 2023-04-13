@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ProjectA.Data.Wave;
@@ -13,7 +14,8 @@ namespace ProjectA.Controllers {
 
         public List<WaveData> BossPatternsDatas;
         public WaveData BossPatternRageData;
-        
+        public GameObject MuzzleShootReflectivePrefab;
+        public GameObject MuzzleShootHardPrefab;
         protected Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
         
         private float m_timeToNextSpawn;
@@ -105,26 +107,43 @@ namespace ProjectA.Controllers {
                     return;
             }
             
+            //GameManager.Instance.Dispatcher.Emit(new OnAnimateShootPosition(entityInfo));
+            
             EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
-
+            var portal = MuzzleShootReflectivePrefab;
+            
             switch (entityInfo.Type) {
                 case WaveData.EntityType.Reflective:
                     entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ReflectiveBossEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
                 case WaveData.EntityType.HardProjectile:
+                    portal = MuzzleShootHardPrefab;
                     entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Explosive:
                     entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
                 case WaveData.EntityType.ShieldBreaker:
-                    GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
+                    //GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
                     entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ShieldBreakerEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
             }
-
-            entity.SetPositionAndTypeWithX(entityInfo, transform, transform.localPosition.x - 3f);    
             
+            
+            entity.SetPositionAndTypeWithX(entityInfo, transform,  -2f);
+
+            var offsetPosition = new Vector3(4f, 0f, 1);
+            
+            switch (entityInfo.Position) {
+                case WaveData.EntityPosition.Up:
+                    offsetPosition.y = 2.3f;
+                    break;
+                case WaveData.EntityPosition.Down:
+                    offsetPosition.y = -2.5f;
+                    break;
+            }
+
+            Instantiate(portal, offsetPosition, Quaternion.identity, transform);
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
             SelectRandomPattern();
         }
@@ -143,6 +162,31 @@ namespace ProjectA.Controllers {
                     EnqueueWave(BossPatternRageData);
                     break;
             }
+        }
+
+        public void Shoot(WaveData.EntityInfo entityInfo) {
+            EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
+
+            switch (entityInfo.Type) {
+                case WaveData.EntityType.Reflective:
+                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ReflectiveBossEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
+                case WaveData.EntityType.HardProjectile:
+                    entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
+                    break;
+                case WaveData.EntityType.Explosive:
+                    entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
+                case WaveData.EntityType.ShieldBreaker:
+                    //GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
+                    entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ShieldBreakerEntity, SpawnManager.Instance.EntitiesPool.Layers());
+                    break;
+            }
+
+            entity.SetPositionAndTypeWithX(entityInfo, transform, transform.localPosition.x);    
+            
+            m_timeToNextSpawn = entityInfo.TimeToNextEntity;
+            SelectRandomPattern();
         }
     }
 }
