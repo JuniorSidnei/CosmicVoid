@@ -104,6 +104,7 @@ MonoBehaviour:
   EntityLayer:
     serializedVersion: 2
     m_Bits: 0
+  OnDieParticlePrefab: {fileID: 0}
   XPosition: -4
   WillOverride: 0
 --- !u!114 &7373194903762297595
@@ -118,8 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6c38b7273380e4ba1b177d0534ae91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitsHealth: 2
-  RageHpActivation: 1
+  HitsHealth: 100
+  RageHpActivation: 25
+  Animator: {fileID: 2356880383258573860}
 --- !u!114 &3875058530461329329
 MonoBehaviour:
   m_ObjectHideFlags: 0

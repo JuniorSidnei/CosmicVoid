@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -11,6 +8,7 @@ namespace ProjectA.Entity.Boss {
 
         public int HitsHealth;
         public int RageHpActivation;
+        public Animator Animator;
         
         private EntityProcessDamage m_entityProcessDamage;
         
@@ -23,7 +21,7 @@ namespace ProjectA.Entity.Boss {
             if (ev.Entity != m_entityProcessDamage || ev.WillOverride) return;
 
             HitsHealth -= ev.Damage;
-            
+            Animator.CrossFade("hit", 0.1f);
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.MEDIUM));
             
             if (HitsHealth <= RageHpActivation) {

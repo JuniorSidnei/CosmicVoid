@@ -14,7 +14,8 @@ namespace ProjectA.Attack {
         public float TimeToChargedAttack;
         public float AttackCooldown;
         public LayerMask EntityLayer;
-
+        public GameObject HitEffectPrefab;
+        
         private float m_elapsedtimeCharged;
         private bool m_isChargingAttack;
         private float m_chargedAttackTreshold = .5f;
@@ -105,6 +106,9 @@ namespace ProjectA.Attack {
             var o = hit.collider.gameObject;
             if(o == null) return;
             
+            var transformPosition = transform.position;
+            var newPosition = new Vector3(transformPosition.x + 1f, transformPosition.y);
+            Instantiate(HitEffectPrefab, newPosition, Quaternion.identity, transform);
             o.GetComponent<IDamageable>()?.ProcessDamage(IsCharged());
             m_isCharged = false;
         }

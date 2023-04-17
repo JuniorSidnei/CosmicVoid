@@ -8,7 +8,9 @@ namespace ProjectA.Interface {
     public class PlayerHealth : MonoBehaviour {
 
         public int MaxHealth = 3;
-
+        public GameObject OnHitPrefab;
+        public GameObject OnDeathPrefab;
+        
         private int m_currentHealth;
         
         private void Awake() {
@@ -18,11 +20,13 @@ namespace ProjectA.Interface {
 
         private void OnDamagePlayer(OnDamagePlayer ev) {
             m_currentHealth -= ev.Damage;
-
+            Instantiate(OnHitPrefab, transform.position, Quaternion.identity, transform);
+            
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ev.ShakeForce));
 
             if (m_currentHealth <= 0) {
                 m_currentHealth = 0;
+                Instantiate(OnDeathPrefab, transform.position, Quaternion.identity, transform);
                 PauseModal.Instance.PauseGame(true);
             }
             

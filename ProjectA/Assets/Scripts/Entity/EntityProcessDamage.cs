@@ -16,7 +16,8 @@ namespace ProjectA.Entity.ProcessDamage {
         public int DamagePower;
         public LayerMask PlayerLayer;
         public LayerMask EntityLayer;
-
+        public GameObject OnDieParticlePrefab;
+        
         public bool IsReflected { get; set; }
 
         public virtual void ProcessDamage(bool isCharged) {
@@ -40,6 +41,7 @@ namespace ProjectA.Entity.ProcessDamage {
             transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
+            OnDieParticlePrefab = info.EntityExplosionParticle;
         }
         
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
@@ -48,6 +50,7 @@ namespace ProjectA.Entity.ProcessDamage {
             transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = info.Controller;
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
+            OnDieParticlePrefab = info.EntityExplosionParticle;
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -70,9 +73,10 @@ namespace ProjectA.Entity.ProcessDamage {
         }
 
         private void Clean() {
+            Instantiate(OnDieParticlePrefab, transform.position, Quaternion.identity);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
             Destroy(this);
-            gameObject.SetActive(false);     
+            gameObject.SetActive(false);
         }
         
         private void ReleaseEntity() {

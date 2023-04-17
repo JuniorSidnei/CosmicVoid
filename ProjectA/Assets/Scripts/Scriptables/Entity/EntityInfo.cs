@@ -11,5 +11,6 @@ namespace ProjectA.Scriptables {
         public float Speed;
         public LayerMask PlayerLayer;
         public Color EntityColor;
+        public GameObject EntityExplosionParticle;
     }
 }

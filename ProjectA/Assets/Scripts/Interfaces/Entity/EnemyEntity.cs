@@ -1,10 +1,6 @@
-using System;
-using ProjectA.Actions;
-using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
-using UnityEngine;
 
 namespace ProjectA.Interface {
     
@@ -22,7 +18,7 @@ namespace ProjectA.Interface {
             }
             else {
                 GameManager.Instance.UpdateHitCount();
-                ReleaseEntity();
+                base.ProcessDamage(true);
             }
         }
 

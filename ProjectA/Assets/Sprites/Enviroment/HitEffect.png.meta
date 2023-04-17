@@ -109,8 +109,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 46
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: HitEffect_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 53
         y: 0
-        width: 16
-        height: 16
+        width: 83
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,10 +149,10 @@ TextureImporter:
       name: HitEffect_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 142
         y: 0
-        width: 16
-        height: 16
+        width: 95
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,48 +162,6 @@ TextureImporter:
       bones: []
       spriteID: 6a0cf383d61e8804bac95987af7430d5
       internalID: 1031974246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HitEffect_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e386c4cdedc7a5429c5fcf04e0d43f8
-      internalID: 432368550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HitEffect_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ffb627612e90bc4b9fd0537eeee5327
-      internalID: 399952188
       vertices: []
       indices: 
       edges: []
@@ -220,8 +178,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       HitEffect_2: 1031974246
-      HitEffect_3: 432368550
-      HitEffect_4: 399952188
       HitEffect_0: 1632502536
       HitEffect_1: -1253536068
   spritePackingTag: 

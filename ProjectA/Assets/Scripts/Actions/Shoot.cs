@@ -12,7 +12,7 @@ namespace ProjectA.Actions {
 
         private float m_shootInterval;
         private GameObject m_spawnGameObject;
-        private float m_minimumDistanceToShoot = 5f;
+        private float m_minimumDistanceToShoot = 10f;
         private Transform m_playerTransform;
         private Animator m_animator;
         
@@ -47,7 +47,7 @@ namespace ProjectA.Actions {
             projectile.transform.SetParent(SpawnManager.Instance.transform);
             projectile.name = projectile.Type.ToString();
             var localPositionX = transform.localPosition.x + m_spawnGameObject.transform.localPosition.x;
-            var localPositionY = transform.localPosition.y;
+            var localPositionY = transform.localPosition.y + 0.25f;
             projectile.transform.localPosition = new Vector3(localPositionX, localPositionY, 1f);
         }
     }

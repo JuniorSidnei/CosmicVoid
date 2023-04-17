@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd9e397601ea45c4499f4e477aef2ead, type: 3}
-  m_Name: Shooter_info
+  m_Name: Shooter_info_2
   m_EditorClassIdentifier: 
-  Controller: {fileID: 9100000, guid: 70dbc92f7b0a00c48b324e9c930e5d2c, type: 2}
+  Controller: {fileID: 9100000, guid: c034fd81a3f7c1d43b7d3c760ede247f, type: 2}
   DamagePower: 1
   Speed: 6
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
   EntityColor: {r: 1, g: 0.5921569, b: 0.003921569, a: 1}
+  EntityExplosionParticle: {fileID: 994276049108304709, guid: 324b5fb5ca0c1ed45be8e91b1ef4e641, type: 3}
   SpawnPrefab: {fileID: 4086120910675811958, guid: 1b0fd4700dc462a4ea13bde7fd8a0d49, type: 3}
   ShootInterval: 1.6

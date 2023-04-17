@@ -24,7 +24,8 @@ namespace ProjectA.Managers {
         private int m_currentEntityIndex = 0;
         private bool m_waveFinishedSpawn;
         private bool m_isBossSpawned;
-
+        private int m_debugIndex;
+        
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
         }
@@ -88,7 +89,11 @@ namespace ProjectA.Managers {
 
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
             m_currentEntityIndex += 1;
-
+            
+            Debug.Log("spawn index: " + m_debugIndex);
+            m_debugIndex += 1;
+            
+            
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;
             
             m_waveFinishedSpawn = true;
