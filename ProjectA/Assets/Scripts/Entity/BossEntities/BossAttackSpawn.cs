@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using ProjectA.Data.Wave;
@@ -16,6 +15,8 @@ namespace ProjectA.Controllers {
         public WaveData BossPatternRageData;
         public GameObject MuzzleShootReflectivePrefab;
         public GameObject MuzzleShootHardPrefab;
+        public bool UseReplacedTransformSpawn;
+        public Transform ReplacedTransformSpawn;
         protected Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
         
         private float m_timeToNextSpawn;
@@ -110,6 +111,8 @@ namespace ProjectA.Controllers {
             //GameManager.Instance.Dispatcher.Emit(new OnAnimateShootPosition(entityInfo));
             
             EntityPosition entity = SpawnManager.Instance.ProjectilesPool.GetFromPool();
+            entity.transform.localScale = Vector3.one;
+            
             var portal = MuzzleShootReflectivePrefab;
             
             switch (entityInfo.Type) {
@@ -129,17 +132,16 @@ namespace ProjectA.Controllers {
                     break;
             }
             
-            
-            entity.SetPositionAndTypeWithX(entityInfo, transform,  -2f);
+            entity.SetPositionAndTypeWithX(entityInfo, UseReplacedTransformSpawn ? ReplacedTransformSpawn : transform,  -2f);
 
-            var offsetPosition = new Vector3(4f, 0f, 1);
+            var offsetPosition = new Vector3(4f, UseReplacedTransformSpawn ? 0.5f : 0f, 1);
             
             switch (entityInfo.Position) {
                 case WaveData.EntityPosition.Up:
-                    offsetPosition.y = 2.3f;
+                    offsetPosition.y = UseReplacedTransformSpawn ? 2.8f : 2.3f;
                     break;
                 case WaveData.EntityPosition.Down:
-                    offsetPosition.y = -2.5f;
+                    offsetPosition.y = UseReplacedTransformSpawn ? -2.0f : -2.5f;
                     break;
             }
 

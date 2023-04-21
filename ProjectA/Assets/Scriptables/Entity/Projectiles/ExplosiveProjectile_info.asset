@@ -18,3 +18,5 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
+  EntityColor: {r: 0.22745098, g: 0.72156864, b: 0.31764707, a: 1}
+  EntityExplosionParticle: {fileID: 131799764172864181, guid: d4eb52042f60bb348982695b49d1b6ac, type: 3}

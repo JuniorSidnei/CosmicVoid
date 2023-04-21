@@ -1,7 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using ProjectA.Animators;
 using ProjectA.Entity;
 using ProjectA.Entity.Boss;
 using ProjectA.Singletons.Managers;
@@ -15,6 +15,9 @@ namespace ProjectA.Actions {
         public List<BossWeakSpot> WeakSpots;
         public int HitsToWeakSpot;
         public float XPosition;
+        public GameObject FallSmokePrefab;
+        public Boss2Animator Boss2Animator;
+        public GameObject DeathParticlePrefab;
         
         private int m_currentHitsToWeakSpot;
         private float m_timeStaggered = 4f;
@@ -22,7 +25,8 @@ namespace ProjectA.Actions {
 
         protected override void OnHitBoss(OnHitBoss ev) {
             HitsHealth -= ev.Damage;
-
+            Boss2Animator.AnimateHit();
+            
             if (!m_triggerRageMode) {
                 m_currentHitsToWeakSpot -= 1;    
             }
@@ -31,20 +35,30 @@ namespace ProjectA.Actions {
 
             if (m_currentHitsToWeakSpot <= 0) {
                 m_currentHitsToWeakSpot = HitsToWeakSpot;
-                var randomSpot = Random.Range(0, WeakSpots.Count);
-
                 GameManager.Instance.Dispatcher.Emit(new OnBossStopAttack());
-                transform.DOLocalMoveX(XPosition, 3f).OnComplete(() => {
-                    WeakSpots[randomSpot].SetOpen();
+
+                Boss2Animator.AnimateFall(() => {
+                    transform.localPosition = new Vector3(transform.localPosition.x, 0f, 1f);
+                    var transformPosition = transform.position;
+                    var particlePosition = new Vector3(transformPosition.x - 2f, transformPosition.y - 4f, transformPosition.z);
+                    Instantiate(FallSmokePrefab, particlePosition, Quaternion.identity, transform);
+                    GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.MEDIUM));
+                    var randomSpot = Random.Range(0, WeakSpots.Count);
+
+                    transform.DOLocalMoveX(XPosition, 3f).OnComplete(() => {
+                        WeakSpots[randomSpot].SetOpen();
                     
-                    var timeStaggeredCoroutine = WaitDelayStaggered(m_timeStaggered);
-                    StartCoroutine(timeStaggeredCoroutine);
+                        var timeStaggeredCoroutine = WaitDelayStaggered(m_timeStaggered);
+                        StartCoroutine(timeStaggeredCoroutine);
+                    });
                 });
             }
             
             if (HitsHealth <= 0) {
-                //play boss death animation
-                GameManager.Instance.OnBossDeath();
+                GameManager.Instance.Dispatcher.Emit(new OnBossStopAttack());
+                GameManager.Instance.InputManager.PlayerActions.Disable();
+                Boss2Animator.AnimateDeath();
+                Invoke(nameof(SpawnParticleEndStage),0.4f);
             }
         }
 
@@ -56,6 +70,7 @@ namespace ProjectA.Actions {
             }
             
             m_currentHitsToWeakSpot = HitsToWeakSpot;
+            transform.localPosition = new Vector3(transform.localPosition.x, 1.3f, 1f);
         }
 
         private void OnWeakSpotDeath(OnWeakSpotDeath ev) {
@@ -83,7 +98,18 @@ namespace ProjectA.Actions {
                 GameManager.Instance.Dispatcher.Emit(new OnBossStartAttack());    
             }
             
-            transform.DOLocalMoveX(-2f, 3f);
+            Boss2Animator.AnimateStandUp(() => {
+                transform.localPosition = new Vector3(-2f, 1.3f, 1f);    
+            });
+        }
+
+        private void SpawnParticleEndStage() {
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShakeWithValues(0.6f, 2f));
+            var transformPosition = transform.position;
+            var particlePosition = new Vector3(transformPosition.x - 2f, transformPosition.y - 2f, transformPosition.z);
+            Instantiate(DeathParticlePrefab, particlePosition, Quaternion.identity);
+            GameManager.Instance.OnBossDeath();
+            Destroy(gameObject);
         }
     }
 }

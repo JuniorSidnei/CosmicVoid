@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6716933972539869292, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.39
+      value: -8.06
       objectReference: {fileID: 0}
     - target: {fileID: 6716933972539869292, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_LocalPosition.y
@@ -641,7 +641,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e3c2388a9170d46bde85fc0373b861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveData: {fileID: 11400000, guid: 44440706d4df9a942a3cc43a8f0ae4d2, type: 2}
+  WaveData: {fileID: 11400000, guid: fc81736174f78814f856d45fb966543e, type: 2}
   EntitiesPool: {fileID: 1146139864}
   ProjectilesPool: {fileID: 1146139865}
 --- !u!114 &1146139864
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 5
+    OrthographicSize: 4
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0

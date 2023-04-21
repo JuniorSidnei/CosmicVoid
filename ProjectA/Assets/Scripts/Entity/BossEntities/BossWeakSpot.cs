@@ -1,4 +1,3 @@
-using ProjectA.Data.Wave;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -8,7 +7,7 @@ namespace ProjectA.Entity{
     public class BossWeakSpot : EntityProcessDamage {
         
         public int Health;
-        public UnityEngine.Animator WeakSpotAnimator;
+        public Animator WeakSpotAnimator;
         
         private int m_health;
         private BoxCollider2D m_collider;
