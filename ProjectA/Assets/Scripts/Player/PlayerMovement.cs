@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using ProjectA.Attack;
 using ProjectA.Input;
@@ -28,8 +29,31 @@ namespace ProjectA.Movement {
 
         private void Awake() {
             m_playerAttack = GetComponent<PlayerAttack>();
+            GameManager.Instance.Dispatcher.Subscribe<OnSpawnBoss>(OnSpawnBoss);
+            GameManager.Instance.Dispatcher.Subscribe<OnBossDeath>(OnBossDeath);
         }
 
+        private void OnBossDeath(OnBossDeath ev) {
+            SetPlayerMidPosition();
+        }
+
+        private void OnSpawnBoss(OnSpawnBoss ev) {
+            SetPlayerMidPosition();
+        }
+
+        private void SetPlayerMidPosition() {
+            if(Position == PlayerPosition.MID) return;
+
+            switch (Position) {
+                case PlayerPosition.UP:
+                    MoveDown();
+                    break;
+                case PlayerPosition.DOWN:
+                    MoveUp();
+                    break;
+            }    
+        }
+        
         private void Start() {
             State = PlayerStates.RUNNING;
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(State));

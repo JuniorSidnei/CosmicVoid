@@ -17,8 +17,7 @@ namespace ProjectA.Actions {
         public float XPosition;
         public GameObject FallSmokePrefab;
         public Boss2Animator Boss2Animator;
-        public GameObject DeathParticlePrefab;
-        
+
         private int m_currentHitsToWeakSpot;
         private float m_timeStaggered = 4f;
         private bool m_triggerRageMode;
@@ -58,7 +57,7 @@ namespace ProjectA.Actions {
                 GameManager.Instance.Dispatcher.Emit(new OnBossStopAttack());
                 GameManager.Instance.InputManager.PlayerActions.Disable();
                 Boss2Animator.AnimateDeath();
-                Invoke(nameof(SpawnParticleEndStage),0.4f);
+                Invoke(nameof(SpawnParticleEndStage),2.5f);
             }
         }
 

@@ -55,8 +55,8 @@ namespace ProjectA.Managers {
         }
   
         private void OnInitialCutsceneStarted(OnCutsceneStarted arg0) {
-            foreach (var life in PlayerLife)  {
-                life.transform.parent.gameObject.SetActive(false);
+            foreach (var settings in PlayerSettings)  {
+                settings.SetActive(false);
             }
             
             UpLayer.rectTransform.DOAnchorPosY(261f, 1f);
@@ -68,10 +68,6 @@ namespace ProjectA.Managers {
             DownLayer.rectTransform.DOAnchorPosY(-830f, 1f);
             foreach (var settings in PlayerSettings) {
                 settings.SetActive(true);
-            }
-            
-            foreach (var life in PlayerLife) {
-                life.transform.parent.gameObject.SetActive(true);
             }
         }
 

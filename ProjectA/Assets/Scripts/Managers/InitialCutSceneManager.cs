@@ -16,6 +16,7 @@ namespace ProjectA.Managers {
         public GameObject ExclamationPrefab;
         
         private void Start() {
+            GameManager.Instance.InputManager.DisablePlayerMovement();
             GameManager.Instance.Dispatcher.Emit(new OnCutsceneStarted());
             PlayerTransform.DOMoveX(PlayerWalkPositionStart, 2.5f).SetEase(Ease.Linear).OnComplete(() => {
                 GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.IDLE));

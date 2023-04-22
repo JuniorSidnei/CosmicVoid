@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using ProjectA.Modals;
 using ProjectA.Singletons.Managers;
 using UnityEngine;

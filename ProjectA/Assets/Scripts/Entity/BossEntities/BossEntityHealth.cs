@@ -9,6 +9,7 @@ namespace ProjectA.Entity.Boss {
         public int HitsHealth;
         public int RageHpActivation;
         public Animator Animator;
+        public GameObject DeathParticlePrefab;
         
         private EntityProcessDamage m_entityProcessDamage;
         
@@ -29,9 +30,18 @@ namespace ProjectA.Entity.Boss {
             }
 
             if (HitsHealth <= 0) {
-                //play boss death animation
-                GameManager.Instance.OnBossDeath();
+                Animator.CrossFade("death", 0.1f);
+                GameManager.Instance.Dispatcher.Emit(new OnBossStopAttack());
+                GameManager.Instance.InputManager.PlayerActions.Disable();
+                Invoke(nameof(SpawnParticleEndStage),2.5f);
             }
+        }
+        
+        private void SpawnParticleEndStage() {
+            GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShakeWithValues(0.6f, 2f));
+            Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity);
+            GameManager.Instance.OnBossDeath();
+            Destroy(gameObject);
         }
     }
 }
