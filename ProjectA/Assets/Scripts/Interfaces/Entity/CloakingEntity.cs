@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
-using ProjectA.Generator;
 using ProjectA.Interface;
 using ProjectA.Managers;
 using ProjectA.Movement;
@@ -17,12 +16,12 @@ namespace ProjectA.Entity {
         private List<EntityPosition> m_cloakingEntities = new List<EntityPosition>();
         
         public override void ProcessDamage(bool isCharged) {
-            GameManager.Instance.UpdateHitCount();
+            GameManager.Instance.UpdateHitCount(isCharged ? 2 : 1);
             base.ProcessDamage(isCharged);
         }
 
         public override void ProcessPlayerDamage(bool isCharged) {
-            GameManager.Instance.UpdateHitCount(true);
+            GameManager.Instance.UpdateHitCount(0, true);
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.STUNNED));
             base.ProcessPlayerDamage(isCharged);
         }

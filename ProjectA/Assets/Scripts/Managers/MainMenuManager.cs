@@ -1,14 +1,13 @@
 using ProjectA.Controllers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace ProjectA.Managers {
     
     public class MainMenuManager : MonoBehaviour {
         
         public void PlayGame() {
-            TransitionModal.DoTransitionIn(() => {
+            TransitionModal.Instance.DoTransitionIn(() => {
                 var isTutorialFinished = PlayerPrefs.GetInt("tutorial_finished");
                 
                 switch (isTutorialFinished) {
@@ -27,7 +26,7 @@ namespace ProjectA.Managers {
         }
 
         private void Start() {
-            TransitionModal.DoTransitionOut();
+            TransitionModal.Instance.DoTransitionOut();
         }
     }
 }

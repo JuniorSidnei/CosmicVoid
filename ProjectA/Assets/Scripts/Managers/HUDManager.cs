@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using ProjectA.Controllers;
+using ProjectA.Modals;
 using ProjectA.Singletons.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace ProjectA.Managers {
@@ -24,16 +26,20 @@ namespace ProjectA.Managers {
         public Image UpLayer;
         public Image DownLayer;
 
+        [Header("modal")]
+        public HighScoreModal HighScoreModal;
+
         private int m_playerMaxHealth;
         
         private void Awake() {
-            TransitionModal.DoTransitionOut();
+            TransitionModal.Instance.DoTransitionOut();
             
             HitCount.text = "0";
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerLifeUpdate>(OnPlayerLifeUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnHitCountUpdate>(OnHitCountUpdate);
             GameManager.Instance.Dispatcher.Subscribe<OnCutsceneStarted>(OnInitialCutsceneStarted);
             GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
+            GameManager.Instance.Dispatcher.Subscribe<OnShowStageScore>(OnShowStageScore);
 
             m_playerMaxHealth = PlayerPrefs.GetInt("player_max_life", 3);
 
@@ -41,6 +47,15 @@ namespace ProjectA.Managers {
                 var life = Instantiate(LifePrefab, LifeContainer);
                 PlayerLife.Add(life.transform.GetChild(0).gameObject);
             }
+        }
+
+        private void OnShowStageScore(OnShowStageScore arg0) {
+            PauseModal.Instance.IsHighScoreModalOn = true;
+            HighScoreModal.Show(arg0.StageScore, arg0.NextSceneIndex, () => {
+                TransitionModal.Instance.DoTransitionIn(() => {
+                    SceneManager.LoadScene("GameScene_" + arg0.NextSceneIndex);
+                });
+            });
         }
 
         private void OnDisable() {

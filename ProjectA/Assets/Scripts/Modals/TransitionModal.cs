@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
+using ProjectA.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ProjectA.Controllers {
     
-    public class TransitionModal : MonoBehaviour {
+    public class TransitionModal : Singleton<TransitionModal> {
         
         private static Image m_transition;
         
@@ -15,13 +14,13 @@ namespace ProjectA.Controllers {
             m_transition = GetComponent<Image>();
         }
 
-        public static void DoTransitionIn(Action onFinishTransition = null) {
-            m_transition.DOFade(1, 0.8f).OnComplete(() => {
+        public void DoTransitionIn(Action onFinishTransition = null) {
+            m_transition.DOFade(1f, 0.8f).OnComplete(() => {
                 onFinishTransition?.Invoke();
             });
         }
         
-        public static void DoTransitionOut(Action onFinishTransition = null) {
+        public void DoTransitionOut(Action onFinishTransition = null) {
             m_transition.DOFade(0, 0.8f).OnComplete(() => {
                 onFinishTransition?.Invoke();
             });

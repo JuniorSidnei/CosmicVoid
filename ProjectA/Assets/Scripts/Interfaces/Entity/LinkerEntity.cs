@@ -1,4 +1,3 @@
-using System;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Managers;
@@ -20,7 +19,7 @@ namespace ProjectA.Entity {
         private int m_randomPositionSetter;
         
         public override void ProcessPlayerDamage(bool isCharged) {
-            GameManager.Instance.UpdateHitCount(true);
+            GameManager.Instance.UpdateHitCount(0,true);
             GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.STRONG));
         }
 

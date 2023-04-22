@@ -9,14 +9,14 @@ namespace ProjectA.Entity {
 
         public override void ProcessDamage(bool isCharged) {
             DestroySettings();
-            GameManager.Instance.UpdateHitCount(true);
+            GameManager.Instance.UpdateHitCount(0,true);
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateSet(PlayerMovement.PlayerStates.STUNNED));
             base.ProcessDamage(isCharged);
         }
 
         public override void ProcessPlayerDamage(bool isCharged) {
             DestroySettings();
-            GameManager.Instance.UpdateHitCount();
+            GameManager.Instance.UpdateHitCount(isCharged ? 2 : 1);
             base.ProcessPlayerDamage(isCharged);
         }
 

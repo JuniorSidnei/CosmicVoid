@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using HaremCity.Utils;
-using ProjectA.Controllers;
 using ProjectA.Input;
 using ProjectA.Movement;
 using ProjectA.Utils;
@@ -23,25 +20,27 @@ namespace ProjectA.Singletons.Managers {
         public InputManager InputManager;
         public int HitCount = 0;
 
-        public void UpdateHitCount(bool willReset = false) {
+        public void UpdateHitCount(int value, bool willReset = false) {
             if (willReset) HitCount = 0;
-            else HitCount += 1;
+            else HitCount += value;
             
             Dispatcher.Emit(new OnHitCountUpdate(HitCount));
         }
         
         public void OnBossDeath() {
+            var currentMaxLife = PlayerPrefs.GetInt("player_max_life", 3);
+            PlayerPrefs.SetInt("player_max_life", currentMaxLife + 1);
+            PlayerPrefs.Save();
             InputManager.Disable();
             m_dispatcher.Emit(new OnCutsceneStarted());
             m_dispatcher.Emit(new OnBossDeath());
-            Invoke(nameof(LoadNextScene), 10f);
+            Invoke(nameof(ShowHighScoreHit), 6);
         }
-        
-        public void LoadNextScene() {
-            var nextScene = "GameScene_" + NextSceneIndex;
-            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene(nextScene));
+
+        public void ShowHighScoreHit() {
+            Dispatcher.Emit(new OnShowStageScore(HitCount, NextSceneIndex));
         }
-        
+
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
             InputManager.DisablePlayerMovement();

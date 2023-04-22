@@ -12,6 +12,16 @@ public enum LaserPosition {
     UP, MID, BOTTOM
 }
 
+public class OnShowStageScore {
+    public OnShowStageScore(int stageScore, int nextSceneIndex) {
+        StageScore = stageScore;
+        NextSceneIndex = nextSceneIndex;
+    }
+
+    public int StageScore;
+    public int NextSceneIndex;
+}
+
 public class OnPlayerLifeUpdate {
         
     public OnPlayerLifeUpdate(int currentLife) {
@@ -20,16 +30,6 @@ public class OnPlayerLifeUpdate {
 
     public int CurrentLife;
 }
-
-public class OnUpdateChargeFill {
-    public OnUpdateChargeFill(float currentFill) {
-        CurrentFill = currentFill;
-    }
-
-    public float CurrentFill;
-}
-
-public class OnPlayerStun { }
 
 public class OnPlayerStateChange {
     public OnPlayerStateChange(PlayerMovement.PlayerStates newState) {

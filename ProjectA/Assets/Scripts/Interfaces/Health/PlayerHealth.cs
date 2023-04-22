@@ -7,7 +7,7 @@ namespace ProjectA.Interface {
     
     public class PlayerHealth : MonoBehaviour {
 
-        public int MaxHealth = 3;
+        public int MaxHealth;
         public GameObject OnHitPrefab;
         public GameObject OnDeathPrefab;
         

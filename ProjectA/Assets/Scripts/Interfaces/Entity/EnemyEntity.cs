@@ -8,16 +8,16 @@ namespace ProjectA.Interface {
         
         public override void ProcessPlayerDamage(bool isCharged) {
              GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.BASIC));
-             GameManager.Instance.UpdateHitCount(true);
+             GameManager.Instance.UpdateHitCount(0, true);
         }
         
         public override void ProcessDamage(bool isCharged) {
             if (!isCharged) {
                 GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.BASIC));
-                GameManager.Instance.UpdateHitCount(true);
+                GameManager.Instance.UpdateHitCount(0, true);
             }
             else {
-                GameManager.Instance.UpdateHitCount();
+                GameManager.Instance.UpdateHitCount(2);
                 base.ProcessDamage(true);
             }
         }

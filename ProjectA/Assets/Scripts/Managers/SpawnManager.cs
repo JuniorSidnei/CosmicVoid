@@ -111,7 +111,7 @@ namespace ProjectA.Managers {
 
         private IEnumerator LoadGameScene() {
             yield return new WaitForSeconds(5);
-            TransitionModal.DoTransitionIn(() => { SceneManager.LoadScene("GameScene_1");});
+            TransitionModal.Instance.DoTransitionIn(() => { SceneManager.LoadScene("GameScene_1");});
         }
         
         private void OnInitialCutSceneFinished(OnCutSceneFinished arg0) {

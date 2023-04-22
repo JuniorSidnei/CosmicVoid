@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using ProjectA.Controllers;
-using ProjectA.Singletons.Managers;
 using ProjectA.Utils;
 using TMPro;
 using UnityEngine;
@@ -21,10 +18,13 @@ namespace ProjectA.Modals {
         
         public bool IsGamePaused { get; set; }
         public bool IsGameEnded { get; set; }
+        public bool IsHighScoreModalOn { get; set; }
         
         private Action m_onActionBtn;
         
         public void PauseGame(bool isEndGame = false) {
+            if(IsHighScoreModalOn) return;
+            
             ModalText.text = isEndGame ? "Retry" : "Resume";
             PanelBg.DOFade(0.8f, 0.15f);
             BgRect.DOLocalMoveY(0, .2f).OnComplete(() => {
@@ -43,7 +43,7 @@ namespace ProjectA.Modals {
         
         public void LoadMenu() {
             Time.timeScale = 1;
-            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("Menu"));
+            TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene("Menu"));
         }
 
         private void DoResume() {
@@ -57,7 +57,7 @@ namespace ProjectA.Modals {
         private void DoEnd() {
             IsGameEnded = true;
             Time.timeScale = 1;
-            TransitionModal.DoTransitionIn(()=> SceneManager.LoadScene("GameScene_1"));
+            TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene("GameScene_1"));
         }
 
         private void Awake() {
