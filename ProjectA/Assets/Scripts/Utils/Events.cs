@@ -12,6 +12,10 @@ public enum LaserPosition {
     UP, MID, BOTTOM
 }
 
+public enum GameDifficulty {
+    EASY, NORMAL, HARD    
+}
+
 public class OnShowStageScore {
     public OnShowStageScore(int stageScore, int nextSceneIndex) {
         StageScore = stageScore;
