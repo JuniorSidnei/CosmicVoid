@@ -10,16 +10,17 @@ namespace ProjectA.Managers {
         
         public void PlayGame() {
             TransitionModal.Instance.DoTransitionIn(() => {
-                var isTutorialFinished = PlayerPrefs.GetInt("tutorial_finished");
-                
-                switch (isTutorialFinished) {
-                    case 0:
-                        SceneManager.LoadScene("TutorialGameScene");        
-                        break;
-                    case 1:
-                        SceneManager.LoadScene("GameScene_1");
-                        break;
-                }
+                SceneManager.LoadScene("SelectStageMenu"); 
+                // var isTutorialFinished = PlayerPrefs.GetInt("tutorial_finished");
+                //
+                // switch (isTutorialFinished) {
+                //     case 0:
+                //         SceneManager.LoadScene("TutorialGameScene");        
+                //         break;
+                //     case 1:
+                //         SceneManager.LoadScene("GameScene_1");
+                //         break;
+                // }
             });
         }
 
