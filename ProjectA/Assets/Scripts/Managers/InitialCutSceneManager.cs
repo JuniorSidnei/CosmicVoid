@@ -34,11 +34,9 @@ namespace ProjectA.Managers {
         private IEnumerator WaitToMovePlayer() {
             yield return new WaitForSeconds(.35f);
             GameManager.Instance.Dispatcher.Emit(new OnExplosionActivated());
-            GameManager.Instance.GameSettings.SaveExplosionStatus();
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.RUNNING));
             PlayerTransform.DOMoveX(PlayerWalkPositionFinish, 2f).SetEase(Ease.Linear).OnComplete(() => {
                 GameManager.Instance.Dispatcher.Emit(new OnCutSceneFinished());
-                GameManager.Instance.GameSettings.SaveInitialCutsceneStatus();
                 GameManager.Instance.InputManager.EnablePlayerMovement();
             });
         }

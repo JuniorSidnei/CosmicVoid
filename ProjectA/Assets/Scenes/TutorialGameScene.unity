@@ -703,6 +703,7 @@ GameObject:
   m_Component:
   - component: {fileID: 758664054}
   - component: {fileID: 758664055}
+  - component: {fileID: 758664056}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -737,10 +738,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebaed0dcb91e874f8c6012c347183d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveLoadManager: {fileID: 758664056}
   GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
   NextSceneIndex: 1
   InputManager: {fileID: 1967939599}
   HitCount: 0
+--- !u!114 &758664056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758664053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86945b58813c3114ea26151351a1dd4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
 --- !u!1 &765985158
 GameObject:
   m_ObjectHideFlags: 0

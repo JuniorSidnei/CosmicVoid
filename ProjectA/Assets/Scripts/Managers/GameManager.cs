@@ -1,7 +1,6 @@
 using System.Collections;
 using HaremCity.Utils;
 using ProjectA.Input;
-using ProjectA.Movement;
 using ProjectA.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +14,9 @@ namespace ProjectA.Singletons.Managers {
 
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
 
+        public bool CutSceneShow { get; internal set; }
+
+        public SaveLoadManager SaveLoadManager;
         public GameSettings GameSettings;
         public int NextSceneIndex;
         public InputManager InputManager;
@@ -28,9 +30,7 @@ namespace ProjectA.Singletons.Managers {
         }
         
         public void OnBossDeath() {
-            var currentMaxLife = PlayerPrefs.GetInt("player_max_life", 3);
-            PlayerPrefs.SetInt("player_max_life", currentMaxLife + 1);
-            PlayerPrefs.Save();
+            GameSettings.UpgradePlayerLife();
             InputManager.Disable();
             m_dispatcher.Emit(new OnCutsceneStarted());
             m_dispatcher.Emit(new OnBossDeath());
@@ -44,7 +44,6 @@ namespace ProjectA.Singletons.Managers {
         private void Awake() {
             SceneManager.LoadScene("HUD", LoadSceneMode.Additive);
             InputManager.DisablePlayerMovement();
-            GameSettings.SetStatus();
             
             Dispatcher.Subscribe<OnReflectFeedback>(OnReflectFeedback);
         }
@@ -60,7 +59,7 @@ namespace ProjectA.Singletons.Managers {
         }
         
         private IEnumerator ReturnTimeScale() {
-            yield return new WaitForSeconds(.001f);
+            yield return new WaitForSeconds(.0025f);
             Time.timeScale = 1f;
         }
     }

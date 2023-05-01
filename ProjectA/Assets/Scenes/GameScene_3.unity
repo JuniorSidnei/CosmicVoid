@@ -663,6 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebaed0dcb91e874f8c6012c347183d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveLoadManager: {fileID: 0}
   GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
   NextSceneIndex: 3
   InputManager: {fileID: 1967939599}
@@ -787,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e3c2388a9170d46bde85fc0373b861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveData: {fileID: 11400000, guid: fc81736174f78814f856d45fb966543e, type: 2}
+  WaveData: {fileID: 11400000, guid: a8b0cce80626e234dbe86eb9f15703a1, type: 2}
   EntitiesPool: {fileID: 1146139864}
   ProjectilesPool: {fileID: 1146139865}
 --- !u!114 &1146139864
@@ -803,11 +804,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: -1755959738618288968, guid: 1c8e3ee341384154899256bfd1ea5a97, type: 3}
-  DestructibleEntity: {fileID: 11400000, guid: da4ed2731639c2e47adc3cd4a334bd6a, type: 2}
-  HardPorpEntity: {fileID: 11400000, guid: 316531dd52bde7a42b8c5c0e33edc636, type: 2}
-  EnemyEntity: {fileID: 11400000, guid: b5f7fd3543f363b448df76f90d7fa960, type: 2}
-  ShooterEntity: {fileID: 11400000, guid: 557284e5c7ee20c44bed91a564a6624f, type: 2}
-  LinkerEntity: {fileID: 11400000, guid: 716cde6013f4c2a45a3189f017b121be, type: 2}
+  DestructibleEntity: {fileID: 11400000, guid: 69bd3fa88ecfbfe4d9ff0c9d6f2b026e, type: 2}
+  HardPorpEntity: {fileID: 11400000, guid: f32865a38bbf45148a001904494456fb, type: 2}
+  EnemyEntity: {fileID: 11400000, guid: c1e47c3774af0d5409fed2dd839b05c2, type: 2}
+  ShooterEntity: {fileID: 11400000, guid: 02fad770aba272843814cffe1f012d59, type: 2}
+  LinkerEntity: {fileID: 11400000, guid: f5413719685c77843a39f712ae4f4ff0, type: 2}
   FakeCloakingEntity: {fileID: 11400000, guid: 854fbcbbf3211744394256eccbb15a2d, type: 2}
   CloakingEntity: {fileID: 11400000, guid: 72c212db2f5603142a00b43e5d30c239, type: 2}
   PlayerLayer:
@@ -1420,9 +1421,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 1736838316}
   ExplosionPosition: {fileID: 868136997}
-  ExplosionPrefab: {fileID: 3079403843230058911, guid: 5e9a186caf18e46458204ad7a0b333d4, type: 3}
+  ExplosionPrefab: {fileID: 131799764172864181, guid: d4eb52042f60bb348982695b49d1b6ac, type: 3}
   PlayerWalkPositionStart: -3.79
   PlayerWalkPositionFinish: -5.62
+  ExclamationPrefab: {fileID: 355915859418663681, guid: 624f5d3b2a7ab9b4f8641270af4f46e1, type: 3}
 --- !u!4 &1311434724687596193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 644220319843000504, guid: 78744ed349b575f4c8a929ba137a06db, type: 3}

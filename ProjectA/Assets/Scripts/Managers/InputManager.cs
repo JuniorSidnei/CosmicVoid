@@ -37,8 +37,6 @@ namespace ProjectA.Input {
         }
         
         private void OnEnable() {
-            if(!GameManager.Instance.GameSettings.HasInitialCutSceneShow) return;
-            
             m_inputSource = new InputSource();
             m_inputSource.Enable();
             

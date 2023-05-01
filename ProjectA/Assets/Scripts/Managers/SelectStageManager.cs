@@ -9,7 +9,7 @@ namespace ProjectA.Managers {
     
     public class SelectStageManager : MonoBehaviour {
 
-        public GameDifficulty GameDifficulty;
+        public GameSettings GameSettings;
 
         [Header("select level settings")]
         public Button AdvanceLevelBtn; 
@@ -57,38 +57,72 @@ namespace ProjectA.Managers {
         public void AdvanceLevel() {
             m_levelIndex += 1;
             
-            if (m_levelIndex > 3) m_levelIndex = 0;
+            if (m_levelIndex > 2) m_levelIndex = 0;
 
             LevelImage.sprite = LevelImageSprites[m_levelIndex];
             LevelName.text = LevelNameTexts[m_levelIndex];
+
+            ValidateStageUnlocked(m_levelIndex);
         }
         
         public void BackLevel() {
             m_levelIndex -= 1;
 
-            if (m_levelIndex < 0) m_levelIndex = 3;
+            if (m_levelIndex < 0) m_levelIndex = 2;
             
             LevelImage.sprite = LevelImageSprites[m_levelIndex];
             LevelName.text = LevelNameTexts[m_levelIndex];
+
+            ValidateStageUnlocked(m_levelIndex);
         }
 
         private string SetTextDifficulty(int difficultyIndex) {
-            return difficultyIndex switch {
-                0 => "Easy",
-                1 => "Normal",
-                2 => "Hard",
-                _ => "Easy"
+            switch (difficultyIndex) {
+                case 0:
+                    GameSettings.GameDifficulty = GameDifficulty.EASY;
+                    return "Easy";
+                case 1:
+                    GameSettings.GameDifficulty = GameDifficulty.NORMAL;
+                    return "Normal";
+                case 2:
+                    GameSettings.GameDifficulty = GameDifficulty.HARD;
+                    return "Hard";
+                default:
+                    GameSettings.GameDifficulty = GameDifficulty.EASY;
+                    return "Easy";
             };
+        }
+
+        private void ValidateStageUnlocked(int stageIndex) {
+           switch (stageIndex) {
+                case 0:
+                    LevelImage.color = Color.white;
+                    PlayLevelBtn.interactable =  true;
+                    break;
+                case 1:
+                    if(!GameSettings.HasUnlockedStage2) {
+                        LevelImage.color = Color.black;
+                        PlayLevelBtn.interactable =  false;
+                    }
+                    break;
+                case 2:
+                     if(!GameSettings.HasUnlockedStage3) {
+                        LevelImage.color = Color.black;
+                        PlayLevelBtn.interactable =  false;
+                    }
+                    break;
+            }; 
         }
 
         private void Start() {
             TransitionModal.Instance.DoTransitionOut();
             
-            AdvanceLevelBtn.interactable = PlayerPrefs.GetInt("tutorial_finished") == 1;
-            BackLevelBtn.interactable = PlayerPrefs.GetInt("tutorial_finished") == 1;
-            
             BackBtn.onClick.AddListener(() => {
                 TransitionModal.Instance.DoTransitionIn(()=>SceneManager.LoadScene("Menu"));
+            });
+            
+            PlayLevelBtn.onClick.AddListener(() => {
+                SceneManager.LoadScene("GameScene_" + (m_levelIndex + 1));
             });
         }
 

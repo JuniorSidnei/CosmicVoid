@@ -1351,6 +1351,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674687909}
   m_CullTransparentMesh: 1
+--- !u!1 &696078683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696078684}
+  - component: {fileID: 696078686}
+  - component: {fileID: 696078685}
+  m_Layer: 5
+  m_Name: level_border_img
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &696078684
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696078683}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 721861152}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -305}
+  m_SizeDelta: {x: 656, y: 373}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &696078685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696078683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a2d6b4ff638f6fe4a872087a94561610, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &696078686
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696078683}
+  m_CullTransparentMesh: 1
 --- !u!1 &716900445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1575,7 @@ RectTransform:
   m_Children:
   - {fileID: 1059723651}
   - {fileID: 1803360709}
+  - {fileID: 696078684}
   m_Father: {fileID: 233280870}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2256,7 +2333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: Stage 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eebc2b9b42b414f4ab775fb68547ec0b, type: 2}
   m_sharedMaterial: {fileID: -5225935746026355786, guid: eebc2b9b42b414f4ab775fb68547ec0b, type: 2}
@@ -2709,7 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56967dad4c470f74899a615e0bbc58d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameDifficulty: 0
+  GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
   AdvanceLevelBtn: {fileID: 506693608}
   BackLevelBtn: {fileID: 1313859375}
   PlayLevelBtn: {fileID: 338509424}
@@ -2726,21 +2803,19 @@ MonoBehaviour:
   - 'For extreme gamers!
 
 
-    You die just one life!
+    You have just one life!
 
     Just play if you have
     the skills!'
   LevelImage: {fileID: 1803360710}
   LevelName: {fileID: 1059723652}
   LevelNameTexts:
-  - Tutorial
-  - Level 1
-  - Level 2
-  - Level 3
+  - Stage 1
+  - Stage 2
+  - Stage 3
   LevelImageSprites:
-  - {fileID: 21300000, guid: e86e1d4427d774a40ae94fe52cce920f, type: 3}
-  - {fileID: 21300000, guid: c442ed2c000777e42a7267666ce1217f, type: 3}
-  - {fileID: 21300000, guid: 8f6623cec90854d41be8ce9edab45b1c, type: 3}
+  - {fileID: 21300000, guid: 8ffac5bb8c7ea414fbbdcbfa38e95be9, type: 3}
+  - {fileID: 21300000, guid: c5e3d87db74b448428766e55d6e50b0a, type: 3}
   - {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
   BackBtn: {fileID: 1453766139}
 --- !u!1 &1421655777
@@ -3259,7 +3334,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -305}
-  m_SizeDelta: {x: 567.6827, y: 340.2773}
+  m_SizeDelta: {x: 650, y: 363}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1803360710
 MonoBehaviour:
@@ -3281,9 +3356,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8ffac5bb8c7ea414fbbdcbfa38e95be9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

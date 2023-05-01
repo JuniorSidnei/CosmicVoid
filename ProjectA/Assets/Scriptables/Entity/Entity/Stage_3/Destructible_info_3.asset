@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c47287cd52b2742b1eeb105f781195, type: 3}
   m_Name: Destructible_info_3
   m_EditorClassIdentifier: 
-  Controller: {fileID: 9100000, guid: 910ebad53a5ebf548a0fd5a5b1572c96, type: 2}
+  Controller: {fileID: 9100000, guid: f3f695103a6e1dc469f6a592d58be8bb, type: 2}
   DamagePower: 0
   Speed: 6
   PlayerLayer:

@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebaed0dcb91e874f8c6012c347183d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SaveLoadManager: {fileID: 0}
   GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
   NextSceneIndex: 3
   InputManager: {fileID: 1967939599}

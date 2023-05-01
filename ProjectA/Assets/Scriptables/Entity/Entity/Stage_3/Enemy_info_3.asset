@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c47287cd52b2742b1eeb105f781195, type: 3}
   m_Name: Enemy_info_3
   m_EditorClassIdentifier: 
-  Controller: {fileID: 9100000, guid: 6ab87d76a6a96f144b0fd9b076b54654, type: 2}
+  Controller: {fileID: 9100000, guid: abbb9ea4c5b33144d8dd1f2de25029b0, type: 2}
   DamagePower: 1
   Speed: 6
   PlayerLayer:

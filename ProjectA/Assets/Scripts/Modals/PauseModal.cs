@@ -46,6 +46,11 @@ namespace ProjectA.Modals {
             TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene("Menu"));
         }
 
+        public void LoadSelectStage() {
+            Time.timeScale = 1;
+            TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene("SelectStageMenu"));
+        }
+
         private void DoResume() {
             Time.timeScale = 1;
             PanelBg.DOFade(0, 0.15f);

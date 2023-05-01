@@ -35,6 +35,8 @@ public class OnPlayerLifeUpdate {
     public int CurrentLife;
 }
 
+public class OnPlayerRechargeLife  { }
+
 public class OnPlayerStateChange {
     public OnPlayerStateChange(PlayerMovement.PlayerStates newState) {
         NewState = newState;

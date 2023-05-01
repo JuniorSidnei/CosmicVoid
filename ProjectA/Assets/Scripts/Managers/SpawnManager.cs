@@ -98,9 +98,10 @@ namespace ProjectA.Managers {
             
             m_waveFinishedSpawn = true;
 
-            if (PlayerPrefs.GetInt("tutorial_finished") == 1) return;
+            if (GameManager.Instance.GameSettings.HasTutorialFinished) return;
             
-            GameManager.Instance.GameSettings.SetTutorialStatus(1);
+            SaveLoadManager.Instance.GameSettings.HasTutorialFinished = true;
+            SaveLoadManager.Instance.SaveGame();
             StartCoroutine(nameof(LoadGameScene));
         }
 
@@ -111,7 +112,7 @@ namespace ProjectA.Managers {
 
         private IEnumerator LoadGameScene() {
             yield return new WaitForSeconds(5);
-            TransitionModal.Instance.DoTransitionIn(() => { SceneManager.LoadScene("GameScene_1");});
+            TransitionModal.Instance.DoTransitionIn(() => { SceneManager.LoadScene("SelectStageMenu");});
         }
         
         private void OnInitialCutSceneFinished(OnCutSceneFinished arg0) {

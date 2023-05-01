@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c47287cd52b2742b1eeb105f781195, type: 3}
   m_Name: Hard_info_3
   m_EditorClassIdentifier: 
-  Controller: {fileID: 9100000, guid: 15f16514b179fab4e9ac6ddeea7256ee, type: 2}
+  Controller: {fileID: 9100000, guid: 4b99d860994bac4468284716f931a8a3, type: 2}
   DamagePower: 2
   Speed: 6
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 64
   EntityColor: {r: 0.77254903, g: 0.18431373, b: 0.18431373, a: 1}
+  EntityExplosionParticle: {fileID: 994276049108304709, guid: 324b5fb5ca0c1ed45be8e91b1ef4e641, type: 3}

@@ -7,18 +7,19 @@ namespace ProjectA.Interface {
     
     public class PlayerHealth : MonoBehaviour {
 
-        public int MaxHealth;
         public GameObject OnHitPrefab;
         public GameObject OnDeathPrefab;
-        
         private int m_currentHealth;
-        
+
         private void Awake() {
-            m_currentHealth = MaxHealth;
+            m_currentHealth = GameManager.Instance.GameSettings.GameDifficulty == GameDifficulty.HARD ? 1 : GameManager.Instance.GameSettings.PlayerMaxLife;
             GameManager.Instance.Dispatcher.Subscribe<OnDamagePlayer>(OnDamagePlayer);
+            GameManager.Instance.Dispatcher.Subscribe<OnSpawnBoss>(OnSpawnBoss);
         }
 
         private void OnDamagePlayer(OnDamagePlayer ev) {
+            if(!GameManager.Instance.GameSettings.HasTutorialFinished) return;
+            
             m_currentHealth -= ev.Damage;
             Instantiate(OnHitPrefab, transform.position, Quaternion.identity, transform);
             
@@ -32,6 +33,13 @@ namespace ProjectA.Interface {
             
             GameManager.Instance.Dispatcher.Emit(new OnPlayerStateChange(PlayerMovement.PlayerStates.HIT));
             GameManager.Instance.Dispatcher.Emit(new OnPlayerLifeUpdate(m_currentHealth));
+        }
+
+        private void OnSpawnBoss(OnSpawnBoss ev) {
+            if(GameManager.Instance.GameSettings.GameDifficulty == GameDifficulty.EASY) {
+                m_currentHealth = GameManager.Instance.GameSettings.PlayerMaxLife;
+                GameManager.Instance.Dispatcher.Emit(new OnPlayerRechargeLife());
+            }
         }
     }
 }

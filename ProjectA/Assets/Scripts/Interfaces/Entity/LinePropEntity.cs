@@ -59,7 +59,7 @@ namespace ProjectA.Entity {
             m_edgeCollider2D = GetComponent<EdgeCollider2D>();
 
             m_lineRenderer.material = Resources.Load<Material>("Material/LineMaterial");
-            m_lineRenderer.widthMultiplier = 0.5f;
+            m_lineRenderer.widthMultiplier = 1.5f;
         }
         
         private void OnCollisionEnter2D(Collision2D other) {

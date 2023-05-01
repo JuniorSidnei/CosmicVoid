@@ -1,35 +1,30 @@
+using System;
 using UnityEngine;
 
 namespace ProjectA {
     
      [CreateAssetMenu(menuName = "ProjectA/Settings", fileName = "GameSettings")]   
      public class GameSettings : ScriptableObject {
-          
-          public bool HasInitialCutSceneShow;
-          public bool HasExplosionActivated;
           public bool HasTutorialFinished;
-          
-          public void SetTutorialStatus(int hasFinished) {
-              PlayerPrefs.SetInt("tutorial_finished", hasFinished);
-              PlayerPrefs.Save();
-          }
+          public GameDifficulty GameDifficulty;
+          public int PlayerMaxLife;
+          public bool HasUnlockedStage2;
+          public bool HasUnlockedStage3;
 
-          public void SetStatus() {
-              HasTutorialFinished = PlayerPrefs.GetInt("tutorial_finished") != 0;
-              HasExplosionActivated = PlayerPrefs.GetInt("explosion_activated") != 0;
-              HasInitialCutSceneShow = PlayerPrefs.GetInt("intro_cutscene_showed") != 0;
-          }
+        public float MusicVolume;
+        public float SfxVolume;
 
-          public void SaveExplosionStatus() {
-              HasExplosionActivated = true;
-              PlayerPrefs.SetInt("explosion_activated", 1);
-              PlayerPrefs.Save();
-          }
-          
-          public void SaveInitialCutsceneStatus() {
-              HasInitialCutSceneShow = true;
-              PlayerPrefs.SetInt("intro_cutscene_showed", 1);
-              PlayerPrefs.Save();
-          }
-     }
+        public void UpgradePlayerLife() {
+            PlayerMaxLife += 1;
+        }
+
+        public void Load(GameSettings saveDataLoaded) {
+            HasTutorialFinished = saveDataLoaded.HasTutorialFinished;
+            PlayerMaxLife = saveDataLoaded.PlayerMaxLife;
+            HasUnlockedStage2 = saveDataLoaded.HasUnlockedStage2;
+            HasUnlockedStage3 = saveDataLoaded.HasUnlockedStage3;
+            MusicVolume = saveDataLoaded.MusicVolume;
+            SfxVolume = saveDataLoaded.SfxVolume;
+        }
+    }
 }

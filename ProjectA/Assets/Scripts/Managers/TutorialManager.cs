@@ -25,7 +25,7 @@ namespace ProjectA.Managers {
         }
 
         private void OnInitialCutSceneFinished(OnCutSceneFinished ev) {
-            if (PlayerPrefs.GetInt("tutorial_finished") == 1) {
+            if (GameManager.Instance.GameSettings.HasTutorialFinished) {
                 enabled = false;
                 return;
             }

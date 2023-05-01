@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f86288b5b81f419f4d081d71d794f, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  HasInitialCutSceneShow: 0
-  HasExplosionActivated: 0
-  HasTutorialFinished: 0
+  HasTutorialFinished: 1
+  GameDifficulty: 2
+  PlayerMaxLife: 4
+  HasUnlockedStage2: 0
+  HasUnlockedStage3: 0
+  MusicVolume: 5
+  SfxVolume: 3
