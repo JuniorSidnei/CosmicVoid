@@ -17,6 +17,7 @@ namespace ProjectA.Controllers {
 
         private bool m_isShieldActive = true;
         private int m_currentLaserIndex;
+        private GameObject m_currentLaser;
         
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
@@ -29,7 +30,7 @@ namespace ProjectA.Controllers {
             m_currentLaserIndex = (int)ev.Type;
             var currentAnticipation = LaserAnticipationViewList[m_currentLaserIndex];
             currentAnticipation.SetActive(true);
-            currentAnticipation.GetComponent<LineRenderer>().widthMultiplier = .2f;
+            //currentAnticipation.GetComponent<LineRenderer>().widthMultiplier = 3f;
             Invoke(nameof(HideAnticipation), 1f);
         }
 
@@ -68,21 +69,22 @@ namespace ProjectA.Controllers {
 
         private void HideAnticipation() {
             LaserAnticipationViewList[m_currentLaserIndex].SetActive(false);
-
+            
             var currentLaser = LaserList[m_currentLaserIndex];
             currentLaser.SetActive(true);
-            var line = currentLaser.GetComponent<LineRenderer>();
-            line.widthMultiplier = 0f;
+            m_currentLaser = currentLaser;
+            //var line = currentLaser.GetComponent<LineRenderer>();
+            //line.widthMultiplier = 0f;
 
-            DOTween.To(()=> line.widthMultiplier, width => line.widthMultiplier = width, 1f, .25f).OnComplete(()=> {
-                HideLaser(line, currentLaser);
-            });
+            // DOTween.To(()=> line.widthMultiplier, width => line.widthMultiplier = width, 6f, .25f).OnComplete(()=> {
+            //     HideLaser(line, currentLaser);
+            // });
+            
+            Invoke(nameof(HideLaser), 0.35f);
         }
         
-        private void HideLaser(LineRenderer lineRenderer, GameObject currentLaser) {
-            DOTween.To(()=> lineRenderer.widthMultiplier, width => lineRenderer.widthMultiplier = width, 0f, .3f).OnComplete(() => {
-                currentLaser.SetActive(false);    
-            });
+        private void HideLaser() {
+            m_currentLaser.SetActive(false);
         }
     }
 }
