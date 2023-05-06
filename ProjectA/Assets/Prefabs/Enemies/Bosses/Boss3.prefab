@@ -578,7 +578,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.024357796, y: 0.049988627}
+  m_Offset: {x: 0.395025, y: 0.049988747}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -589,7 +589,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0230255, y: 6.8697405}
+  m_Size: {x: 1.1842599, y: 6.8697405}
   m_EdgeRadius: 0
 --- !u!114 &1588388677472127803
 MonoBehaviour:
@@ -654,13 +654,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7111385baedc44a40a50e70c899681d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossPatternsDatas: []
-  BossPatternRageData: {fileID: 0}
-  MuzzleShootReflectivePrefab: {fileID: 0}
-  MuzzleShootHardPrefab: {fileID: 0}
+  BossPatternsDatas:
+  - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
+  - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
+  - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
+  BossPatternRageData: {fileID: 11400000, guid: 50ff9ba6fb2eb1b4a973cfe985fb3f76, type: 2}
+  MuzzleShootReflectivePrefab: {fileID: 891119464957199666, guid: 1c8348cb7d34bd54dae9ae486a3daaf2, type: 3}
+  MuzzleShootHardPrefab: {fileID: 5115108082924250385, guid: 643a8026604c6d34a94aea1ae30c1b83, type: 3}
+  MuzzleShootExplosivePrefab: {fileID: 2020718123857391270, guid: d3fc5dfb28f2d8840b0b4261ef445e22, type: 3}
+  MuzzleShootShieldBreakerPrefab: {fileID: 3750027526868848727, guid: ba219e13b3e5b0849838ae3efe3d2926, type: 3}
   UseReplacedTransformSpawn: 0
   ReplacedTransformSpawn: {fileID: 0}
-  ShieldBreakerPattern: {fileID: 11400000, guid: 6a0743f2aa626424d95b99fea91176a3, type: 2}
+  ShieldBreakerPattern: {fileID: 11400000, guid: ef1099831ab463847919e243e980bafc, type: 2}
   LaserAnticipationViewList:
   - {fileID: 2854587938580492967}
   - {fileID: 1757429636157785387}
@@ -2200,6 +2205,14 @@ PrefabInstance:
     - target: {fileID: 1708026696349798828, guid: 0513d2a5b54c2ba48a5edc97ec92b813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708026696349798829, guid: 0513d2a5b54c2ba48a5edc97ec92b813, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4289202
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708026696349798829, guid: 0513d2a5b54c2ba48a5edc97ec92b813, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.27531585
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0513d2a5b54c2ba48a5edc97ec92b813, type: 3}

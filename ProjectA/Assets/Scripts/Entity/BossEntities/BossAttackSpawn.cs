@@ -15,6 +15,8 @@ namespace ProjectA.Controllers {
         public WaveData BossPatternRageData;
         public GameObject MuzzleShootReflectivePrefab;
         public GameObject MuzzleShootHardPrefab;
+        public GameObject MuzzleShootExplosivePrefab;
+        public GameObject MuzzleShootShieldBreakerPrefab;
         public bool UseReplacedTransformSpawn;
         public Transform ReplacedTransformSpawn;
         protected Queue<WaveData.EntityInfo> m_entityQueue = new Queue<WaveData.EntityInfo>();
@@ -124,10 +126,11 @@ namespace ProjectA.Controllers {
                     entity.HardProjectileSetup(SpawnManager.Instance.ProjectilesPool.HardProjectileEntity, SpawnManager.Instance.EntitiesPool.PlayerLayer);
                     break;
                 case WaveData.EntityType.Explosive:
+                    portal = MuzzleShootExplosivePrefab;
                     entity.ExplosiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ExplosiveEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
                 case WaveData.EntityType.ShieldBreaker:
-                    //GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
+                    portal = MuzzleShootShieldBreakerPrefab;
                     entity.ReflectiveProjectileSetup(SpawnManager.Instance.ProjectilesPool.ShieldBreakerEntity, SpawnManager.Instance.EntitiesPool.Layers());
                     break;
             }

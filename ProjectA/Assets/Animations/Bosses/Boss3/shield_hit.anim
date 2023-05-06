@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: shield_breaker_idle
+  m_Name: shield_hit
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 1af5c5698d405c347a4c8d183fcf71fd, type: 3}
+      value: {fileID: 21300000, guid: 40bf6af637cc61347a17d07a01311aa0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,7 +40,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 1af5c5698d405c347a4c8d183fcf71fd, type: 3}
+    - {fileID: 21300000, guid: 40bf6af637cc61347a17d07a01311aa0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

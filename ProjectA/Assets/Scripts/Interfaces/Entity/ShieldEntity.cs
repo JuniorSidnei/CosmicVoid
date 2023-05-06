@@ -1,14 +1,15 @@
-using System;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
+using UnityEngine;
 
 namespace ProjectA.Entity {
 
     public class ShieldEntity : EntityProcessDamage {
 
         public int Health;
+        public Animator Animator;
         
         private int m_heatlh;
         
@@ -22,14 +23,20 @@ namespace ProjectA.Entity {
 
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(entityPosition));
             m_heatlh -= 1;
-
+            Animator.CrossFade("shield_hit", 0.1f);
+            
             if (m_heatlh <= 0) {
-                Destroy(gameObject);
+                Animator.CrossFade("shield_destroy", 0.1f);
+                Invoke(nameof(DestroyShield), 0.35f);
             }
         }
 
         private void Start() {
             m_heatlh = Health;
+        }
+
+        private void DestroyShield() {
+            Destroy(gameObject);
         }
     }
 }

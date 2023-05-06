@@ -103,6 +103,7 @@ MonoBehaviour:
     m_Bits: 256
   OnDieParticlePrefab: {fileID: 0}
   Health: 10
+  Animator: {fileID: 7357889923678561681}
 --- !u!1 &1708026696540507752
 GameObject:
   m_ObjectHideFlags: 0

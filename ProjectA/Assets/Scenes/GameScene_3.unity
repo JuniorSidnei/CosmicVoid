@@ -707,10 +707,19 @@ MonoBehaviour:
     Type: 9
   - name: ShieldBreaker
     Color: {r: 0.5882353, g: 1, b: 0, a: 1}
-    Type: 11
+    Type: 12
   - name: Cloaking
     Color: {r: 1, g: 1, b: 1, a: 1}
     Type: 10
+  - name: LaserUp
+    Color: {r: 0.49803922, g: 0, b: 0.21568628, a: 1}
+    Type: 13
+  - name: LaserMid
+    Color: {r: 0.49803922, g: 0.2, b: 0, a: 1}
+    Type: 14
+  - name: LaserDown
+    Color: {r: 0.49803922, g: 0, b: 0.43137255, a: 1}
+    Type: 15
 --- !u!1 &868136996
 GameObject:
   m_ObjectHideFlags: 0

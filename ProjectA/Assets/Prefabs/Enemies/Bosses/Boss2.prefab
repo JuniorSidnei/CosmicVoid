@@ -869,6 +869,7 @@ MonoBehaviour:
   HitsHealth: 60
   RageHpActivation: 0
   Animator: {fileID: 7597196126743966563}
+  DeathParticlePrefab: {fileID: 0}
 --- !u!114 &3875058530461329329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +887,8 @@ MonoBehaviour:
   BossPatternRageData: {fileID: 0}
   MuzzleShootReflectivePrefab: {fileID: 891119464957199666, guid: 1c8348cb7d34bd54dae9ae486a3daaf2, type: 3}
   MuzzleShootHardPrefab: {fileID: 5115108082924250385, guid: 643a8026604c6d34a94aea1ae30c1b83, type: 3}
+  MuzzleShootExplosivePrefab: {fileID: 2020718123857391270, guid: d3fc5dfb28f2d8840b0b4261ef445e22, type: 3}
+  MuzzleShootShieldBreakerPrefab: {fileID: 0}
   UseReplacedTransformSpawn: 1
   ReplacedTransformSpawn: {fileID: 4847497641041423679}
 --- !u!114 &6978537540411540809
@@ -916,6 +919,7 @@ MonoBehaviour:
   HitsHealth: 1
   RageHpActivation: 0
   Animator: {fileID: 7597196126743966563}
+  DeathParticlePrefab: {fileID: 1024219424008015146, guid: 5231db8064827374c8c3cd4bd9034320, type: 3}
   WeakSpots:
   - {fileID: 8638343166318188237}
   - {fileID: 8973049448595078591}
@@ -924,7 +928,6 @@ MonoBehaviour:
   XPosition: -13
   FallSmokePrefab: {fileID: 3197677017937815217, guid: 834a232a84e87974f9bddd9892f65bf2, type: 3}
   Boss2Animator: {fileID: 2273933754558767639}
-  DeathParticlePrefab: {fileID: 1024219424008015146, guid: 5231db8064827374c8c3cd4bd9034320, type: 3}
 --- !u!1 &3762018192848903495
 GameObject:
   m_ObjectHideFlags: 0
