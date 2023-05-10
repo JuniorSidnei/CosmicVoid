@@ -10,7 +10,7 @@ namespace ProjectA.Singletons.Managers {
 
         public GameSettings GameSettings;
 
-        private void awake() {
+        private void Awake() {
             m_savePath = Application.persistentDataPath + "/.jsonSav";
             LoadGame();
         }

@@ -58,6 +58,8 @@ namespace ProjectA.Managers {
                     SceneManager.LoadScene("GameScene_" + arg0.NextSceneIndex);
                 });
             });
+            
+            GameManager.Instance.SaveLoadManager.SaveGame();
         }
 
         private void OnDisable() {

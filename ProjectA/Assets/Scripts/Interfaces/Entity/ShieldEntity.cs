@@ -51,6 +51,7 @@ namespace ProjectA.Entity {
 
             GameManager.Instance.Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType.SHIELDBREAKER));
             GameManager.Instance.GameSettings.HasExtratutorialStepFourShowed = true;
+            GameManager.Instance.SaveLoadManager.SaveGame();
         }
     }
 }

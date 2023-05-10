@@ -5,7 +5,6 @@ using ProjectA.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 namespace ProjectA.Singletons.Managers {
     
     public class GameManager : Singleton<GameManager> {

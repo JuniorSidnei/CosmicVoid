@@ -52,6 +52,8 @@ namespace ProjectA.Managers {
                 case ExtraTutorialType.NONE:
                     return;
             }
+            
+            GameManager.Instance.SaveLoadManager.SaveGame();
         }
 
         private void OnInitialCutSceneFinished(OnCutSceneFinished ev) {
