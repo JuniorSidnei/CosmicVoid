@@ -93,7 +93,6 @@ namespace ProjectA.Managers {
             Debug.Log("spawn index: " + m_debugIndex);
             m_debugIndex += 1;
             
-            
             if (m_currentEntityIndex < WaveData.EntityInfos.Count) return;
             
             m_waveFinishedSpawn = true;

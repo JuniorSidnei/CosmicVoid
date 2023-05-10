@@ -10,7 +10,11 @@ using Random = UnityEngine.Random;
 namespace ProjectA.Controllers {
     
     public class BossAttackSpawn : MonoBehaviour {
-
+        [Header("test settings")]
+        public bool IsTestWave;
+        public WaveData TestWave;
+        
+        [Header("wave settings")]
         public List<WaveData> BossPatternsDatas;
         public WaveData BossPatternRageData;
         public GameObject MuzzleShootReflectivePrefab;
@@ -25,12 +29,13 @@ namespace ProjectA.Controllers {
         protected bool m_waveFinishedSpawn;
         protected bool m_isRageActivated;
         protected WaveData m_currentPatternData;
-        
+        private int m_debugIndex;
+
         public int CurrentPatternIndex { get; set; }
         
         private void Awake() {
             CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
-            m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
+            m_currentPatternData = IsTestWave ? TestWave : BossPatternsDatas[CurrentPatternIndex];
 
             GameManager.Instance.Dispatcher.Subscribe<OnBossRageMode>(OnBossRageMode);
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
@@ -92,6 +97,9 @@ namespace ProjectA.Controllers {
         private void SpawnEntity() {
             var entityInfo = m_entityQueue.Dequeue(); 
 
+            Debug.Log("spawn index: " + m_debugIndex);
+            m_debugIndex += 1;
+            
             switch (entityInfo.Type) {
                 case WaveData.EntityType.LaserUp:
                     GameManager.Instance.Dispatcher.Emit(new OnShootLaser(LaserPosition.UP));
@@ -157,7 +165,7 @@ namespace ProjectA.Controllers {
             switch (m_entityQueue.Count) {
                 case <= 0 when !m_isRageActivated: {
                     CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
-                    m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
+                    m_currentPatternData = IsTestWave ? TestWave : BossPatternsDatas[CurrentPatternIndex];
                     EnqueueWave(m_currentPatternData);
                     break;
                 }

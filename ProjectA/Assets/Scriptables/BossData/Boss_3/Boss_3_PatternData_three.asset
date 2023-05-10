@@ -13,24 +13,9 @@ MonoBehaviour:
   m_Name: Boss_3_PatternData_three
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
-  InitialTimeSpawn: 3
+  InitialTimeSpawn: 2
   Boss: {fileID: 0}
   EntityInfos:
-  - Type: 13
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 6
-    Position: 2
-    TimeToNextEntity: 0
-  - Type: 14
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 5
-    Position: 2
-    TimeToNextEntity: 0
-  - Type: 15
-    Position: 2
-    TimeToNextEntity: 0
   - Type: 5
     Position: 0
     TimeToNextEntity: 0
@@ -39,7 +24,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 5
     Position: 0
     TimeToNextEntity: 0
@@ -48,7 +33,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 5
     Position: 0
     TimeToNextEntity: 0
@@ -57,52 +42,34 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 13
     Position: 0
     TimeToNextEntity: 0
   - Type: 5
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 13
     Position: 0
     TimeToNextEntity: 0
   - Type: 5
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 13
     Position: 0
     TimeToNextEntity: 0
   - Type: 5
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
-  - Type: 13
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 6
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 5
-    Position: 2
-    TimeToNextEntity: 0
-  - Type: 13
-    Position: 0
-    TimeToNextEntity: 0
-  - Type: 5
-    Position: 1
-    TimeToNextEntity: 0
-  - Type: 6
-    Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 13
     Position: 0
     TimeToNextEntity: 0
@@ -111,7 +78,25 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
+    TimeToNextEntity: 2
+  - Type: 13
+    Position: 0
     TimeToNextEntity: 0
+  - Type: 5
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 6
+    Position: 2
+    TimeToNextEntity: 2
+  - Type: 13
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 6
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 5
+    Position: 2
+    TimeToNextEntity: 2
   - Type: 6
     Position: 0
     TimeToNextEntity: 0
@@ -120,7 +105,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 5
     Position: 0
     TimeToNextEntity: 0
@@ -129,7 +114,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 6
     Position: 0
     TimeToNextEntity: 0
@@ -138,19 +123,19 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 2
   - Type: 5
     Position: 0
     TimeToNextEntity: 0
   - Type: 15
     Position: 2
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 14
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 14
     Position: 1
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 13
     Position: 0
     TimeToNextEntity: 0

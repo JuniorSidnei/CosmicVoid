@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using ProjectA.Data.Wave;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -11,6 +9,7 @@ namespace ProjectA.Controllers {
     
     public class BossAttackLasers : BossAttackSpawn {
 
+        [Header("laser settings")]
         public WaveData ShieldBreakerPattern;
         public List<GameObject> LaserAnticipationViewList = new List<GameObject>();
         public List<GameObject> LaserList = new List<GameObject>();
@@ -22,7 +21,7 @@ namespace ProjectA.Controllers {
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
             GameManager.Instance.Dispatcher.Subscribe<OnShootLaser>(OnShootLaser);
-            m_currentPatternData = ShieldBreakerPattern;
+            m_currentPatternData = IsTestWave ? TestWave : ShieldBreakerPattern;
         }
 
         private void OnShootLaser(OnShootLaser ev) {
@@ -48,13 +47,13 @@ namespace ProjectA.Controllers {
             
             switch (m_entityQueue.Count) {
                 case <= 0 when m_isShieldActive: {
-                    m_currentPatternData = ShieldBreakerPattern;
+                    m_currentPatternData = IsTestWave ? TestWave : ShieldBreakerPattern;
                     EnqueueWave(m_currentPatternData);
                     break;
                 }
                 case <= 0 when !m_isRageActivated: {
                     CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
-                    m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
+                    m_currentPatternData = IsTestWave ? TestWave : ShieldBreakerPattern;
                     EnqueueWave(m_currentPatternData);
                     break;
                 }

@@ -654,10 +654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7111385baedc44a40a50e70c899681d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTestWave: 1
+  TestWave: {fileID: 11400000, guid: 50ff9ba6fb2eb1b4a973cfe985fb3f76, type: 2}
   BossPatternsDatas:
   - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
-  - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
-  - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}
+  - {fileID: 11400000, guid: 4791756d96dad39468cae55432f00f40, type: 2}
+  - {fileID: 11400000, guid: 35c7c808439c5d3408249320cd0e1858, type: 2}
   BossPatternRageData: {fileID: 11400000, guid: 50ff9ba6fb2eb1b4a973cfe985fb3f76, type: 2}
   MuzzleShootReflectivePrefab: {fileID: 891119464957199666, guid: 1c8348cb7d34bd54dae9ae486a3daaf2, type: 3}
   MuzzleShootHardPrefab: {fileID: 5115108082924250385, guid: 643a8026604c6d34a94aea1ae30c1b83, type: 3}
