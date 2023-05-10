@@ -107,6 +107,7 @@ MonoBehaviour:
   OnDieParticlePrefab: {fileID: 0}
   XPosition: -4
   WillOverride: 0
+  ExtraTutorialType: 4
 --- !u!114 &7373194903762297595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab162c8cc170304f81a8ecc6d749d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTestWave: 0
+  TestWave: {fileID: 0}
   BossPatternsDatas:
   - {fileID: 11400000, guid: c2db5148b1aafaa47a9798e303813b32, type: 2}
   - {fileID: 11400000, guid: 98aea3a1543592e44b5b111721ee531a, type: 2}
@@ -143,6 +146,8 @@ MonoBehaviour:
   BossPatternRageData: {fileID: 11400000, guid: 34773d9ad3df7b5449942a63eb25ce0a, type: 2}
   MuzzleShootReflectivePrefab: {fileID: 891119464957199666, guid: 1c8348cb7d34bd54dae9ae486a3daaf2, type: 3}
   MuzzleShootHardPrefab: {fileID: 5115108082924250385, guid: 643a8026604c6d34a94aea1ae30c1b83, type: 3}
+  MuzzleShootExplosivePrefab: {fileID: 0}
+  MuzzleShootShieldBreakerPrefab: {fileID: 0}
   UseReplacedTransformSpawn: 0
   ReplacedTransformSpawn: {fileID: 0}
 --- !u!114 &6978537540411540809

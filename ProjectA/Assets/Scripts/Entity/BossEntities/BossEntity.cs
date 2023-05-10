@@ -9,6 +9,7 @@ namespace ProjectA.Entity.Boss {
 
         public float XPosition;
         public bool WillOverride;
+        public ExtraTutorialType ExtraTutorialType;
         
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnSpawnBoss>(OnSpawnBoss);
@@ -23,6 +24,7 @@ namespace ProjectA.Entity.Boss {
                 GameManager.Instance.InputManager.PlayerActions.Enable();
                 GameManager.Instance.Dispatcher.Emit(new OnBossStartAttack());
                 GameManager.Instance.Dispatcher.Emit(new OnCutSceneFinished());
+                GameManager.Instance.Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType));
             });
         }
 

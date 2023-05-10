@@ -613,6 +613,7 @@ MonoBehaviour:
   OnDieParticlePrefab: {fileID: 0}
   XPosition: -4
   WillOverride: 0
+  ExtraTutorialType: 2
 --- !u!114 &7373194903762297595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7111385baedc44a40a50e70c899681d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsTestWave: 1
+  IsTestWave: 0
   TestWave: {fileID: 11400000, guid: 50ff9ba6fb2eb1b4a973cfe985fb3f76, type: 2}
   BossPatternsDatas:
   - {fileID: 11400000, guid: 8df3e0971f87a7342ab434c35910118d, type: 2}

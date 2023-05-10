@@ -22,11 +22,42 @@ namespace ProjectA.Managers {
 
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnCutSceneFinished>(OnInitialCutSceneFinished);
+            GameManager.Instance.Dispatcher.Subscribe<OnShowExtraTutorial>(OnShowExtraTutorial);
+        }
+
+        private void OnShowExtraTutorial(OnShowExtraTutorial ev) {
+            enabled = true;
+            
+            switch (ev.Type) {
+                case ExtraTutorialType.LINKER:
+                    if (!GameManager.Instance.GameSettings.HasExtratutorialStepOneShowed) {
+                        GameManager.Instance.GameSettings.HasExtratutorialStepOneShowed = true;
+                        HideAndShowNext();
+                    }
+                    break;
+                case ExtraTutorialType.EXPLOSIVE:
+                    if (!GameManager.Instance.GameSettings.HasExtratutorialStepTwoShowed) {
+                        m_currentTextIndex += 1;
+                        GameManager.Instance.GameSettings.HasExtratutorialStepTwoShowed = true;
+                        HideAndShowNext();
+                    }
+                    break;
+                case ExtraTutorialType.CLOAKING:
+                    if (!GameManager.Instance.GameSettings.HasExtratutorialStepThreeShowed) {
+                        m_currentTextIndex += 2;
+                        GameManager.Instance.GameSettings.HasExtratutorialStepThreeShowed = true;
+                        HideAndShowNext();
+                    }
+                    break;
+                case ExtraTutorialType.NONE:
+                    return;
+            }
         }
 
         private void OnInitialCutSceneFinished(OnCutSceneFinished ev) {
             if (GameManager.Instance.GameSettings.HasTutorialFinished) {
                 enabled = false;
+                m_currentTextIndex = TutorialTexts.Count - 4;
                 return;
             }
             
@@ -35,7 +66,7 @@ namespace ProjectA.Managers {
         }
 
         private IEnumerator ShowTextDelay() {
-            if (m_currentTextIndex >= TutorialTexts.Count) {
+            if (m_currentTextIndex >= TutorialTexts.Count - 4) {
                 yield break;
             }
             

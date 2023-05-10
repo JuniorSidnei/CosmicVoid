@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
 using ProjectA.Singletons.Managers;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ProjectA.Entity {
@@ -15,6 +12,7 @@ namespace ProjectA.Entity {
                 GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.STRONG));
                 Destroy(this);
                 GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
+                Instantiate(Resources.Load("MultipleExplosions"), transform.position, Quaternion.identity);
             } else {
                 GameManager.Instance.Dispatcher.Emit(new  OnReflectFeedback());
                 GameManager.Instance.Dispatcher.Emit(new OnReflectEntity(this, true));    

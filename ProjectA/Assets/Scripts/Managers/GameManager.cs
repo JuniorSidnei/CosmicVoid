@@ -18,6 +18,7 @@ namespace ProjectA.Singletons.Managers {
 
         public SaveLoadManager SaveLoadManager;
         public GameSettings GameSettings;
+        public int SceneIndex;
         public int NextSceneIndex;
         public InputManager InputManager;
         public int HitCount = 0;
@@ -46,6 +47,18 @@ namespace ProjectA.Singletons.Managers {
             InputManager.DisablePlayerMovement();
             
             Dispatcher.Subscribe<OnReflectFeedback>(OnReflectFeedback);
+            Dispatcher.Subscribe<OnCutSceneFinished>(OnCutSceneFinished);
+        }
+
+        private void OnCutSceneFinished(OnCutSceneFinished ev) {
+            switch (SceneIndex) {
+                case 2:
+                    Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType.LINKER));
+                    break;
+                case 3:
+                    Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType.CLOAKING));
+                    break;
+            }
         }
 
         private void Update() {

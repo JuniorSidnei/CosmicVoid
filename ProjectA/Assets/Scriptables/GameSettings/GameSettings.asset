@@ -17,5 +17,9 @@ MonoBehaviour:
   PlayerMaxLife: 4
   HasUnlockedStage2: 0
   HasUnlockedStage3: 0
+  HasExtratutorialStepOneShowed: 1
+  HasExtratutorialStepTwoShowed: 1
+  HasExtratutorialStepThreeShowed: 1
+  HasExtratutorialStepFourShowed: 1
   MusicVolume: 5
   SfxVolume: 3

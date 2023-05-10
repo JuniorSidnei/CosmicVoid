@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace ProjectA {
@@ -10,8 +9,12 @@ namespace ProjectA {
           public int PlayerMaxLife;
           public bool HasUnlockedStage2;
           public bool HasUnlockedStage3;
+          public bool HasExtratutorialStepOneShowed;
+          public bool HasExtratutorialStepTwoShowed;
+          public bool HasExtratutorialStepThreeShowed;
+          public bool HasExtratutorialStepFourShowed;
 
-        public float MusicVolume;
+          public float MusicVolume;
         public float SfxVolume;
 
         public void UpgradePlayerLife() {

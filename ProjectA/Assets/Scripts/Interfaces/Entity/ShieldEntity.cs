@@ -1,3 +1,4 @@
+using System.Collections;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Entity.ProcessDamage;
@@ -33,10 +34,23 @@ namespace ProjectA.Entity {
 
         private void Start() {
             m_heatlh = Health;
+
+            StartCoroutine(ShowExtraTutorialText());
         }
 
         private void DestroyShield() {
             Destroy(gameObject);
+        }
+
+        private IEnumerator ShowExtraTutorialText() {
+            yield return new WaitForSeconds(6f);
+            
+            if (GameManager.Instance.GameSettings.HasExtratutorialStepFourShowed) {
+                yield break;
+            }
+
+            GameManager.Instance.Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType.SHIELDBREAKER));
+            GameManager.Instance.GameSettings.HasExtratutorialStepFourShowed = true;
         }
     }
 }

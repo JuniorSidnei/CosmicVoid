@@ -16,6 +16,10 @@ public enum GameDifficulty {
     EASY, NORMAL, HARD    
 }
 
+public enum ExtraTutorialType {
+    EXPLOSIVE, CLOAKING, SHIELDBREAKER, LINKER, NONE    
+}
+
 public class OnShowStageScore {
     public OnShowStageScore(int stageScore, int nextSceneIndex) {
         StageScore = stageScore;
@@ -173,3 +177,11 @@ public class OnExplosionActivated { }
 public class OnCutsceneStarted { }
 public class OnCutSceneFinished { }
 public class OnReflectFeedback { }
+
+public class OnShowExtraTutorial {
+    public OnShowExtraTutorial(ExtraTutorialType type) {
+        Type = type;
+    }
+
+    public ExtraTutorialType Type;
+}
