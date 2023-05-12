@@ -1,3 +1,4 @@
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Controllers;
 using ProjectA.Singletons.Managers;
 using TMPro;
@@ -16,8 +17,13 @@ namespace ProjectA.Managers {
         [Header("options settings")]
         public TextMeshProUGUI MusicVolume;
         public TextMeshProUGUI SfxVolume;
- 
+
+        [Header("audio settings")]
+        public AudioClip MenuTheme;
+        public AudioClip UIClick;
+            
         public void PlayGame() {
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             TransitionModal.Instance.DoTransitionIn(() => {
                 if(SaveLoadManager.Instance.GameSettings.HasTutorialFinished) {
                     SceneManager.LoadScene("SelectStageMenu"); 
@@ -28,20 +34,23 @@ namespace ProjectA.Managers {
         }
 
         public void QuitGame() {
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             Application.Quit();
         }
 
         public void ShowOptions() {
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             OptionsPanel.SetActive(true);    
         }
         
         public void HideOptions() {
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             OptionsPanel.SetActive(false);    
         }
         
         public void IncreaseMusicVolume() {
             GameSettings.MusicVolume += 1;
-
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             if(GameSettings.MusicVolume >= 10) GameSettings.MusicVolume = 10;
 
             MusicVolume.text = GameSettings.MusicVolume.ToString();
@@ -49,7 +58,7 @@ namespace ProjectA.Managers {
 
         public void DecreaseMusicVolume() {
             GameSettings.MusicVolume -= 1;
-
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             if(GameSettings.MusicVolume <= 0) GameSettings.MusicVolume = 0;
 
             MusicVolume.text = GameSettings.MusicVolume.ToString();
@@ -57,7 +66,7 @@ namespace ProjectA.Managers {
 
         public void IncreaseSfxVolume() {
             GameSettings.SfxVolume += 1;
-
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             if(GameSettings.SfxVolume >= 10) GameSettings.SfxVolume = 10;
 
             SfxVolume.text = GameSettings.SfxVolume.ToString();
@@ -65,7 +74,7 @@ namespace ProjectA.Managers {
 
         public void DecreaseSfxVolume() {
             GameSettings.SfxVolume -= 1;
-
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.SfxVolume);
             if(GameSettings.SfxVolume <= 0) GameSettings.SfxVolume = 0;
 
             SfxVolume.text = GameSettings.SfxVolume.ToString();
@@ -75,6 +84,8 @@ namespace ProjectA.Managers {
             TransitionModal.Instance.DoTransitionOut();
             MusicVolume.text = GameSettings.MusicVolume.ToString();
             SfxVolume.text = GameSettings.SfxVolume.ToString();
+            
+            AudioController.Instance.Play(MenuTheme, AudioController.SoundType.Music, GameSettings.MusicVolume, true);
         }
     }
 }
