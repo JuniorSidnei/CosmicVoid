@@ -538,14 +538,13 @@ namespace GameToBeNamed.Utils.Sound {
         void OnDestroy() {
             //PlayerPrefs.Save();
         }
-
+        
         public void ChangeVolume(SoundType currentType, float volume) {
             switch (currentType) {
                 case SoundType.Music:
                     m_musicVolume = volume;
                     _musicChannel.volume = m_musicVolume;
                     PlayerPrefs.SetFloat(musicVolume, m_musicVolume);
-
                     break;
                 case SoundType.SoundEffect2D:
                     m_soundVolume = volume;

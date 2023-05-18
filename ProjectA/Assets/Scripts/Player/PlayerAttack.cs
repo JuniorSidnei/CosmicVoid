@@ -1,3 +1,4 @@
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Animators;
 using ProjectA.Input;
 using ProjectA.Interface;
@@ -91,16 +92,18 @@ namespace ProjectA.Attack {
             if (m_elapsedtimeCharged >= TimeToChargedAttack) {
                 PlayerAnimator.Charged();
                 m_isCharged = true;
+                AudioController.Instance.Play(GameManager.Instance.GameSettings.PlayerCharged, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale(), true);
             }
         }
 
         private void Attack() {
-
+            AudioController.Instance.Play(m_isCharged ? GameManager.Instance.GameSettings.PlayerAttackCharged : GameManager.Instance.GameSettings.PlayerAttack, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             m_elapsedAttackCooldown = AttackCooldown;
             var rayPosition = new Vector3(transform.position.x + m_circleCollider2D.radius + 0.25f, transform.position.y);
             
             var hit = Physics2D.Raycast(rayPosition, Vector2.right, 1f, EntityLayer);
 
+            AudioController.Instance.StopSound(GameManager.Instance.GameSettings.PlayerCharged, true);
             if (!hit) return;
 
             var o = hit.collider.gameObject;
@@ -111,6 +114,8 @@ namespace ProjectA.Attack {
             Instantiate(HitEffectPrefab, newPosition, Quaternion.identity, transform);
             o.GetComponent<IDamageable>()?.ProcessDamage(IsCharged());
             m_isCharged = false;
+
+            AudioController.Instance.StopSound(GameManager.Instance.GameSettings.PlayerCharged, true);
         }
 
         private void OnDrawGizmos() {

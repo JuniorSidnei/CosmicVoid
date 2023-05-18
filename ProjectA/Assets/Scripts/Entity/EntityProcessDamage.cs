@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Actions;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
@@ -73,6 +74,7 @@ namespace ProjectA.Entity.ProcessDamage {
         }
 
         private void Clean() {
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.EnemyDie, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             Instantiate(OnDieParticlePrefab, transform.position, Quaternion.identity);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
             Destroy(this);

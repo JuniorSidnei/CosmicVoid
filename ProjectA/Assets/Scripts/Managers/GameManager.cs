@@ -1,4 +1,5 @@
 using System.Collections;
+using GameToBeNamed.Utils.Sound;
 using HaremCity.Utils;
 using ProjectA.Input;
 using ProjectA.Utils;
@@ -12,8 +13,6 @@ namespace ProjectA.Singletons.Managers {
         private QueuedEventDispatcher m_dispatcher = new QueuedEventDispatcher();
 
         public QueuedEventDispatcher Dispatcher => m_dispatcher;
-
-        public bool CutSceneShow { get; internal set; }
 
         public SaveLoadManager SaveLoadManager;
         public GameSettings GameSettings;
@@ -30,6 +29,8 @@ namespace ProjectA.Singletons.Managers {
         }
         
         public void OnBossDeath() {
+            AudioController.Instance.Pause();
+            AudioController.Instance.Play(GameSettings.BigExplosion, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             GameSettings.UpgradePlayerLife();
             InputManager.Disable();
             m_dispatcher.Emit(new OnCutsceneStarted());
@@ -47,6 +48,8 @@ namespace ProjectA.Singletons.Managers {
             
             Dispatcher.Subscribe<OnReflectFeedback>(OnReflectFeedback);
             Dispatcher.Subscribe<OnCutSceneFinished>(OnCutSceneFinished);
+            AudioController.Instance.ChangeVolume(AudioController.SoundType.Music, GameSettings.GetMusicVolumeReduceScale());
+            AudioController.Instance.Play(GameSettings.GameTheme, AudioController.SoundType.Music, GameSettings.GetMusicVolumeReduceScale(), true);
         }
 
         private void OnCutSceneFinished(OnCutSceneFinished ev) {
@@ -65,6 +68,7 @@ namespace ProjectA.Singletons.Managers {
         }
 
         private void OnReflectFeedback(OnReflectFeedback ev) {
+            AudioController.Instance.Play(GameSettings.ReflectSound, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.BASIC));
             Time.timeScale = 0.01f;
             StartCoroutine(nameof(ReturnTimeScale));

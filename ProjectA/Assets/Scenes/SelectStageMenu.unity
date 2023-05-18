@@ -2817,6 +2817,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8ffac5bb8c7ea414fbbdcbfa38e95be9, type: 3}
   - {fileID: 21300000, guid: c5e3d87db74b448428766e55d6e50b0a, type: 3}
   - {fileID: 21300000, guid: 748ae8b33df036b46a86e0387f1602cf, type: 3}
+  MenuTheme: {fileID: 8300000, guid: 3f140d5107e83e84f9659757731ce013, type: 3}
+  UIClick: {fileID: 8300000, guid: 278c18cf808c41f4b8430897f7d09f60, type: 3}
   BackBtn: {fileID: 1453766139}
 --- !u!1 &1421655777
 GameObject:

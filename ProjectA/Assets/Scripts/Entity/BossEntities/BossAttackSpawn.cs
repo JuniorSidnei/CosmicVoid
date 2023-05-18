@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Data.Wave;
 using ProjectA.Entity.Position;
 using ProjectA.Managers;
@@ -97,7 +98,7 @@ namespace ProjectA.Controllers {
         private void SpawnEntity() {
             var entityInfo = m_entityQueue.Dequeue(); 
 
-            Debug.Log("spawn index: " + m_debugIndex);
+            //Debug.Log("spawn index: " + m_debugIndex);
             m_debugIndex += 1;
             
             switch (entityInfo.Type) {
@@ -159,6 +160,7 @@ namespace ProjectA.Controllers {
             Instantiate(portal, offsetPosition, Quaternion.identity, transform);
             m_timeToNextSpawn = entityInfo.TimeToNextEntity;
             SelectRandomPattern();
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.BossShoot, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
         }
 
         protected virtual void SelectRandomPattern() {

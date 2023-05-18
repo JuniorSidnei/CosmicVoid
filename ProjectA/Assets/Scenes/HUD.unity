@@ -4494,6 +4494,7 @@ MonoBehaviour:
   BgRect: {fileID: 954862084}
   ModalText: {fileID: 51025091}
   ActionBtn: {fileID: 228597619}
+  ClickUI: {fileID: 8300000, guid: 278c18cf808c41f4b8430897f7d09f60, type: 3}
 --- !u!1 &1933506559
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,4 +22,19 @@ MonoBehaviour:
   HasExtratutorialStepThreeShowed: 1
   HasExtratutorialStepFourShowed: 1
   MusicVolume: 5
-  SfxVolume: 3
+  SfxVolume: 2
+  GameTheme: {fileID: 8300000, guid: b9cd800f49618714595faada9a143a2b, type: 3}
+  BossTheme: {fileID: 8300000, guid: 9c2e1407ec0d2804db0a91d0e1a3c88f, type: 3}
+  ReflectSound: {fileID: 8300000, guid: aca50cd6571978740a08f13acccfdaa6, type: 3}
+  PlayerHit: {fileID: 8300000, guid: e66e0eb35a251a740aa4f7f5a6c45676, type: 3}
+  EnemyDie: {fileID: 8300000, guid: 98dca5f63797a2f4187dfef374d4d389, type: 3}
+  BigExplosion: {fileID: 8300000, guid: 303be3ea04f51dc43a4b8de542f5259d, type: 3}
+  BossShoot: {fileID: 8300000, guid: 6f66d5a5938c84245a9c5af3344296db, type: 3}
+  EnemyShoot: {fileID: 8300000, guid: c50134cd2923f704abb64935f2458891, type: 3}
+  BossTeleport: {fileID: 8300000, guid: 7e819cb6487edc84ea73123f5efcf4c1, type: 3}
+  Lightning: {fileID: 8300000, guid: ab66b0ebd5c3b7e41b75137823784488, type: 3}
+  PlayerMove: {fileID: 8300000, guid: 917ba7a12dd7d4a4185fe4fc684f54aa, type: 3}
+  PlayerAttack: {fileID: 8300000, guid: ffd41aebba1513a459de9267b7cdc02e, type: 3}
+  PlayerAttackCharged: {fileID: 8300000, guid: aca50cd6571978740a08f13acccfdaa6, type: 3}
+  PlayerCharged: {fileID: 8300000, guid: 025cefa8b0e0d844b91b0c4e78890058, type: 3}
+  ConfirmUI: {fileID: 8300000, guid: 278c18cf808c41f4b8430897f7d09f60, type: 3}

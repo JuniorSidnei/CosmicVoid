@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace ProjectA.Managers {
         private void WaitToExplosion() {
             Destroy(Instantiate(ExclamationPrefab, PlayerTransform.position + new Vector3(0, 1f, 0), Quaternion.identity), .3f);
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShakeWithValues(5.0f, 0.5f));
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.BigExplosion, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             Destroy(Instantiate(ExplosionPrefab, ExplosionPosition.position, Quaternion.identity, transform), .5f);
             StartCoroutine(nameof(WaitToMovePlayer));    
         }

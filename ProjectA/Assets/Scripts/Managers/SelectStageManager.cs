@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Controllers;
+using ProjectA.Singletons.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,16 +33,22 @@ namespace ProjectA.Managers {
         public List<string> LevelNameTexts = new List<string>();
         public List<Sprite> LevelImageSprites = new List<Sprite>();
 
+        [Space(10)]
+        [Header("Sounds settings")]
+        public AudioClip MenuTheme;
+        public AudioClip UIClick;
+        
         public Button BackBtn;
 
         private int m_levelIndex = 0;
         private int m_difficultyIndex = 0;
-
+        
         public void AdvanceDifficulty() {
             m_difficultyIndex += 1;
             
             if (m_difficultyIndex > 2) m_difficultyIndex = 0;
             
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             DifficultyText.text = SetTextDifficulty(m_difficultyIndex);
             DifficultyTextTooltip.text = TooltipsTexts[m_difficultyIndex];
         }
@@ -50,6 +58,7 @@ namespace ProjectA.Managers {
 
             if (m_difficultyIndex < 0) m_difficultyIndex = 2;
             
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             DifficultyText.text = SetTextDifficulty(m_difficultyIndex);
             DifficultyTextTooltip.text = TooltipsTexts[m_difficultyIndex];
         }
@@ -59,6 +68,7 @@ namespace ProjectA.Managers {
             
             if (m_levelIndex > 2) m_levelIndex = 0;
 
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             LevelImage.sprite = LevelImageSprites[m_levelIndex];
             LevelName.text = LevelNameTexts[m_levelIndex];
 
@@ -70,6 +80,7 @@ namespace ProjectA.Managers {
 
             if (m_levelIndex < 0) m_levelIndex = 2;
             
+            AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
             LevelImage.sprite = LevelImageSprites[m_levelIndex];
             LevelName.text = LevelNameTexts[m_levelIndex];
 
@@ -109,8 +120,8 @@ namespace ProjectA.Managers {
                      if(!GameSettings.HasUnlockedStage3) {
                         LevelImage.color = Color.black;
                         PlayLevelBtn.interactable =  false;
-                    }
-                    break;
+                     }
+                     break;
             }; 
         }
 
@@ -118,12 +129,16 @@ namespace ProjectA.Managers {
             TransitionModal.Instance.DoTransitionOut();
             
             BackBtn.onClick.AddListener(() => {
+                AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
                 TransitionModal.Instance.DoTransitionIn(()=>SceneManager.LoadScene("Menu"));
             });
             
             PlayLevelBtn.onClick.AddListener(() => {
+                AudioController.Instance.Play(UIClick, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
                 SceneManager.LoadScene("GameScene_" + (m_levelIndex + 1));
             });
+
+            AudioController.Instance.Play(MenuTheme, AudioController.SoundType.Music, GameSettings.GetMusicVolumeReduceScale(), true);
         }
 
     }

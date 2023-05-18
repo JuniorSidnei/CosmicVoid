@@ -16,6 +16,31 @@ namespace ProjectA {
         public float MusicVolume;
         public float SfxVolume;
 
+        [Header("audios")]
+        public AudioClip GameTheme;
+        public AudioClip BossTheme;
+        public AudioClip ReflectSound;
+        public AudioClip PlayerHit;
+        public AudioClip EnemyDie;
+        public AudioClip BigExplosion;
+        public AudioClip BossShoot;
+        public AudioClip EnemyShoot;
+        public AudioClip BossTeleport;
+        public AudioClip Lightning;
+        public AudioClip PlayerMove;
+        public AudioClip PlayerAttack;
+        public AudioClip PlayerAttackCharged;
+        public AudioClip PlayerCharged;
+        public AudioClip ConfirmUI;
+
+        public float GetSfxVolumeReduceScale() {
+            return SfxVolume / 10;
+        }
+        
+        public float GetMusicVolumeReduceScale() {
+            return MusicVolume / 10;
+        }
+
         public void UpgradePlayerLife() {
             PlayerMaxLife += 1;
         }

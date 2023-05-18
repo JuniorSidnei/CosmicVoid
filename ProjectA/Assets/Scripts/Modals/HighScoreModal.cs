@@ -1,6 +1,8 @@
 using System;
 using DG.Tweening;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Controllers;
+using ProjectA.Singletons.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,6 +36,7 @@ namespace ProjectA.Modals {
 
             NextBtn.onClick.AddListener(() => {
                 Time.timeScale = 1f;
+                AudioController.Instance.Play(GameManager.Instance.GameSettings.ConfirmUI, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
                 onClickNextBtnCallback?.Invoke();
             });
         }

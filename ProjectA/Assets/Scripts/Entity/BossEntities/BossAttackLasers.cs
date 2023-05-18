@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Data.Wave;
 using ProjectA.Singletons.Managers;
 using UnityEngine;
@@ -72,6 +73,8 @@ namespace ProjectA.Controllers {
             var currentLaser = LaserList[m_currentLaserIndex];
             currentLaser.SetActive(true);
             m_currentLaser = currentLaser;
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.Lightning, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
+            
             //var line = currentLaser.GetComponent<LineRenderer>();
             //line.widthMultiplier = 0f;
 

@@ -1,3 +1,4 @@
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Modals;
 using ProjectA.Movement;
 using ProjectA.Singletons.Managers;
@@ -20,12 +21,14 @@ namespace ProjectA.Interface {
         private void OnDamagePlayer(OnDamagePlayer ev) {
             if(!GameManager.Instance.GameSettings.HasTutorialFinished) return;
             
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.PlayerHit, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             m_currentHealth -= ev.Damage;
             Instantiate(OnHitPrefab, transform.position, Quaternion.identity, transform);
             
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ev.ShakeForce));
 
             if (m_currentHealth <= 0) {
+                AudioController.Instance.Play(GameManager.Instance.GameSettings.BigExplosion, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
                 m_currentHealth = 0;
                 Instantiate(OnDeathPrefab, transform.position, Quaternion.identity, transform);
                 PauseModal.Instance.PauseGame(true);

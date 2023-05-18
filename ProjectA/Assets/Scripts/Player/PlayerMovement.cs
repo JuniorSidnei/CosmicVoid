@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Attack;
 using ProjectA.Input;
 using ProjectA.Singletons.Managers;
@@ -82,7 +83,8 @@ namespace ProjectA.Movement {
 
         private void MoveUp() {
             if (m_isMoving || State == PlayerStates.STUNNED) return;
-            
+
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.PlayerMove, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             var newPos = Vector2.zero;
             
             switch (Position) {
@@ -109,6 +111,7 @@ namespace ProjectA.Movement {
         private void MoveDown() {
             if (m_isMoving || State == PlayerStates.STUNNED) return;
             
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.PlayerMove, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
             var newPos = Vector2.zero;
             
             switch (Position) {
