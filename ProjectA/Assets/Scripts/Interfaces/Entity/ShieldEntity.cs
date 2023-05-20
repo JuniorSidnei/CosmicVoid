@@ -45,12 +45,12 @@ namespace ProjectA.Entity {
         private IEnumerator ShowExtraTutorialText() {
             yield return new WaitForSeconds(6f);
             
-            if (GameManager.Instance.GameSettings.HasExtratutorialStepFourShowed) {
+            if (GameManager.Instance.GameSettings.HasExtraTutorialStepFourShowed) {
                 yield break;
             }
 
             GameManager.Instance.Dispatcher.Emit(new OnShowExtraTutorial(ExtraTutorialType.SHIELDBREAKER));
-            GameManager.Instance.GameSettings.HasExtratutorialStepFourShowed = true;
+            GameManager.Instance.GameSettings.HasExtraTutorialStepFourShowed = true;
             GameManager.Instance.SaveLoadManager.SaveGame();
         }
     }

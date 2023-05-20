@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using GameToBeNamed.Utils.Sound;
 using ProjectA.Animators;
 using ProjectA.Entity;
 using ProjectA.Entity.Boss;
@@ -98,6 +99,7 @@ namespace ProjectA.Actions {
             }
             
             Boss2Animator.AnimateStandUp(() => {
+                AudioController.Instance.Play(GameManager.Instance.GameSettings.BossTeleport, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
                 transform.localPosition = new Vector3(-2f, 1.3f, 1f);    
             });
         }

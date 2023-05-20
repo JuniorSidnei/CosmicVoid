@@ -854,6 +854,9 @@ MonoBehaviour:
   OnDieParticlePrefab: {fileID: 0}
   XPosition: -3
   WillOverride: 1
+  ExtraTutorialType: 0
+  BossTheme: {fileID: 8300000, guid: 9c2e1407ec0d2804db0a91d0e1a3c88f, type: 3}
+  BossHit: {fileID: 8300000, guid: e66e0eb35a251a740aa4f7f5a6c45676, type: 3}
 --- !u!114 &7373194903762297595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,9 +870,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitsHealth: 60
-  RageHpActivation: 0
+  RageHpActivation: 25
   Animator: {fileID: 7597196126743966563}
-  DeathParticlePrefab: {fileID: 0}
+  DeathParticlePrefab: {fileID: 1024219424008015146, guid: 5231db8064827374c8c3cd4bd9034320, type: 3}
 --- !u!114 &3875058530461329329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,9 +885,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab162c8cc170304f81a8ecc6d749d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsTestWave: 0
+  TestWave: {fileID: 0}
   BossPatternsDatas:
   - {fileID: 11400000, guid: 767cfe4eed54b8743a6f13b6d46a73b7, type: 2}
-  BossPatternRageData: {fileID: 0}
+  - {fileID: 11400000, guid: bfbb178c0543ce245b5269d6191c1139, type: 2}
+  - {fileID: 11400000, guid: a6fde8ebc374ff34a9c097ad645e7511, type: 2}
+  BossPatternRageData: {fileID: 11400000, guid: 77a333fb8e9dfa74b88e3f3bd3e16cca, type: 2}
   MuzzleShootReflectivePrefab: {fileID: 891119464957199666, guid: 1c8348cb7d34bd54dae9ae486a3daaf2, type: 3}
   MuzzleShootHardPrefab: {fileID: 5115108082924250385, guid: 643a8026604c6d34a94aea1ae30c1b83, type: 3}
   MuzzleShootExplosivePrefab: {fileID: 2020718123857391270, guid: d3fc5dfb28f2d8840b0b4261ef445e22, type: 3}
@@ -916,8 +923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e24789bba364474a9d448874af243aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitsHealth: 1
-  RageHpActivation: 0
+  HitsHealth: 50
+  RageHpActivation: 25
   Animator: {fileID: 7597196126743966563}
   DeathParticlePrefab: {fileID: 1024219424008015146, guid: 5231db8064827374c8c3cd4bd9034320, type: 3}
   WeakSpots:

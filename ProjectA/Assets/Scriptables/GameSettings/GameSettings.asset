@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   HasTutorialFinished: 1
-  GameDifficulty: 2
-  PlayerMaxLife: 4
-  HasUnlockedStage2: 0
+  GameDifficulty: 0
+  PlayerMaxLife: 5
+  HasUnlockedStage2: 1
   HasUnlockedStage3: 0
-  HasExtratutorialStepOneShowed: 1
-  HasExtratutorialStepTwoShowed: 1
-  HasExtratutorialStepThreeShowed: 1
-  HasExtratutorialStepFourShowed: 1
-  MusicVolume: 5
+  HasExtraTutorialStepOneShowed: 1
+  HasExtratutorialStepTwoShowed: 0
+  HasExtraTutorialStepThreeShowed: 0
+  HasExtraTutorialStepFourShowed: 0
+  MusicVolume: 3
   SfxVolume: 2
+  BossOneDefeated: 0
+  BossTwoDefeated: 0
+  BossThreeDefeated: 0
   GameTheme: {fileID: 8300000, guid: b9cd800f49618714595faada9a143a2b, type: 3}
   BossTheme: {fileID: 8300000, guid: 9c2e1407ec0d2804db0a91d0e1a3c88f, type: 3}
+  VictoryTheme: {fileID: 8300000, guid: 7ee89b61a1cef294984dce4bc766a2d1, type: 3}
   ReflectSound: {fileID: 8300000, guid: aca50cd6571978740a08f13acccfdaa6, type: 3}
   PlayerHit: {fileID: 8300000, guid: e66e0eb35a251a740aa4f7f5a6c45676, type: 3}
   EnemyDie: {fileID: 8300000, guid: 98dca5f63797a2f4187dfef374d4d389, type: 3}

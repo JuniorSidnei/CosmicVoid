@@ -73,7 +73,7 @@ namespace ProjectA.Modals {
             IsGameEnded = true;
             Time.timeScale = 1;
             AudioController.Instance.Play(ClickUI, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.SfxVolume);
-            TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene("GameScene_1"));
+            TransitionModal.Instance.DoTransitionIn(()=> SceneManager.LoadScene($"GameScene_{GameManager.Instance.SceneIndex}"));
         }
 
         private void Awake() {

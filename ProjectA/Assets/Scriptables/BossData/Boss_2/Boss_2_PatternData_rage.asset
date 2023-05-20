@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
   InitialTimeSpawn: 2
-  WavePrefabs: {fileID: 0}
+  Boss: {fileID: 0}
   EntityInfos:
   - Type: 9
     Position: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 9
     Position: 2
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 1
   - Type: 9
     Position: 1
     TimeToNextEntity: 1.5
@@ -36,7 +36,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 1
   - Type: 6
     Position: 1
     TimeToNextEntity: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 1
   - Type: 6
     Position: 1
     TimeToNextEntity: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 5
     Position: 2
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 1
   - Type: 6
     Position: 0
     TimeToNextEntity: 0.2
@@ -69,7 +69,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 6
     Position: 0
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 1
   - Type: 6
     Position: 2
     TimeToNextEntity: 0.2
@@ -78,7 +78,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 6
     Position: 2
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 1
   - Type: 6
     Position: 0
     TimeToNextEntity: 0.2
@@ -87,7 +87,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 6
     Position: 0
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 1
   - Type: 6
     Position: 2
     TimeToNextEntity: 0.2
@@ -96,7 +96,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 6
     Position: 2
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 1
   - Type: 6
     Position: 0
     TimeToNextEntity: 0.2
@@ -120,7 +120,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 9
     Position: 0
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 5
     Position: 1
     TimeToNextEntity: 0.2
@@ -132,7 +132,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 9
     Position: 0
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 1
   - Type: 9
     Position: 2
     TimeToNextEntity: 0.2
@@ -150,7 +150,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 5
     Position: 0
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 6
     Position: 1
     TimeToNextEntity: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 5
     Position: 0
-    TimeToNextEntity: 0
+    TimeToNextEntity: 1
   - Type: 5
     Position: 2
     TimeToNextEntity: 0.2
@@ -174,7 +174,7 @@ MonoBehaviour:
     TimeToNextEntity: 1.5
   - Type: 9
     Position: 1
-    TimeToNextEntity: 0.2
+    TimeToNextEntity: 1
   - Type: 9
     Position: 0
     TimeToNextEntity: 0.2

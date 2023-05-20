@@ -30,8 +30,8 @@ namespace ProjectA.Managers {
             
             switch (ev.Type) {
                 case ExtraTutorialType.LINKER:
-                    if (!GameManager.Instance.GameSettings.HasExtratutorialStepOneShowed) {
-                        GameManager.Instance.GameSettings.HasExtratutorialStepOneShowed = true;
+                    if (!GameManager.Instance.GameSettings.HasExtraTutorialStepOneShowed) {
+                        GameManager.Instance.GameSettings.HasExtraTutorialStepOneShowed = true;
                         HideAndShowNext();
                     }
                     break;
@@ -43,9 +43,9 @@ namespace ProjectA.Managers {
                     }
                     break;
                 case ExtraTutorialType.CLOAKING:
-                    if (!GameManager.Instance.GameSettings.HasExtratutorialStepThreeShowed) {
+                    if (!GameManager.Instance.GameSettings.HasExtraTutorialStepThreeShowed) {
                         m_currentTextIndex += 2;
-                        GameManager.Instance.GameSettings.HasExtratutorialStepThreeShowed = true;
+                        GameManager.Instance.GameSettings.HasExtraTutorialStepThreeShowed = true;
                         HideAndShowNext();
                     }
                     break;

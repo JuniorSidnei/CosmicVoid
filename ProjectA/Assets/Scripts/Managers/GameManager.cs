@@ -31,14 +31,16 @@ namespace ProjectA.Singletons.Managers {
         public void OnBossDeath() {
             AudioController.Instance.Pause();
             AudioController.Instance.Play(GameSettings.BigExplosion, AudioController.SoundType.SoundEffect2D, GameSettings.GetSfxVolumeReduceScale());
-            GameSettings.UpgradePlayerLife();
+            GameSettings.UpgradePlayerLife(SceneIndex);
             InputManager.Disable();
             m_dispatcher.Emit(new OnCutsceneStarted());
             m_dispatcher.Emit(new OnBossDeath());
             Invoke(nameof(ShowHighScoreHit), 6);
+            SaveLoadManager.SaveGame();
         }
 
         public void ShowHighScoreHit() {
+            AudioController.Instance.Play(GameSettings.VictoryTheme, AudioController.SoundType.Music, GameSettings.GetMusicVolumeReduceScale());
             Dispatcher.Emit(new OnShowStageScore(HitCount, NextSceneIndex));
         }
 
