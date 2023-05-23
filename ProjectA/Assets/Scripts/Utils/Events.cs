@@ -148,6 +148,8 @@ public class OnShootLaser {
     public LaserPosition Type;
 }
 
+public class OnShieldBreak { }
+
 public class OnHitCountUpdate {
     
     public OnHitCountUpdate(int count) {

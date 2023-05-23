@@ -9,10 +9,10 @@ namespace ProjectA.Entity {
 
         public override void ProcessDamage(bool isCharged) {
             if (!isCharged) {
+                Instantiate(Resources.Load("Prefabs/MultipleExplosion"), transform.position, Quaternion.identity);
                 GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.STRONG));
                 Destroy(this);
                 GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
-                Instantiate(Resources.Load("MultipleExplosions"), transform.position, Quaternion.identity);
             } else {
                 GameManager.Instance.Dispatcher.Emit(new OnReflectFeedback());
                 GameManager.Instance.Dispatcher.Emit(new OnReflectEntity(this, true));    
@@ -20,7 +20,7 @@ namespace ProjectA.Entity {
         }
 
         public override void ProcessPlayerDamage(bool isCharged) {
-            Instantiate(Resources.Load("MultipleExplosions"), transform.position, Quaternion.identity);
+            Instantiate(Resources.Load("Prefabs/MultipleExplosion"), transform.position, Quaternion.identity);
             GameManager.Instance.Dispatcher.Emit(new OnDamagePlayer(DamagePower, ShakeForce.STRONG));
             Destroy(this);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));

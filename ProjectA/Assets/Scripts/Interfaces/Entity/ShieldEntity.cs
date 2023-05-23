@@ -27,6 +27,7 @@ namespace ProjectA.Entity {
             Animator.CrossFade("shield_hit", 0.1f);
             
             if (m_heatlh <= 0) {
+                GameManager.Instance.Dispatcher.Emit(new OnShieldBreak());
                 Animator.CrossFade("shield_destroy", 0.1f);
                 Invoke(nameof(DestroyShield), 0.35f);
             }

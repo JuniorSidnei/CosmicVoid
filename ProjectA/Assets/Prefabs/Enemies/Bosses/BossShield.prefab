@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010133266, y: -0.12159991}
+  m_Offset: {x: -0.27531585, y: -0.12159991}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.97973347, y: 5.7424073}
+  m_Size: {x: 0.4289202, y: 5.7424073}
   m_EdgeRadius: 0
 --- !u!114 &3020802729137275824
 MonoBehaviour:
@@ -101,7 +101,7 @@ MonoBehaviour:
   EntityLayer:
     serializedVersion: 2
     m_Bits: 256
-  OnDieParticlePrefab: {fileID: 0}
+  OnDieParticlePrefab: {fileID: 994276049108304709, guid: 324b5fb5ca0c1ed45be8e91b1ef4e641, type: 3}
   Health: 10
   Animator: {fileID: 7357889923678561681}
 --- !u!1 &1708026696540507752

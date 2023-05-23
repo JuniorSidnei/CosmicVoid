@@ -34,10 +34,18 @@ namespace ProjectA.Attack {
             InputManager.Attack.canceled += ctx => AnimateAttack();
             m_circleCollider2D = GetComponent<CircleCollider2D>();
             GameManager.Instance.Dispatcher.Subscribe<OnPlayerStateChange>(OnPlayerStateChange);
+            GameManager.Instance.Dispatcher.Subscribe<OnSpawnBoss>(OnSpawnBoss);
 
             m_elapsedAttackCooldown = AttackCooldown;
         }
-        
+
+        private void OnSpawnBoss(OnSpawnBoss arg0) {
+            m_elapsedtimeCharged = 0f;
+            m_isChargingAttack = false;
+            m_isCharged = false;
+            m_currentPlayerState = PlayerMovement.PlayerStates.IDLE;
+        }
+
         private void OnPlayerStateChange(OnPlayerStateChange ev) {
             m_currentPlayerState = ev.NewState;
 

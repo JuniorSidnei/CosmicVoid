@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SaveLoadManager: {fileID: 758664057}
   GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
-  SceneIndex: 0
+  SceneIndex: 1
   NextSceneIndex: 2
   InputManager: {fileID: 1967939599}
   HitCount: 0

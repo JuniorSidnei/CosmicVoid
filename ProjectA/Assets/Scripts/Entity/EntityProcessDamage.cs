@@ -43,6 +43,10 @@ namespace ProjectA.Entity.ProcessDamage {
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
             OnDieParticlePrefab = info.EntityExplosionParticle;
+            
+            if (OnDieParticlePrefab == null) {
+                OnDieParticlePrefab = Resources.Load<GameObject>("Prefabs/MultipleExplosion");
+            }
         }
         
         public virtual void Setup(EntityInfo info, LayerMask playerLayer) {
@@ -52,6 +56,10 @@ namespace ProjectA.Entity.ProcessDamage {
             GetComponent<Actions.Movement>().ResetVelocity();
             GetComponent<Light2D>().color = info.EntityColor;
             OnDieParticlePrefab = info.EntityExplosionParticle;
+
+            if (OnDieParticlePrefab == null) {
+                OnDieParticlePrefab = Resources.Load<GameObject>("Prefabs/MultipleExplosion");
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other) {
@@ -75,6 +83,11 @@ namespace ProjectA.Entity.ProcessDamage {
 
         private void Clean() {
             AudioController.Instance.Play(GameManager.Instance.GameSettings.EnemyDie, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
+            
+            if (OnDieParticlePrefab == null) {
+                OnDieParticlePrefab = Resources.Load<GameObject>("Prefabs/MultipleExplosion");
+            }
+            
             Instantiate(OnDieParticlePrefab, transform.position, Quaternion.identity);
             GameManager.Instance.Dispatcher.Emit(new OnEntityRelease(GetComponent<EntityPosition>()));
             Destroy(this);

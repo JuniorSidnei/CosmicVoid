@@ -667,7 +667,7 @@ MonoBehaviour:
   SaveLoadManager: {fileID: 758664057}
   GameSettings: {fileID: 11400000, guid: 3d7733b664a0df549ac89f46fe68aaa8, type: 2}
   SceneIndex: 3
-  NextSceneIndex: 3
+  NextSceneIndex: 0
   InputManager: {fileID: 1967939599}
   HitCount: 0
 --- !u!114 &758664056
@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48e3c2388a9170d46bde85fc0373b861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaveData: {fileID: 11400000, guid: fc81736174f78814f856d45fb966543e, type: 2}
+  WaveData: {fileID: 11400000, guid: a8b0cce80626e234dbe86eb9f15703a1, type: 2}
   EntitiesPool: {fileID: 1146139864}
   ProjectilesPool: {fileID: 1146139865}
 --- !u!114 &1146139864
@@ -869,6 +869,10 @@ PrefabInstance:
     - target: {fileID: 6716933972539869288, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716933972539869290, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6716933972539869292, guid: 06f02bfa926c0d24cbd784f616a6c142, type: 3}
       propertyPath: m_RootOrder

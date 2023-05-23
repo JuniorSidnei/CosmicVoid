@@ -67,18 +67,21 @@ namespace ProjectA {
                 case 1:
                     HasUnlockedStage2 = true;
                     if (!BossOneDefeated) {
-                        PlayerMaxLife += 1;                
+                        PlayerMaxLife += 1;
+                        BossOneDefeated = true;
                     }
                     break;
                 case 2:
                     HasUnlockedStage3 = true;
                     if (!BossTwoDefeated) {
-                        PlayerMaxLife += 1;                
+                        PlayerMaxLife += 1;    
+                        BossTwoDefeated = true;
                     }
                     break;
                 case 3:
                     if (!BossThreeDefeated) {
-                        PlayerMaxLife += 1;                
+                        PlayerMaxLife += 1;
+                        BossThreeDefeated = true;
                     }
                     break;
             }

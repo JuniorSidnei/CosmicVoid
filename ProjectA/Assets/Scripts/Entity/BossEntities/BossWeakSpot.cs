@@ -11,17 +11,26 @@ namespace ProjectA.Entity{
         
         private int m_health;
         private BoxCollider2D m_collider;
-
+        private bool m_isOpened;
+        
         public void SetOpen() {
-            WeakSpotAnimator.CrossFade("weakspot_openned", 0.1f);  
+            WeakSpotAnimator.CrossFade("weakspot_openned", 0.1f);
+            m_isOpened = true;
+            WeakSpotAnimator.SetBool("isOpen", m_isOpened);
             m_collider.enabled = true;
         }
         
         public void SetIdle() {
-            WeakSpotAnimator.CrossFade("weakspot_idle", 0.1f);  
+            WeakSpotAnimator.CrossFade("weakspot_idle", 0.1f);
+            m_isOpened = false;
+            WeakSpotAnimator.SetBool("isOpen", m_isOpened);
             m_collider.enabled = false;
         }
 
+        public void Hit() {
+            WeakSpotAnimator.CrossFade("weakspot_hit", 0.1f);
+        }
+        
         public void EnableCollider(bool enabled) {
             m_collider.enabled = enabled;
         }

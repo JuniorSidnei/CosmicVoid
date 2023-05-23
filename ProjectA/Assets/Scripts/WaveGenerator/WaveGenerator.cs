@@ -39,9 +39,11 @@ namespace ProjectA.Generator {
             newDataWave.EntityInfos = m_entityInfos;
             newDataWave.InitialTimeSpawn = initialTimeSpawn;
             
+#if UNITY_EDITOR
             AssetDatabase.CreateAsset(newDataWave, pathToSave + waveName + ".asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+#endif
         }
 
         private void GenerateWave(int x, int y, Texture2D waveDataInfo) {

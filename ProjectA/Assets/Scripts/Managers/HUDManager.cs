@@ -55,7 +55,12 @@ namespace ProjectA.Managers {
             PauseModal.Instance.IsHighScoreModalOn = true;
             HighScoreModal.Show(arg0.StageScore, arg0.NextSceneIndex, () => {
                 TransitionModal.Instance.DoTransitionIn(() => {
-                    SceneManager.LoadScene("GameScene_" + arg0.NextSceneIndex);
+                    if (arg0.NextSceneIndex == 0) {
+                        SceneManager.LoadScene("SelectStageMenu");
+                    }
+                    else {
+                        SceneManager.LoadScene("GameScene_" + arg0.NextSceneIndex);    
+                    }
                 });
             });
             

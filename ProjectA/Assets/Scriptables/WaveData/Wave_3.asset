@@ -14,20 +14,251 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
   InitialTimeSpawn: 2
-  Boss: {fileID: 1207899949191035420, guid: 4208a73d8a7958849b1d796dd68e277d, type: 3}
+  Boss: {fileID: 1207899949191035420, guid: fa349b7601f039e40806b72752489aba, type: 3}
   EntityInfos:
   - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 3
     Position: 0
-    TimeToNextEntity: 1
+    TimeToNextEntity: 0
   - Type: 1
     Position: 1
-    TimeToNextEntity: 1
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 7
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 7
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 7
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 10
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0
   - Type: 2
     Position: 2
     TimeToNextEntity: 1
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 3
+    Position: 1
+    TimeToNextEntity: 1.5
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 1
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 2
   - Type: 7
     Position: 0
-    TimeToNextEntity: 1
+    TimeToNextEntity: 2
   - Type: 10
     Position: 0
+    TimeToNextEntity: 1.5
+  - Type: 10
+    Position: 0
+    TimeToNextEntity: 1.5
+  - Type: 10
+    Position: 0
+    TimeToNextEntity: 1.5
+  - Type: 2
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
     TimeToNextEntity: 1
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 1
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 1
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 1
+    Position: 1
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 2
+  - Type: 7
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 10
+    Position: 0
+    TimeToNextEntity: 1.5
+  - Type: 10
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 7
+    Position: 0
+    TimeToNextEntity: 2
+  - Type: 2
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.5
+  - Type: 2
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 2
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 3
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 1.5
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 0
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 1
+    TimeToNextEntity: 0.2
+  - Type: 0
+    Position: 2
+    TimeToNextEntity: 2
+  - Type: 4
+    Position: 2
+    TimeToNextEntity: 0

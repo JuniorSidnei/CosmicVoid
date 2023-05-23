@@ -19,4 +19,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   EntityColor: {r: 0.77254903, g: 0.18431373, b: 0.18431373, a: 1}
-  EntityExplosionParticle: {fileID: 0}
+  EntityExplosionParticle: {fileID: 994276049108304709, guid: 324b5fb5ca0c1ed45be8e91b1ef4e641, type: 3}

@@ -22,7 +22,16 @@ namespace ProjectA.Controllers {
         private void Awake() {
             GameManager.Instance.Dispatcher.Subscribe<OnBossStartAttack>(OnBossStartAttack);
             GameManager.Instance.Dispatcher.Subscribe<OnShootLaser>(OnShootLaser);
+            GameManager.Instance.Dispatcher.Subscribe<OnShieldBreak>(OnShieldBreak);
             m_currentPatternData = IsTestWave ? TestWave : ShieldBreakerPattern;
+        }
+
+        private void OnShieldBreak(OnShieldBreak arg0) {
+            m_isShieldActive = false;
+            
+            CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
+            m_currentPatternData = BossPatternsDatas[CurrentPatternIndex];
+            EnqueueWave(m_currentPatternData);
         }
 
         private void OnShootLaser(OnShootLaser ev) {
@@ -54,7 +63,7 @@ namespace ProjectA.Controllers {
                 }
                 case <= 0 when !m_isRageActivated: {
                     CurrentPatternIndex = Random.Range(0, BossPatternsDatas.Count);
-                    m_currentPatternData = IsTestWave ? TestWave : ShieldBreakerPattern;
+                    m_currentPatternData = IsTestWave ? TestWave : BossPatternsDatas[CurrentPatternIndex];
                     EnqueueWave(m_currentPatternData);
                     break;
                 }

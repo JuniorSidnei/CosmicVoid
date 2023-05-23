@@ -37,7 +37,7 @@ namespace ProjectA.Entity {
                     m_edgeCollider2D.offset = new Vector2(-10f, 0f);
                     break;
                 case 2:
-                    m_edgeCollider2D.offset = new Vector2(-6f, 0f);
+                    m_edgeCollider2D.offset = new Vector2(-7f, 0f);
                     break;
             }
         }

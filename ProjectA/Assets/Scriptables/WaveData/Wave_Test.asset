@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsTutorialWave: 0
   InitialTimeSpawn: 0
-  Boss: {fileID: 1207899949191035420, guid: 4208a73d8a7958849b1d796dd68e277d, type: 3}
+  Boss: {fileID: 1207899949191035420, guid: fa349b7601f039e40806b72752489aba, type: 3}
   EntityInfos:
   - Type: 4
     Position: 2

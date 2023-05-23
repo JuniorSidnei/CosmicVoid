@@ -22,18 +22,28 @@ namespace ProjectA.Actions {
         private int m_currentHitsToWeakSpot;
         private float m_timeStaggered = 4f;
         private bool m_triggerRageMode;
-
+        private bool m_hasFallen;
+        
         protected override void OnHitBoss(OnHitBoss ev) {
-            HitsHealth -= ev.Damage;
+            if(m_hasFallen) return;
+            
             Boss2Animator.AnimateHit();
+
+            foreach (var weakSpot in WeakSpots) {
+                weakSpot.Hit();
+            }
             
             if (!m_triggerRageMode) {
                 m_currentHitsToWeakSpot -= 1;    
+            }
+            else {
+                HitsHealth -= ev.Damage;
             }
 
             GameManager.Instance.Dispatcher.Emit(new OnCameraScreenShake(ShakeForce.MEDIUM));
 
             if (m_currentHitsToWeakSpot <= 0) {
+                m_hasFallen = true;
                 m_currentHitsToWeakSpot = HitsToWeakSpot;
                 GameManager.Instance.Dispatcher.Emit(new OnBossStopAttack());
 
@@ -100,7 +110,8 @@ namespace ProjectA.Actions {
             
             Boss2Animator.AnimateStandUp(() => {
                 AudioController.Instance.Play(GameManager.Instance.GameSettings.BossTeleport, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
-                transform.localPosition = new Vector3(-2f, 1.3f, 1f);    
+                transform.localPosition = new Vector3(-2f, 1.3f, 1f); 
+                m_hasFallen = false;
             });
         }
 

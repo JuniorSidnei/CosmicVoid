@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2f86288b5b81f419f4d081d71d794f, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  HasTutorialFinished: 1
+  HasTutorialFinished: 0
   GameDifficulty: 0
-  PlayerMaxLife: 5
-  HasUnlockedStage2: 1
+  PlayerMaxLife: 4
+  HasUnlockedStage2: 0
   HasUnlockedStage3: 0
-  HasExtraTutorialStepOneShowed: 1
+  HasExtraTutorialStepOneShowed: 0
   HasExtratutorialStepTwoShowed: 0
   HasExtraTutorialStepThreeShowed: 0
   HasExtraTutorialStepFourShowed: 0
-  MusicVolume: 3
-  SfxVolume: 2
+  MusicVolume: 2
+  SfxVolume: 1
   BossOneDefeated: 0
   BossTwoDefeated: 0
   BossThreeDefeated: 0

@@ -36,7 +36,8 @@ namespace ProjectA.Entity.Boss {
         public override void ProcessProjectileDamage(bool isReflected, int damagePower) {
             GameManager.Instance.UpdateHitCount(isReflected ? 2 : 1);
             GameManager.Instance.Dispatcher.Emit(new OnHitBoss(this, isReflected, damagePower, WillOverride));
-            AudioController.Instance.Play(BossHit, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
+            AudioController.Instance.Play(GameManager.Instance.GameSettings.EnemyDie, AudioController.SoundType.SoundEffect2D, GameManager.Instance.GameSettings.GetSfxVolumeReduceScale());
+            Instantiate(OnDieParticlePrefab, transform.position, Quaternion.identity);
         }
     }
 }

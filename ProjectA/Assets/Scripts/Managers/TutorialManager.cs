@@ -49,6 +49,10 @@ namespace ProjectA.Managers {
                         HideAndShowNext();
                     }
                     break;
+                case ExtraTutorialType.SHIELDBREAKER:
+                    m_currentTextIndex += 3;
+                    HideAndShowNext();
+                    break;
                 case ExtraTutorialType.NONE:
                     return;
             }
