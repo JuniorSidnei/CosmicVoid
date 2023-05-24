@@ -18,7 +18,7 @@ MonoBehaviour:
   EntityInfos:
   - Type: 0
     Position: 1
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 1
   - Type: 0
     Position: 0
     TimeToNextEntity: 0.2
@@ -54,7 +54,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.2
   - Type: 2
     Position: 2
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 2
   - Type: 2
     Position: 2
     TimeToNextEntity: 0.2
@@ -64,9 +64,6 @@ MonoBehaviour:
   - Type: 2
     Position: 0
     TimeToNextEntity: 2
-  - Type: 2
-    Position: 1
-    TimeToNextEntity: 0.5
   - Type: 3
     Position: 0
     TimeToNextEntity: 0
@@ -174,7 +171,7 @@ MonoBehaviour:
     TimeToNextEntity: 0
   - Type: 0
     Position: 2
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 1
   - Type: 2
     Position: 1
     TimeToNextEntity: 0.5
@@ -204,7 +201,7 @@ MonoBehaviour:
     TimeToNextEntity: 1
   - Type: 2
     Position: 1
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 1
   - Type: 0
     Position: 0
     TimeToNextEntity: 0.2
@@ -221,7 +218,7 @@ MonoBehaviour:
     Position: 1
     TimeToNextEntity: 2
   - Type: 3
-    Position: 2
+    Position: 1
     TimeToNextEntity: 1
   - Type: 1
     Position: 2
@@ -236,8 +233,17 @@ MonoBehaviour:
     Position: 2
     TimeToNextEntity: 2.5
   - Type: 3
+    Position: 0
+    TimeToNextEntity: 0
+  - Type: 3
+    Position: 2
+    TimeToNextEntity: 0
+  - Type: 2
     Position: 1
-    TimeToNextEntity: 0.5
+    TimeToNextEntity: 1
+  - Type: 0
+    Position: 0
+    TimeToNextEntity: 0
   - Type: 0
     Position: 0
     TimeToNextEntity: 0
@@ -267,7 +273,7 @@ MonoBehaviour:
     TimeToNextEntity: 0.5
   - Type: 0
     Position: 1
-    TimeToNextEntity: 0.35
+    TimeToNextEntity: 0.65
   - Type: 0
     Position: 1
     TimeToNextEntity: 0.5
